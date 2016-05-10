@@ -31,11 +31,6 @@ gulp.task('beautify-js', false, function() {
         .pipe(beautify())
         .pipe(gulp.dest('./'));
 });
-gulp.task('beautify-ts', false, function() {
-    gulp.src('src/ts/*.ts')
-        .pipe(beautify())
-        .pipe(gulp.dest('src/ts'));
-});
 
 // compile javascript from typescript
 var tsProject = ts.createProject('tsconfig.json');
