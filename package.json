@@ -1,7 +1,7 @@
 {
-  "name": "chicago",
+  "name": "punchcardjs",
   "version": "1.0.0",
-  "description": "This repository visualizes the City of Chicago police data set using web-based tools such as JavaScript, TypeScript, Gulp and Node.js",
+  "description": "Punchcard visualization using TypeScript and D3.js",
   "main": "index.js",
   "scripts": {
     "deploy": "npm install --production && bower install",
@@ -15,15 +15,14 @@
     "police",
     "crime"
   ],
-  "author": "Johan Hidding, Mateusz Kuzak, Jurriaan H. Spaaks, Lourens Veen",
+  "author": "Johan Hidding, Mateusz Kuzak, Jurriaan H. Spaaks, Lourens Veen, Faruk Diblen",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nlesc-sherlock/chicago.git"
+    "url": "https://github.com/nlesc-sherlock/punchcardjs.git"
   },
   "devDependencies": {
     "browser-sync": "^2.10.0",
-    "gulp": "^3.9.0",
     "gulp-beautify": "^2.0.0",
     "gulp-concat-css": "^2.2.0",
     "gulp-eslint": "^1.1.1",
