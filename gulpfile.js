@@ -4,10 +4,20 @@ var eslint = require('gulp-eslint');
 var beautify = require('gulp-beautify');
 var sourcemaps = require("gulp-sourcemaps");
 var ts = require('gulp-typescript');
-var concatCss = require('gulp-concat-css');
+var concatcss = require('gulp-concat-css');
 var watch = require('gulp-watch');
 var browsersync = require('browser-sync').create();
 var rimraf = require('rimraf');
+var tape = require('gulp-tape');
+//var tapspec = require('tap-spec');
+var tapcolorize = require('tap-colorize');
+
+gulp.task('test', function() {
+    return gulp.src('src/test/**/*.test.js')
+        .pipe(tape({
+            reporter: tapcolorize()
+        }));
+});
 
 // tasks
 // lint javascript and typescript
@@ -53,7 +63,7 @@ gulp.task('concat-css',
     'Concatenates css files',
     function() {
         return gulp.src('src/**/*.css')
-            .pipe(concatCss('bundle.css'))
+            .pipe(concatcss('bundle.css'))
             .pipe(gulp.dest('build/styles/'));
     });
 

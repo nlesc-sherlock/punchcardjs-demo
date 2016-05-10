@@ -7,7 +7,7 @@
     "deploy": "npm install --production && bower install",
     "deploy-dev": "npm install && bower install && tsd install",
     "dev-watch": "gulp dev-watch",
-    "test": "gulp test"
+    "test": "./node_modules/.bin/tape ./src/test/**/*.test.js | ./node_modules/.bin/tap-colorize | ./node_modules/.bin/tap-spec"
   },
   "keywords": [
     "typescript",
@@ -40,6 +40,7 @@
   },
   "dependencies": {
     "gulp": "^3.9.1",
-    "gulp-help": "^1.6.1"
+    "gulp-help": "^1.6.1",
+    "gulp-tape": "0.0.7"
   }
 }
