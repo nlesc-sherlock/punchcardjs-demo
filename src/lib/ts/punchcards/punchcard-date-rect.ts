@@ -1,6 +1,6 @@
-/// <reference path="../../../typings/crossfilter/crossfilter.d.ts" />
-/// <reference path="../../../typings/d3/d3.d.ts" />
-/// <reference path="../../../typings/moment/moment.d.ts" />
+/// <reference path="../../../../typings/crossfilter/crossfilter.d.ts" />
+/// <reference path="../../../../typings/d3/d3.d.ts" />
+/// <reference path="../../../../typings/moment/moment.d.ts" />
 /// <reference path="./punchcard-base.ts" />
 
 

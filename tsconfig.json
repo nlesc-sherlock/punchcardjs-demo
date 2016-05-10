@@ -11,15 +11,15 @@
         "inlineSources": true
     },
     "files": [
-        "src/ts/dataloader.ts",
-        "src/ts/punchcards/punchcard-base.ts",
-        "src/ts/punchcards/punchcard-colormap.ts",
-        "src/ts/punchcards/punchcard-date-circle.ts",
-        "src/ts/punchcards/punchcard-date-rect.ts",
-        "src/ts/punchcards/punchcard-legend.ts",
-        "src/ts/punchcards/punchcard-weekday-circle.ts",
-        "src/ts/punchcards/punchcard-weekday-rect.ts",
-        "src/ts/main-script.ts"
+        "src/lib/ts/dataloader.ts",
+        "src/lib/ts/punchcards/punchcard-base.ts",
+        "src/lib/ts/punchcards/punchcard-colormap.ts",
+        "src/lib/ts/punchcards/punchcard-date-circle.ts",
+        "src/lib/ts/punchcards/punchcard-date-rect.ts",
+        "src/lib/ts/punchcards/punchcard-legend.ts",
+        "src/lib/ts/punchcards/punchcard-weekday-circle.ts",
+        "src/lib/ts/punchcards/punchcard-weekday-rect.ts",
+        "src/lib/ts/main-script.ts"
     ]
 }
 
