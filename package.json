@@ -11,9 +11,8 @@
   },
   "keywords": [
     "typescript",
-    "chicago",
-    "police",
-    "crime"
+    "punchcard",
+    "visualization"
   ],
   "author": "Johan Hidding, Mateusz Kuzak, Jurriaan H. Spaaks, Lourens Veen, Faruk Diblen",
   "license": "Apache-2.0",
