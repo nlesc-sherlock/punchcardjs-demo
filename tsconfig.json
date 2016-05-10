@@ -6,7 +6,7 @@
         "noImplicitAny": false,
         "removeComments": true,
         "noLib": false,
-        "outFile": "build/js/chicago.js",
+        "outFile": "build/js/punchcard.js",
         "inlineSourceMap": true,
         "inlineSources": true
     },
@@ -19,13 +19,7 @@
         "src/ts/punchcards/punchcard-legend.ts",
         "src/ts/punchcards/punchcard-weekday-circle.ts",
         "src/ts/punchcards/punchcard-weekday-rect.ts",
-        "src/ts/main-script.ts",
-        "src/ts/map.ts",
-        "src/ts/one-dimensional-histogram.ts",
-        "src/ts/spiralchart/chartbase.ts",
-        "src/ts/spiralchart/dsp.ts",
-        "src/ts/spiralchart/linechart.ts",
-        "src/ts/spiralchart/spiral.ts"
+        "src/ts/main-script.ts"
     ]
 }
 
