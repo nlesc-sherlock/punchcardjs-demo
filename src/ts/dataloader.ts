@@ -1,6 +1,3 @@
-/// <reference path="../../typings/leaflet/leaflet.d.ts" />
-
-
 
 class DataLoader {
 
