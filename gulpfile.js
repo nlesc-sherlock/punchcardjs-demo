@@ -7,9 +7,8 @@ var ts = require('gulp-typescript');
 var concatcss = require('gulp-concat-css');
 var watch = require('gulp-watch');
 var browsersync = require('browser-sync').create();
-var rimraf = require('rimraf');
+var del = require('del');
 var tape = require('gulp-tape');
-//var tapspec = require('tap-spec');
 var tapcolorize = require('tap-colorize');
 
 gulp.task('test', function() {
@@ -19,28 +18,35 @@ gulp.task('test', function() {
         }));
 });
 
-// tasks
 // lint javascript and typescript
 gulp.task('eslint', 'Lints javascript files with eslint', function() {
-    return gulp.src(['**/*.js', '!node_modules/**', '!bower_components/**'])
+    return gulp.src(['./src/lib/**/*.js',
+                     './src/test/**/*.js',
+                     '!node_modules/**',
+                     '!bower_components/**'])
         .pipe(eslint())
         .pipe(eslint.format())
         .pipe(eslint.failAfterError());
 })
+
+
 gulp.task('tslint',
     'Lints typescript with tslint according to tslint.json present',
     function() {
-        return gulp.src('src/**/*.ts')
+        return gulp.src('./src/**/*.ts')
             .pipe(tslint())
             .pipe(tslint.report('verbose'));
     });
 
+
 // cleanup files
 gulp.task('beautify-js', false, function() {
-    gulp.src('*.js')
+    gulp.src(['./src/lib/**/*.js',
+              './src/test/**/*.js'])
         .pipe(beautify())
         .pipe(gulp.dest('./'));
 });
+
 
 // compile javascript from typescript
 var tsProject = ts.createProject('tsconfig.json');
@@ -62,26 +68,27 @@ gulp.task('ts',
 gulp.task('concat-css',
     'Concatenates css files',
     function() {
-        return gulp.src('src/**/*.css')
-            .pipe(concatcss('bundle.css'))
+        return gulp.src('src/lib/**/*.css')
+            .pipe(concatcss('punchcard.css'))
             .pipe(gulp.dest('build/styles/'));
     });
+
 
 // copy html and css files to build
 gulp.task('copy-build',
     'Copies html to build directory',
     function() {
-        gulp.src('./src/*.html').pipe(gulp.dest('./build/'))
+        gulp.src('./src/lib/*.html').pipe(gulp.dest('./build/'))
     });
 
 
 // watch and build on change
 gulp.task('watch', false, ['ts'], function() {
-    gulp.watch('src/**/*.ts', ['ts']);
-    gulp.watch('./*.js', ['eslint', 'beautify-js']);
-    gulp.watch(['src/*.html'], ['copy-build']);
-    gulp.watch(['./src/styles/*.css'], ['concat-css']);
+    gulp.watch(['./src/lib/**/*.ts'], ['ts']);
+    gulp.watch(['./src/lib/*.html'], ['copy-build']);
+    gulp.watch(['./src/lib/styles/*.css'], ['concat-css']);
 });
+
 
 // run BrowserSync
 gulp.task('browser-sync',
@@ -100,11 +107,27 @@ gulp.task('browser-sync',
             .on('change', browsersync.reload);
     });
 
+
 gulp.task('clean',
     'Remove files generated in build process',
     function(cb) {
         rimraf('./build', cb);
     });
 
+
+gulp.task('purge',
+    'Remove ./node_modules/, ./bower_components/, and ./typings/, as well as files generated in build process ',
+    function () {
+        return del([
+            './node_modules',
+            './bower_components',
+            './typings',
+            './build',
+    ]);
+});
+
+
 gulp.task('dev-watch',
     'Watches files for development', ['ts', 'concat-css', 'copy-build', 'watch', 'browser-sync']);
+
+
