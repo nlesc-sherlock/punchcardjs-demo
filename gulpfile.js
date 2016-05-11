@@ -110,9 +110,11 @@ gulp.task('browser-sync',
 
 gulp.task('clean',
     'Remove files generated in build process',
-    function(cb) {
-        rimraf('./build', cb);
-    });
+    function () {
+        return del([
+            './build',
+    ]);
+});
 
 
 gulp.task('purge',
