@@ -1,5 +1,5 @@
-/// <reference path="../../../typings/moment/moment.d.ts" />
-/// <reference path="../../../typings/moment/moment-node.d.ts" />
+/// <reference path="../../../typings/browser/ambient/moment/index.d.ts" />
+/// <reference path="../../../typings/browser/ambient/moment-node/index.d.ts" />
 /// <reference path="idatarow.ts" />
 
 var start:moment.Moment;
