@@ -10,11 +10,12 @@ var browsersync = require('browser-sync').create();
 var del = require('del');
 var tape = require('gulp-tape');
 var tapcolorize = require('tap-colorize');
+var tapspec = require('tap-spec');
 
 gulp.task('test', function() {
     return gulp.src('src/test/**/*.test.js')
         .pipe(tape({
-            reporter: tapcolorize()
+            reporter: tapcolorize().pipe(tapspec())
         }));
 });
 
@@ -127,7 +128,9 @@ gulp.task('purge',
 });
 
 
+gulp.task('build',
+    'Builds the whole program', ['ts', 'concat-css', 'copy-build']);
+
+
 gulp.task('dev-watch',
-    'Watches files for development', ['ts', 'concat-css', 'copy-build', 'watch', 'browser-sync']);
-
-
+    'Watches files for development', ['build', 'watch', 'browser-sync']);
