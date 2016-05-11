@@ -62,11 +62,11 @@ sudo npm install --global typescript
 To be able to use existing JavaScript libraries, TypeScript type definitions
 are needed for them so that the TypeScript compiler can check that we call
 them in the correct way. These are installed through a package manager called
-`tsd`. `tsd` obtains the type definitions from a Github repository called
+`typings`. `typings` obtains the type definitions from a Github repository called
 DefinitelyTyped.
 
 ```sh
-sudo npm install --global tsd
+sudo npm install --global typings
 ```
 
 Finally, we use the static analysis tool `tslint` for checking our code.
@@ -90,7 +90,7 @@ sudo npm install --global gulp
 
 You are by now probably confused about what installs what and what runs on
 top of what. We have now used four different ways of installing software:
-`apt`, `npm`, `tsd` and `bower`. Each has a different role.
+`apt`, `npm`, `typings` and `bower`. Each has a different role.
 
 `apt` is the Ubuntu package manager, and was used to install Node.js,
 including `npm`, on top of Ubuntu, plus `g++` and `make` for building V8
@@ -108,7 +108,7 @@ to be installed locally. `gulp` is also the command used to start the build
 process, and that command is only in your path if `gulp` is installed
 globally.
 
-`tsd` is a TypeScript tool that gets type definitions for JavaScript
+`typings` is a TypeScript tool that gets type definitions for JavaScript
 libraries, enabling their use with TypeScript. These end up in `typings/`
 in your project directory.
 
@@ -138,11 +138,11 @@ cd chicago
 
 After getting the source, three things need to be done: `npm` needs to install
 local components of the build tools, `bower` needs to fetch dependencies of
-our code, and `tsd` needs to get the typescript annotations for those. You can
+our code, and `typings` needs to get the typescript annotations for those. You can
 do all of these in one go using:
 
 ```sh
-# run npm install, bower install, tsd install through one command
+# run npm install, bower install, typings install through one command
 npm run deploy-dev
 ```
 
