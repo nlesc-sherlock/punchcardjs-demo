@@ -8,7 +8,7 @@ test('The add method...', function(t) {
         expected;
 
     actual = add(1, 2);
-    expected = 4;
+    expected = 3;
 
     t.equal(actual, expected, '...should add two Numbers correctly.');
 
@@ -16,4 +16,3 @@ test('The add method...', function(t) {
     t.end();
 
 })
-
