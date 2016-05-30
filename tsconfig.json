@@ -6,21 +6,18 @@
         "noImplicitAny": false,
         "removeComments": true,
         "noLib": false,
-        "out": "build/js/",
+        "outDir": "./build/",
+        "rootDir": "./src/",
         "inlineSourceMap": true,
         "inlineSources": true
     },
     "files": [
-        "./src/lib/ts/dataloader.ts",
-        "./src/lib/ts/punchcards/punchcard-base.ts",
-        "./src/lib/ts/punchcards/punchcard-colormap.ts",
-        "./src/lib/ts/punchcards/punchcard-date-circle.ts",
-        "./src/lib/ts/punchcards/punchcard-date-rect.ts",
-        "./src/lib/ts/punchcards/punchcard-legend.ts",
-        "./src/lib/ts/punchcards/punchcard-weekday-circle.ts",
-        "./src/lib/ts/punchcards/punchcard-weekday-rect.ts",
-        "./src/lib/ts/main-script.ts",
-        "./typings/browser.d.ts"
-    ]
+        "./src/ts/dataloader.ts",
+        "./src/ts/idatarow.ts",
+        "./src/ts/main-script.ts",
+        "./src/ts/punchcards.ts"
+    ],
+    "atom": {
+        "rewriteTsconfig": true
+    }
 }
-

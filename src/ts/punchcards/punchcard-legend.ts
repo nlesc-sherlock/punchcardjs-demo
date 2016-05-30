@@ -1,14 +1,17 @@
-/// <reference path="../../../../typings/browser/ambient/d3/index.d.ts" />
-/// <reference path="./punchcard-colormap.ts" />
+/// <reference path="../../../typings/globals/d3/index.d.ts" />
 
-
+import {PunchcardBase} from './punchcard-base';
+import {PunchcardDateCircle} from './punchcard-date-circle';
+import {PunchcardDateRect} from './punchcard-date-rect';
+import {PunchcardWeekdayCircle} from './punchcard-weekday-circle';
+import {PunchcardWeekdayRect} from './punchcard-weekday-rect';
 
 
 type PunchcardVisualization = PunchcardBase|PunchcardDateCircle|PunchcardDateRect|
                                     PunchcardWeekdayCircle|PunchcardWeekdayRect;
 
 
-class PunchcardLegend {
+export class PunchcardLegend {
 
     private _marginLeft      : number;
     private _marginRight     : number;

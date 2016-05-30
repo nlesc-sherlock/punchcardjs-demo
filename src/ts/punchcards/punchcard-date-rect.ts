@@ -1,11 +1,14 @@
-/// <reference path="../../../../typings/browser/ambient/crossfilter/index.d.ts" />
-/// <reference path="../../../../typings/browser/ambient/d3/index.d.ts" />
-/// <reference path="../../../../typings/browser/ambient/moment/index.d.ts" />
-/// <reference path="./punchcard-base.ts" />
+/// <reference path="../../../typings/globals/crossfilter/index.d.ts" />
+/// <reference path="../../../typings/globals/d3/index.d.ts" />
+/// <reference path="../../../typings/globals/moment/index.d.ts" />
 
 
 
-class PunchcardDateRect extends PunchcardBase {
+import {PunchcardBase} from './punchcard-base';
+import {PunchcardColorMap} from './punchcard-colormap';
+
+
+export class PunchcardDateRect extends PunchcardBase {
 
     private _dateScale   : any;
     private _dateFrom    : Date;

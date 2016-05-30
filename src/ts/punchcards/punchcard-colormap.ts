@@ -8,7 +8,7 @@ type ColorTableItem = {
 type ColorTable = Array<ColorTableItem>;
 
 
-class PunchcardColorMap {
+export class PunchcardColorMap {
 
     private _colortable: ColorTable;
     private _cLimLow: number;

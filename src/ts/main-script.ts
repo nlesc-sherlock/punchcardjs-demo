@@ -1,5 +1,5 @@
-/// <reference path="../../../typings/browser/ambient/moment/index.d.ts" />
-/// <reference path="../../../typings/browser/ambient/moment-node/index.d.ts" />
+/// <reference path="../../typings/globals/moment/index.d.ts" />
+/// <reference path="../../typings/globals/moment-node/index.d.ts" />
 /// <reference path="idatarow.ts" />
 
 var start:moment.Moment;
@@ -9,14 +9,15 @@ var start:moment.Moment;
 start = moment();
 console.log('+' + moment().diff(start, 'second', true).toFixed(3) + ' s: script starts');
 
+import * as punchcards from './punchcards';
 
 
 function doit(data: IDataRow[]) {
 
-    let punchcardDateCircle   : PunchcardDateCircle;
-    let punchcardDateRect     : PunchcardDateRect;
-    let punchcardWeekdayCircle: PunchcardWeekdayCircle;
-    let punchcardWeekdayRect  : PunchcardWeekdayRect;
+    let punchcardDateCircle   : punchcards.PunchcardDateCircle;
+    let punchcardDateRect     : punchcards.PunchcardDateRect;
+    let punchcardWeekdayCircle: punchcards.PunchcardWeekdayCircle;
+    let punchcardWeekdayRect  : punchcards.PunchcardWeekdayRect;
 
     console.log('+' + moment().diff(start, 'second', true).toFixed(3) + ' s: doit() starts');
 
@@ -24,25 +25,25 @@ function doit(data: IDataRow[]) {
     console.log('+' + moment().diff(start, 'second', true).toFixed(3) + ' s: crossfilter object done');
 
     // draw the punchcard-weekday with svg circles using the crossfilter object and D3
-    punchcardWeekdayCircle = new PunchcardWeekdayCircle(cf, 'punchcard-weekday-circle');
+    punchcardWeekdayCircle = new punchcards.PunchcardWeekdayCircle(cf, 'punchcard-weekday-circle');
     punchcardWeekdayCircle.defineDimensions();
     punchcardWeekdayCircle.draw();
     console.log('+' + moment().diff(start, 'second', true).toFixed(3) + ' s: punchcardWeekdayCircle done');
 
     // draw the punchcard-weekday with svg rects using the crossfilter object and D3
-    punchcardWeekdayRect = new PunchcardWeekdayRect(cf, 'punchcard-weekday-rect');
+    punchcardWeekdayRect = new punchcards.PunchcardWeekdayRect(cf, 'punchcard-weekday-rect');
     punchcardWeekdayRect.defineDimensions();
     punchcardWeekdayRect.draw();
     console.log('+' + moment().diff(start, 'second', true).toFixed(3) + ' s: punchcardWeekdayRect done');
 
     // draw the punchcard-date with svg circles using the crossfilter object and D3
-    punchcardDateCircle = new PunchcardDateCircle(cf, 'punchcard-date-circle');
+    punchcardDateCircle = new punchcards.PunchcardDateCircle(cf, 'punchcard-date-circle');
     punchcardDateCircle.defineDimensions();
     punchcardDateCircle.draw();
     console.log('+' + moment().diff(start, 'second', true).toFixed(3) + ' s: punchcardDateCircle done');
 
     // draw the punchcard-date with svg rects using the crossfilter object and D3
-    punchcardDateRect = new PunchcardDateRect(cf, 'punchcard-date-rect');
+    punchcardDateRect = new punchcards.PunchcardDateRect(cf, 'punchcard-date-rect');
     punchcardDateRect.defineDimensions();
     punchcardDateRect.draw();
     console.log('+' + moment().diff(start, 'second', true).toFixed(3) + ' s: punchcardDateRect done');

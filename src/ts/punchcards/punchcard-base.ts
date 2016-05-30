@@ -1,10 +1,13 @@
-/// <reference path="../../../../typings/browser/ambient/crossfilter/index.d.ts" />
-/// <reference path="../../../../typings/browser/ambient/d3/index.d.ts" />
-/// <reference path="../../../../typings/browser/ambient/moment/index.d.ts" />
-/// <reference path="./punchcard-colormap.ts" />
+/// <reference path="../../../typings/globals/crossfilter/index.d.ts" />
+/// <reference path="../../../typings/globals/d3/index.d.ts" />
+/// <reference path="../../../typings/globals/moment/index.d.ts" />
 
 
-class PunchcardBase {
+import {PunchcardColorMap} from './punchcard-colormap';
+import {PunchcardLegend} from './punchcard-legend';
+
+
+export class PunchcardBase {
 
     private _cf          : CrossFilter.CrossFilter<IDataRow>;
     private _colormap    : PunchcardColorMap;

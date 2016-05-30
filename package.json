@@ -4,10 +4,10 @@
   "description": "Punchcard visualization using TypeScript and D3.js",
   "main": "index.js",
   "scripts": {
-    "deploy": "npm install --production && bower install",
     "deploy-dev": "npm install && bower install && typings install",
     "dev-watch": "gulp dev-watch",
-    "test": "./node_modules/.bin/tape ./src/test/**/*.test.js | ./node_modules/.bin/tap-colorize | ./node_modules/.bin/tap-spec"
+    "test": "./node_modules/.bin/tape ./test/**/*.test.js | ./node_modules/.bin/tap-spec",
+    "dist": "mkdir dist && browserify build/ts/punchcards.js --outfile dist/punchcards.js --standalone punchcards"
   },
   "keywords": [
     "typescript",

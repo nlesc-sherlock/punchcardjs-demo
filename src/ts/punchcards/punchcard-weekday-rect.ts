@@ -1,11 +1,12 @@
-/// <reference path="../../../../typings/browser/ambient/crossfilter/index.d.ts" />
-/// <reference path="../../../../typings/browser/ambient/d3/index.d.ts" />
-/// <reference path="./punchcard-base.ts" />
-/// <reference path="./punchcard-colormap.ts" />
+/// <reference path="../../../typings/globals/crossfilter/index.d.ts" />
+/// <reference path="../../../typings/globals/d3/index.d.ts" />
 
 
+import {PunchcardBase} from './punchcard-base';
+import {PunchcardColorMap} from './punchcard-colormap';
 
-class PunchcardWeekdayRect extends PunchcardBase {
+
+export class PunchcardWeekdayRect extends PunchcardBase {
 
     private _dayOfWeekScale: any;
     private _xFrom         : number;

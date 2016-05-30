@@ -78,14 +78,17 @@ sudo npm install --global tslint
 ## Build tools
 
 We use the `gulp` build automation tool for building the project, and
-`bower` for dependency resolution.
+`bower` for (client-side) dependency resolution.
 
 ```sh
 # globally install the bower dependency manager
 sudo npm install --global bower
 
-# globally install the build automation tools gulp
+# globally install the build automation tool gulp
 sudo npm install --global gulp
+
+# globally install the browserify tool
+sudo npm install --global browserify
 ```
 
 You are by now probably confused about what installs what and what runs on
@@ -121,17 +124,17 @@ together with the rest of the web site.
 
 # Getting the source
 
-The Chicago code is on Github. You can clone it using:
+The punchcardjs code is on Github. You can clone it using:
 
 ```sh
 # use package manager to install git
 sudo apt-get install git
 
 # make a local copy of this repository
-git clone https://github.com/nlesc-sherlock/chicago.git
+git clone https://github.com/nlesc-sherlock/punchcardjs.git
 
-# change into chicago directory
-cd chicago
+# change into punchcardjs directory
+cd punchcardjs
 ```
 
 # Setting up, building and running
@@ -155,3 +158,34 @@ gulp dev-watch
 ```
 If a browser window does not pop up automatically, open one yourself and browse
 to http://localhost:3000/ to inspect the website. You've been served!
+
+
+
+
+```
+# one-time global install of packages
+sudo npm install --global typescript
+sudo npm install --global browserify
+```
+
+```
+# get project-specific dependencies
+npm install
+
+# transpile using the settings from tsconfig.json
+tsc -p .
+
+# resolve 'require()' dependencies and concatenate into one JS file:
+mkdir dist
+browserify build/ts/calculators.js --outfile dist/calculators.js --standalone calculators
+
+# run tests
+npm test
+
+```
+
+
+
+
+
+

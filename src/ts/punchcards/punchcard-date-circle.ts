@@ -1,12 +1,14 @@
-/// <reference path="../../../../typings/browser/ambient/crossfilter/index.d.ts" />
-/// <reference path="../../../../typings/browser/ambient/d3/index.d.ts" />
-/// <reference path="../../../../typings/browser/ambient/moment/index.d.ts" />
-/// <reference path="./punchcard-date-rect.ts" />
-/// <reference path="./punchcard-colormap.ts" />
+/// <reference path="../../../typings/globals/crossfilter/index.d.ts" />
+/// <reference path="../../../typings/globals/d3/index.d.ts" />
+/// <reference path="../../../typings/globals/moment/index.d.ts" />
+
+
+import {PunchcardColorMap} from './punchcard-colormap';
+import {PunchcardDateRect} from './punchcard-date-rect';
 
 
 
-class PunchcardDateCircle extends PunchcardDateRect {
+export class PunchcardDateCircle extends PunchcardDateRect {
 
 
     constructor (cf: any, domElemId: string) {
