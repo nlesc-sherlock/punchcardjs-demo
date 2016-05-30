@@ -1,45 +1,47 @@
 /// <reference path="../../../typings/globals/crossfilter/index.d.ts" />
 /// <reference path="../../../typings/globals/d3/index.d.ts" />
-/// <reference path="../../../typings/globals/moment/index.d.ts" />
 
 
+import {Base} from './base';
+import {ColorMap} from './colormap';
 
-import {PunchcardBase} from './punchcard-base';
-import {PunchcardColorMap} from './punchcard-colormap';
 
+export class WeekdayRect extends Base {
 
-export class PunchcardDateRect extends PunchcardBase {
-
-    private _dateScale   : any;
-    private _dateFrom    : Date;
-    private _dateTo      : Date;
+    private _dayOfWeekScale: any;
+    private _xFrom         : number;
+    private _xTo           : number;
 
 
     constructor (cf: any, domElemId: string) {
 
         super(cf, domElemId);
 
-        this.xlabel = '';
-        this.title = 'PunchcardDateRect title';
-        this.colormap = new PunchcardColorMap('default');
+        this.marginBottom = 50;
+        this.xlabel = 'Day of week';
+        this.title = 'WeekdayRect title';
+        this.colormap = new ColorMap('summer');
+
     }
 
 
 
 
     // define the crossfilter dimensions as used by this class
-    public defineDimensions():PunchcardDateRect {
+    public defineDimensions():WeekdayRect {
 
         // based on example from
         // http://stackoverflow.com/questions/16766986/is-it-possible-to-group-by-multiple-dimensions-in-crossfilter
-        this.dim.dateAndHourOfDay = this.cf.dimension(function (d) {
-            let m:moment.Moment = moment(d.datestr);
+
+        this.dim.weekdayAndHourOfDay = this.cf.dimension(function (d) {
             //stringify() and later, parse() to get keyed objects
+            let m:moment.Moment = moment(d.datestr);
             return JSON.stringify({
-                datestr: m.format('YYYY-MM-DD'),
+                weekday: m.format('ddd'),
                 hourOfDay: m.hour()
             });
         });
+
         return this;
     }
 
@@ -47,7 +49,7 @@ export class PunchcardDateRect extends PunchcardBase {
 
 
     // overrides stub method in parent class
-    public draw():PunchcardDateRect {
+    public draw():WeekdayRect {
 
         if (this.domElem.classList.contains('hidden')) {
             // div is hidden
@@ -63,7 +65,7 @@ export class PunchcardDateRect extends PunchcardBase {
             super.drawTitle();
             this.drawSymbols();
             super.drawBox();
-            super.drawControls();
+            this.drawControls();
             super.drawLegend();
 
             return this;
@@ -73,53 +75,34 @@ export class PunchcardDateRect extends PunchcardBase {
 
 
 
-    private drawHorizontalAxis():PunchcardDateRect {
+
+    private drawHorizontalAxis():WeekdayRect {
 
         let w :number = this.domElem.clientWidth - this.marginLeft - this.marginRight - this.legendWidth;
         let dx:number = this.marginLeft;
         let dy:number = this.domElem.clientHeight - this.marginBottom;
 
-        let firstResultDate = new Date(this.dim.dateAndHourOfDay.bottom(1)[0].datestr);
-        this.dateFrom = new Date(firstResultDate.getFullYear(), firstResultDate.getMonth(), firstResultDate.getDate(), 0, 0, 0, 0);
+        let range:Array<number> = [];
+        let ndays:number = 7.0;
+        for (let r of [0, 0.5, 1.5, 2.5, 3.5, 4.5, 5.5, 6.5, 7.0]) {
+            range.push(w * r / ndays);
+        }
 
-        let lastResultDate = new Date(this.dim.dateAndHourOfDay.top(1)[0].datestr);
-        this.dateTo = new Date(lastResultDate.getFullYear(), lastResultDate.getMonth(), lastResultDate.getDate(), 23, 59, 59, 999);
+        this.dayOfWeekScale = d3.scale.ordinal()
+            .range(range)
+            .domain(['', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun', '']);
 
-        let tickFormat;
-        let ticks;
-        let nHoursDiff: number = moment(this.dateTo).diff(moment(this.dateFrom), 'hour', true);
-
-        if (nHoursDiff > 5 * 24) {
-            tickFormat = d3.time.format('%a %b %-d, %Y');
-            ticks = 7;
-        } else {
-            tickFormat = d3.time.format('%a %b %-d, %Y');
-            ticks = d3.time.days;
-        };
-
-        this.dateScale = d3.time.scale()
-            .range([0, w])
-            .domain([this.dateFrom,
-                     this.dateTo]);
-
-        let dateAxis = d3.svg.axis()
+        let xAxis = d3.svg.axis()
             .orient('bottom')
-            .scale(this.dateScale)
-            .ticks(ticks)
-            .tickFormat(tickFormat);
+            .scale(this.dayOfWeekScale)
+            .tickValues(['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'])
+            .innerTickSize(5)
+            .outerTickSize(0);
 
         this.svg.append('g')
             .attr('class', 'horizontal-axis')
             .attr('transform', 'translate(' + dx + ',' + dy + ')' )
-            .call(dateAxis);
-
-        // doing style stuff in JavaScript is considered bad practice...:
-        this.svg.select('.horizontal-axis')
-            .selectAll('text')
-                .attr('x', -10)
-                .attr('y', 0)
-                .attr('dy', '.35em')
-                .style('text-anchor', 'end');
+            .call(xAxis);
 
         return this;
 
@@ -128,25 +111,23 @@ export class PunchcardDateRect extends PunchcardBase {
 
 
 
-    protected drawSymbols():PunchcardDateRect {
+    protected drawSymbols():WeekdayRect {
 
         // capture the this object
-        let that:PunchcardDateRect = this;
+        let that:WeekdayRect = this;
 
         let w :number = this.domElem.clientWidth - this.marginLeft - this.marginRight - this.legendWidth;
         let h :number = this.domElem.clientHeight - this.marginTop - this.marginBottom;
         let dx:number = this.marginLeft;
         let dy:number = this.marginTop + h;
         let symbolMargin = {left:0, right: 0, top: 0, bottom: 0}; // pixels
-        let wDays:number = moment(this.dateTo).diff(moment(this.dateFrom), 'days', true);
-
-        let symbolWidth :number = w / wDays - symbolMargin.left - symbolMargin.right;
-        let symbolHeight:number = h / 24.0 - symbolMargin.top - symbolMargin.bottom;
+        let symbolWidth :number = w / 7 - symbolMargin.left - symbolMargin.right;
+        let symbolHeight:number = h / 24 - symbolMargin.top - symbolMargin.bottom;
 
         // based on example from
         // http://stackoverflow.com/questions/16766986/is-it-possible-to-group-by-multiple-dimensions-in-crossfilter
         // forEach method could be very expensive on write.
-        let group = this.dim.dateAndHourOfDay.group();
+        let group = this.dim.weekdayAndHourOfDay.group();
         group.all().forEach(function(d) {
             //parse the json string created above
             d.key = JSON.parse(d.key);
@@ -181,10 +162,10 @@ export class PunchcardDateRect extends PunchcardBase {
                 .append('rect')
                     .attr('class', 'symbol')
                     .attr('x', function(d){
-                        return that.dateScale(new Date(d.key.datestr));
-                        })
+                        return that.dayOfWeekScale(d.key['weekday']) - symbolWidth / 2;
+                    })
                     .attr('y', function(d){
-                        return that.todScale(parseInt(d.key.hourOfDay, 10));
+                        return that.todScale(d.key['hourOfDay']);
                     })
                     .attr('width', symbolWidth)
                     .attr('height', symbolHeight)
@@ -193,34 +174,33 @@ export class PunchcardDateRect extends PunchcardBase {
                     });
 
         return this;
-
     }
 
 
 
 
-    protected set dateScale(dateScale:any) {
-        this._dateScale = dateScale;
+    protected set dayOfWeekScale(dayOfWeekScale:any) {
+        this._dayOfWeekScale = dayOfWeekScale;
     }
 
-    protected get dateScale():any {
-        return this._dateScale;
+    protected get dayOfWeekScale():any {
+        return this._dayOfWeekScale;
     }
 
-    protected set dateFrom(dateFrom:Date) {
-        this._dateFrom = dateFrom;
+    protected set xFrom(xFrom:number) {
+        this._xFrom = xFrom;
     }
 
-    protected get dateFrom():Date {
-        return this._dateFrom;
+    protected get xFrom():number {
+        return this._xFrom;
     }
 
-    protected set dateTo(dateTo:Date) {
-        this._dateTo = dateTo;
+    protected set xTo(xTo:number) {
+        this._xTo = xTo;
     }
 
-    protected get dateTo():Date {
-        return this._dateTo;
+    protected get xTo():number {
+        return this._xTo;
     }
 
 

@@ -1,45 +1,48 @@
 /// <reference path="../../../typings/globals/crossfilter/index.d.ts" />
 /// <reference path="../../../typings/globals/d3/index.d.ts" />
+/// <reference path="../../../typings/globals/moment/index.d.ts" />
 
 
-import {PunchcardColorMap} from './punchcard-colormap';
-import {PunchcardWeekdayRect} from './punchcard-weekday-rect';
+import {ColorMap} from './colormap';
+import {DateRect} from './date-rect';
 
 
 
-export class PunchcardWeekdayCircle extends PunchcardWeekdayRect {
+export class DateCircle extends DateRect {
+
 
     constructor (cf: any, domElemId: string) {
 
         super(cf, domElemId);
 
-        this.xlabel = 'Day of week';
-        this.title = 'PunchcardWeekdayCircle title';
-        this.colormap = new PunchcardColorMap('blues');
+        this.xlabel = '';
+        this.title = 'DateCircle title';
+        this.colormap = new ColorMap('rainbow');
     }
 
 
 
 
-    protected drawSymbols():PunchcardWeekdayCircle {
+    protected drawSymbols():DateCircle {
 
         // capture the this object
-        let that:PunchcardWeekdayCircle = this;
+        let that:DateCircle = this;
 
         let w :number = this.domElem.clientWidth - this.marginLeft - this.marginRight - this.legendWidth;
         let h :number = this.domElem.clientHeight - this.marginTop - this.marginBottom;
         let dx:number = this.marginLeft;
         let dy:number = this.marginTop + h;
-        let symbolMargin = {left:2, right: 2, top: 2, bottom: 2}; // pixels
-        let symbolWidth :number = w / 7 - symbolMargin.left - symbolMargin.right;
-        let symbolHeight:number = h / 24 - symbolMargin.top - symbolMargin.bottom;
+        let symbolMargin = {left:0, right: 0, top: 0, bottom: 0}; // pixels
+        let wDays:number = moment(this.dateTo).diff(moment(this.dateFrom), 'days', true);
 
+        let symbolWidth :number = w / wDays - symbolMargin.left - symbolMargin.right;
+        let symbolHeight:number = h / 24.0 - symbolMargin.top - symbolMargin.bottom;
         let r:number = Math.min(symbolWidth, symbolHeight) / 2 - 2;
 
         // based on example from
         // http://stackoverflow.com/questions/16766986/is-it-possible-to-group-by-multiple-dimensions-in-crossfilter
         // forEach method could be very expensive on write.
-        let group = this.dim.weekdayAndHourOfDay.group();
+        let group = this.dim.dateAndHourOfDay.group();
         group.all().forEach(function(d) {
             //parse the json string created above
             d.key = JSON.parse(d.key);
@@ -74,12 +77,12 @@ export class PunchcardWeekdayCircle extends PunchcardWeekdayRect {
                 .append('circle')
                     .attr('class', 'symbol')
                     .attr('cx', function(d){
-                        return that.dayOfWeekScale(d.key['weekday']) + symbolMargin.left;
-                    })
+                        return that.dateScale(new Date(d.key.datestr));
+                        })
                     .attr('cy', function(d){
-                        return that.todScale(d.key['hourOfDay']) + symbolHeight / 2 + symbolMargin.top;
+                        return that.todScale(parseInt(d.key.hourOfDay, 10)) + symbolMargin.top + symbolHeight / 2;
                     })
-                    .attr('r', function(d){
+                    .attr('r', function(d) {
                         return Math.max(r * (d.value - that.colormap.cLimLow) / (that.colormap.cLimHigh - that.colormap.cLimLow), 1);
                     })
                     .attr('fill', function(d){
@@ -87,8 +90,8 @@ export class PunchcardWeekdayCircle extends PunchcardWeekdayRect {
                     });
 
         return this;
-    }
 
+    }
 
 
 }

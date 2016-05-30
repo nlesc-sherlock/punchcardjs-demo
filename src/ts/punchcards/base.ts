@@ -3,14 +3,14 @@
 /// <reference path="../../../typings/globals/moment/index.d.ts" />
 
 
-import {PunchcardColorMap} from './punchcard-colormap';
-import {PunchcardLegend} from './punchcard-legend';
+import {ColorMap} from './colormap';
+import {Legend} from './legend';
 
 
-export class PunchcardBase {
+export class Base {
 
     private _cf          : CrossFilter.CrossFilter<IDataRow>;
-    private _colormap    : PunchcardColorMap;
+    private _colormap    : ColorMap;
     private _dim         : any;
     private _domElem     : HTMLElement;
     private _domElemId   : string;
@@ -53,10 +53,10 @@ export class PunchcardBase {
         this.ylabel = 'Time of day';
         this.title = '';
 
-        this.colormap = new PunchcardColorMap();
+        this.colormap = new ColorMap();
 
         // beware: JavaScript magic happens here
-        let that:PunchcardBase = this;
+        let that:Base = this;
         window.addEventListener('resize', function() {
             that.onResize();
         });
@@ -65,7 +65,7 @@ export class PunchcardBase {
 
 
 
-    public draw():PunchcardBase {
+    public draw():Base {
 
         // placeholder method to be overridden in classes that inherit from this class
         return this;
@@ -74,7 +74,7 @@ export class PunchcardBase {
 
 
 
-    protected drawBox():PunchcardBase {
+    protected drawBox():Base {
         //
         let w :number = this.domElem.clientWidth - this.marginLeft - this.marginRight - this.legendWidth;
         let h :number = this.domElem.clientHeight - this.marginTop - this.marginBottom;
@@ -121,7 +121,7 @@ export class PunchcardBase {
         this.domElem.appendChild(controlsDiv);
 
         // beware: JavaScript magic happens here
-        let that:PunchcardBase = this;
+        let that:Base = this;
 
         controlsDiv.getElementsByClassName('glyphicon-triangle-bottom')[0].parentNode.addEventListener('click', function() {
             that.minimize();
@@ -149,7 +149,7 @@ export class PunchcardBase {
 
 
 
-    protected drawChartBody():PunchcardBase {
+    protected drawChartBody():Base {
         //
         let w :number = this.domElem.clientWidth - this.marginLeft - this.marginRight - this.legendWidth;
         let h :number = this.domElem.clientHeight - this.marginTop - this.marginBottom;
@@ -171,7 +171,7 @@ export class PunchcardBase {
 
 
 
-    protected drawHorizontalAxisLabel():PunchcardBase {
+    protected drawHorizontalAxisLabel():Base {
 
         let w :number = this.domElem.clientWidth - this.marginLeft - this.marginRight - this.legendWidth;
         let h :number = this.domElem.clientHeight - this.marginTop - this.marginBottom;
@@ -191,10 +191,10 @@ export class PunchcardBase {
 
 
 
-    protected drawLegend():PunchcardBase {
+    protected drawLegend():Base {
         // draw the legend
 
-        let legend:PunchcardLegend = new PunchcardLegend(this);
+        let legend:Legend = new Legend(this);
         legend.draw();
 
 
@@ -202,7 +202,7 @@ export class PunchcardBase {
     }
 
 
-    protected drawSvg():PunchcardBase {
+    protected drawSvg():Base {
 
         this.svg = d3.select(this.domElem).append('svg')
             .attr('width', this.domElem.clientWidth)
@@ -214,7 +214,7 @@ export class PunchcardBase {
 
 
 
-    protected drawTitle():PunchcardBase {
+    protected drawTitle():Base {
 
         let w :number = this.domElem.clientWidth - this.marginLeft - this.marginRight - this.legendWidth;
         let dx:number = this.marginLeft + 0.5 * w;
@@ -233,7 +233,7 @@ export class PunchcardBase {
 
 
 
-    protected drawVerticalAxis():PunchcardBase {
+    protected drawVerticalAxis():Base {
         //
         let dx:number = this.marginLeft;
         let dy:number = this.domElem.clientHeight - this.marginBottom;
@@ -263,7 +263,7 @@ export class PunchcardBase {
 
 
 
-    protected drawVerticalAxisLabel():PunchcardBase {
+    protected drawVerticalAxisLabel():Base {
         //
         let h :number = this.domElem.clientHeight - this.marginTop - this.marginBottom;
         let dx:number = 0.3 * this.marginLeft;
@@ -283,7 +283,7 @@ export class PunchcardBase {
 
 
 
-    protected hide():PunchcardBase {
+    protected hide():Base {
 
         this.domElem.classList.add('hidden');
         return this;
@@ -424,7 +424,7 @@ export class PunchcardBase {
 
 
 
-    private updateMinHeight():PunchcardBase {
+    private updateMinHeight():Base {
 
         let top:number = this.marginTop;
         let bottom:number = this.marginBottom;
@@ -445,7 +445,7 @@ export class PunchcardBase {
 
 
 
-    private updateMinWidth():PunchcardBase {
+    private updateMinWidth():Base {
 
         let left:number = this.marginLeft;
         let right:number = this.marginRight;
@@ -474,11 +474,11 @@ export class PunchcardBase {
         return this._cf;
     }
 
-    public set colormap(colormap:PunchcardColorMap) {
+    public set colormap(colormap:ColorMap) {
         this._colormap = colormap;
     }
 
-    public get colormap():PunchcardColorMap {
+    public get colormap():ColorMap {
         return this._colormap;
     }
 
