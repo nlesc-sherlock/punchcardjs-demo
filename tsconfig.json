@@ -16,8 +16,5 @@
         "./src/ts/idatarow.ts",
         "./src/ts/main-script.ts",
         "./src/ts/punchcards.ts"
-    ],
-    "atom": {
-        "rewriteTsconfig": true
-    }
+    ]
 }

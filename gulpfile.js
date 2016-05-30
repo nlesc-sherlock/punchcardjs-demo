@@ -21,8 +21,8 @@ gulp.task('test', function() {
 
 // lint javascript and typescript
 gulp.task('eslint', 'Lints javascript files with eslint', function() {
-    return gulp.src(['./src/lib/**/*.js',
-                     './src/test/**/*.js',
+    return gulp.src(['./src/**/*.js',
+                     './test/**/*.js',
                      '!node_modules/**',
                      '!bower_components/**'])
         .pipe(eslint())
@@ -42,8 +42,8 @@ gulp.task('tslint',
 
 // cleanup files
 gulp.task('beautify-js', false, function() {
-    gulp.src(['./src/lib/**/*.js',
-              './src/test/**/*.js'])
+    gulp.src(['./src/**/*.js',
+              './test/**/*.js'])
         .pipe(beautify())
         .pipe(gulp.dest('./'));
 });
@@ -55,22 +55,24 @@ var tsProject = ts.createProject('tsconfig.json');
 gulp.task('ts',
     'Compiles typescript to javascript according to tsconfig.json', ['tslint'],
     function() {
-        var tsResult = tsProject.src()
-            .pipe(sourcemaps.init())
-            .pipe(ts(tsProject));
-
-        return tsResult.js
-            .pipe(sourcemaps.write())
-            .pipe(gulp.dest("./"));
+//         var tsResult = tsProject.src()
+//             .pipe(sourcemaps.init())
+//             .pipe(ts(tsProject));
+//
+//         return tsResult.js
+//             .pipe(sourcemaps.write())
+//             .pipe(gulp.dest("./"));
+    console.log('gulp task \'ts\' is currently broken I\'m afraid. Use tsc --project . from the command line instead.')
     });
+
 
 
 //concatenate css files
 gulp.task('concat-css',
     'Concatenates css files',
     function() {
-        return gulp.src('src/lib/**/*.css')
-            .pipe(concatcss('punchcard.css'))
+        return gulp.src('src/**/*.css')
+            .pipe(concatcss('punchcards.css'))
             .pipe(gulp.dest('build/styles/'));
     });
 
@@ -79,15 +81,15 @@ gulp.task('concat-css',
 gulp.task('copy-build',
     'Copies html to build directory',
     function() {
-        gulp.src('./src/lib/*.html').pipe(gulp.dest('./build/'))
+        gulp.src('./src/*.html').pipe(gulp.dest('./build/'))
     });
 
 
 // watch and build on change
 gulp.task('watch', false, ['ts'], function() {
-    gulp.watch(['./src/lib/**/*.ts'], ['ts']);
-    gulp.watch(['./src/lib/*.html'], ['copy-build']);
-    gulp.watch(['./src/lib/styles/*.css'], ['concat-css']);
+    gulp.watch(['./src/**/*.ts'], ['ts']);
+    gulp.watch(['./src/*.html'], ['copy-build']);
+    gulp.watch(['./src/styles/*.css'], ['concat-css']);
 });
 
 
@@ -114,6 +116,7 @@ gulp.task('clean',
     function () {
         return del([
             './build',
+            './dist',
     ]);
 });
 
@@ -126,6 +129,7 @@ gulp.task('purge',
             './bower_components',
             './typings',
             './build',
+            './dist'
     ]);
 });
 

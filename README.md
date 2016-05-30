@@ -173,14 +173,14 @@ sudo npm install --global browserify
 npm install
 
 # transpile using the settings from tsconfig.json
-tsc -p .
+tsc --project .
 
-# resolve 'require()' dependencies and concatenate into one JS file:
+# resolve 'require()' dependencies and concatenate into one JS file suing browserify:
 mkdir dist
 browserify build/ts/calculators.js --outfile dist/calculators.js --standalone calculators
 
 # run tests
-npm test
+npm run test
 
 ```
 
