@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - "5.1"
+  - "4.2"
 env:
   - CXX=g++-4.8
 addons:
@@ -11,9 +11,9 @@ addons:
       - g++-4.8
 
 before_script:
-  - npm install --global typescript
-  - npm install --global typings
-  - npm install --global bower
+  - npm install typescript
+  - npm install typings
+  - npm install bower
   - npm run install && npm run tslint && npm run tslint && npm run tsc && npm run dist
 
 script:
