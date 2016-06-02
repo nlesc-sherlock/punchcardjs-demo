@@ -13,9 +13,8 @@ addons:
 before_script:
   - npm install --global typescript
   - npm install --global typings
-  - npm install --global tslint
   - npm install --global bower
-  - npm install --global gulp
-  - npm run deploy-dev
+  - npm run install && npm run tslint && npm run tslint && npm run tsc && npm run dist
 
-script: gulp build test
+script:
+  - npm run test
