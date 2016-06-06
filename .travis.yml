@@ -5,8 +5,6 @@ addons:
       - g++-4.8
     sources: 
       - ubuntu-toolchain-r-test
-before_script: 
-  - "bower install"
 env: 
   - CXX=g++-4.8
 language: node_js
