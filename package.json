@@ -4,7 +4,7 @@
   "description": "Punchcard visualization using TypeScript and D3.js",
   "main": "index.js",
   "scripts": {
-    "postinstall": "bower install && typings install",
+    "postinstall": "node ./node_modules/bower/bin/bower install",
     "tslint": "tslint --config tslint.json ./src/ts/**/*.ts",
     "tsc": "tsc --project .",
     "predist": "trash dist/ && mkdirp dist",
