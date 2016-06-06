@@ -10,9 +10,9 @@
     "predist": "trash dist/ && mkdirp dist",
     "dist": "browserify build/ts/punchcards.js --outfile dist/punchcards.js --standalone punchcards",
     "test": "tape ./test/**/*.test.js | tap-spec",
+    "tsdoc": "typedoc --out dist/doc/ .",
     "clean": "trash build/ dist/",
-    "purge": "npm run clean & trash bower_components/ typings/ node_modules/",
-    "tsdoc": "typedoc --out dist/doc/ ."
+    "purge": "npm run clean & trash bower_components/ typings/ node_modules/"
   },
   "keywords": [
     "typescript",
