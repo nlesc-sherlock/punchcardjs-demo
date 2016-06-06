@@ -12,9 +12,6 @@
         "inlineSources": false
     },
     "files": [
-        "./src/ts/dataloader.ts",
-        "./src/ts/idatarow.ts",
-        "./src/ts/main-script.ts",
         "./src/ts/punchcards.ts"
     ]
 }

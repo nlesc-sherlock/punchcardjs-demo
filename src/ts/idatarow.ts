@@ -1,5 +1,8 @@
+/// <reference path="../../typings/globals/moment/index.d.ts" />
+/// <reference path="../../typings/globals/moment-node/index.d.ts" />
 
-interface IDataRow {
+
+export interface IDataRow {
     datestr          : string;
     moment           : moment.Moment;
     momentStartOfDay : moment.Moment;
