@@ -1,20 +1,18 @@
-language: node_js
-node_js:
-  - "4.2"
-env:
-  - CXX=g++-4.8
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
+--- 
+addons: 
+  apt: 
+    packages: 
       - g++-4.8
-
-before_script:
-  - npm install --global typescript
-  - npm install --global typings
-  - npm install --global bower
-
-script:
-  - bower install
-  
+    sources: 
+      - ubuntu-toolchain-r-test
+before_script: 
+  - "npm install --global typescript"
+  - "npm install --global typings"
+  - "npm install --global bower"
+env: 
+  - CXX=g++-4.8
+language: node_js
+node_js: 
+  - "4.2"
+script: 
+  - "bower install"
