@@ -26,7 +26,7 @@ do all of these in one go using:
 npm install
 ```
 
-Next, the software needs to be built. We use `npm` for that as well. We've defined a few built tasks under `scripts` in `packages.json`.
+Next, the software needs to be built. We use `npm` for that as well. We've defined a few build tasks under `scripts` in `packages.json`.
 
 ```sh
 # lint the typescript code
