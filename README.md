@@ -1,9 +1,9 @@
-[![devDependency Status](https://david-dm.org/nlesc-sherlock/chicago/dev-status.svg)](https://david-dm.org/nlesc-sherlock/chicago#info=devDependencies)
+[![devDependency Status](https://david-dm.org/nlesc-sherlock/punchcardjs/dev-status.svg)](https://david-dm.org/nlesc-sherlock/punchcardjs#info=devDependencies)
 [![Build Status](https://travis-ci.org/nlesc-sherlock/punchcardjs.svg?branch=master)](https://travis-ci.org/nlesc-sherlock/punchcardjs)
 
 # Setting up the development environment (Linux Ubuntu)
 
-The punchcards are written in TypeScript, and uses a variety of TypeScript and JavaScript related tools in its build and run-time environment. All of these need to be installed for the program to work.
+The punchcards are written in TypeScript, and use a variety of TypeScript and JavaScript related tools in its build and run-time environment. All of these need to be installed for the program to work.
 
 ## JavaScript runtime environment: Node.js
 
