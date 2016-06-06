@@ -6,9 +6,6 @@ addons:
     sources: 
       - ubuntu-toolchain-r-test
 before_script: 
-  - "npm install --global typescript"
-  - "npm install --global typings"
-  - "npm install --global bower"
   - "node bower install"
 env: 
   - CXX=g++-4.8
