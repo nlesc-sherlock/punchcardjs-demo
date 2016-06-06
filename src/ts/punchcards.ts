@@ -1,5 +1,7 @@
 
-
+/**
+ * This is the Punchcards module
+ */
 export {Base} from './punchcards/base';
 export {ColorMap} from './punchcards/colormap';
 export {DateCircle} from './punchcards/date-circle';
