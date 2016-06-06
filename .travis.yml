@@ -9,10 +9,15 @@ before_script:
   - "npm install --global typescript"
   - "npm install --global typings"
   - "npm install --global bower"
+  - "node bower install"
+  - "node typings install"
 env: 
   - CXX=g++-4.8
 language: node_js
 node_js: 
   - "4.2"
 script: 
-  - "bower install"
+  - "npm run tslint"
+  - "npm run tsc"
+  - "npm run dist"
+  - "npm run test"
