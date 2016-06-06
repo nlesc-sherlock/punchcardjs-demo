@@ -4,10 +4,15 @@
   "description": "Punchcard visualization using TypeScript and D3.js",
   "main": "index.js",
   "scripts": {
-    "deploy": "npm install --production && bower install",
-    "deploy-dev": "npm install && bower install && typings install",
-    "dev-watch": "gulp dev-watch",
-    "test": "./node_modules/.bin/tape ./src/test/**/*.test.js | ./node_modules/.bin/tap-colorize | ./node_modules/.bin/tap-spec"
+    "postinstall": "bower install && typings install",
+    "tslint": "tslint --config tslint.json ./src/ts/**/*.ts",
+    "tsc": "tsc --project .",
+    "predist": "trash dist/ && mkdirp dist",
+    "dist": "browserify build/ts/punchcards.js --outfile dist/punchcards.js --standalone punchcards",
+    "test": "tape ./test/**/*.test.js | tap-spec",
+    "clean": "trash build/ dist/",
+    "purge": "npm run clean & trash bower_components/ typings/ node_modules/",
+    "prewatch": "trash dist/ && mkdirp dist"
   },
   "keywords": [
     "typescript",
@@ -21,26 +26,15 @@
     "url": "https://github.com/nlesc-sherlock/punchcardjs.git"
   },
   "devDependencies": {
-    "browser-sync": "^2.12.7",
-    "del": "^2.2.0",
-    "gulp-beautify": "^2.0.0",
-    "gulp-concat-css": "^2.2.0",
-    "gulp-eslint": "^2.0.0",
-    "gulp-sourcemaps": "^1.6.0",
-    "gulp-tslint": "^5.0.0",
-    "gulp-typescript": "^2.13.4",
-    "gulp-watch": "^4.3.5",
-    "js-beautify": "^1.6.2",
-    "merge2": "^1.0.2",
-    "tap-colorize": "^1.2.0",
+    "bower": "^1.7.9",
+    "browserify": "^13.0.1",
+    "mkdirp": "^0.5.1",
     "tap-spec": "^4.1.1",
     "tape": "^4.5.1",
+    "trash-cli": "^1.3.0",
     "tslint": "^3.9.0",
-    "typescript": "^1.8.10"
+    "typescript": "^1.8.10",
+    "typings": "^1.0.4"
   },
-  "dependencies": {
-    "gulp": "^3.9.1",
-    "gulp-help": "^1.6.1",
-    "gulp-tape": "0.0.7"
-  }
+  "dependencies": {}
 }

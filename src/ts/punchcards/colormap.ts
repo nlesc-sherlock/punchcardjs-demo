@@ -8,7 +8,7 @@ type ColorTableItem = {
 type ColorTable = Array<ColorTableItem>;
 
 
-class PunchcardColorMap {
+export class ColorMap {
 
     private _colortable: ColorTable;
     private _cLimLow: number;
@@ -87,7 +87,7 @@ class PunchcardColorMap {
 
         switch (str) {
             case 'default': {
-                colortable = PunchcardColorMap.defaultColorTable;
+                colortable = ColorMap.defaultColorTable;
                 break;
             }
             case 'gray': {
@@ -302,7 +302,7 @@ class PunchcardColorMap {
 
 
 
-    public addColor(color: ColorTableItem): PunchcardColorMap {
+    public addColor(color: ColorTableItem): ColorMap {
 
         this.colortable.push(color);
         this.colortable = this.colortable.sort(this.compare);
@@ -310,7 +310,7 @@ class PunchcardColorMap {
         return this;
     }
 
-    public addColors(colors:ColorTable): PunchcardColorMap {
+    public addColors(colors:ColorTable): ColorMap {
 
         for (let elem of colors) {
             this.colortable.push(elem);

@@ -1,11 +1,14 @@
-/// <reference path="../../../../typings/browser/ambient/crossfilter/index.d.ts" />
-/// <reference path="../../../../typings/browser/ambient/d3/index.d.ts" />
-/// <reference path="../../../../typings/browser/ambient/moment/index.d.ts" />
-/// <reference path="./punchcard-base.ts" />
+/// <reference path="../../../typings/globals/crossfilter/index.d.ts" />
+/// <reference path="../../../typings/globals/d3/index.d.ts" />
+/// <reference path="../../../typings/globals/moment/index.d.ts" />
 
 
 
-class PunchcardDateRect extends PunchcardBase {
+import {Base} from './base';
+import {ColorMap} from './colormap';
+
+
+export class DateRect extends Base {
 
     private _dateScale   : any;
     private _dateFrom    : Date;
@@ -17,15 +20,15 @@ class PunchcardDateRect extends PunchcardBase {
         super(cf, domElemId);
 
         this.xlabel = '';
-        this.title = 'PunchcardDateRect title';
-        this.colormap = new PunchcardColorMap('default');
+        this.title = 'DateRect title';
+        this.colormap = new ColorMap('default');
     }
 
 
 
 
     // define the crossfilter dimensions as used by this class
-    public defineDimensions():PunchcardDateRect {
+    public defineDimensions():DateRect {
 
         // based on example from
         // http://stackoverflow.com/questions/16766986/is-it-possible-to-group-by-multiple-dimensions-in-crossfilter
@@ -44,7 +47,7 @@ class PunchcardDateRect extends PunchcardBase {
 
 
     // overrides stub method in parent class
-    public draw():PunchcardDateRect {
+    public draw():DateRect {
 
         if (this.domElem.classList.contains('hidden')) {
             // div is hidden
@@ -70,7 +73,7 @@ class PunchcardDateRect extends PunchcardBase {
 
 
 
-    private drawHorizontalAxis():PunchcardDateRect {
+    private drawHorizontalAxis():DateRect {
 
         let w :number = this.domElem.clientWidth - this.marginLeft - this.marginRight - this.legendWidth;
         let dx:number = this.marginLeft;
@@ -125,10 +128,10 @@ class PunchcardDateRect extends PunchcardBase {
 
 
 
-    protected drawSymbols():PunchcardDateRect {
+    protected drawSymbols():DateRect {
 
         // capture the this object
-        let that:PunchcardDateRect = this;
+        let that:DateRect = this;
 
         let w :number = this.domElem.clientWidth - this.marginLeft - this.marginRight - this.legendWidth;
         let h :number = this.domElem.clientHeight - this.marginTop - this.marginBottom;

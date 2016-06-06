@@ -1,12 +1,14 @@
-/// <reference path="../../../../typings/browser/ambient/crossfilter/index.d.ts" />
-/// <reference path="../../../../typings/browser/ambient/d3/index.d.ts" />
-/// <reference path="../../../../typings/browser/ambient/moment/index.d.ts" />
-/// <reference path="./punchcard-date-rect.ts" />
-/// <reference path="./punchcard-colormap.ts" />
+/// <reference path="../../../typings/globals/crossfilter/index.d.ts" />
+/// <reference path="../../../typings/globals/d3/index.d.ts" />
+/// <reference path="../../../typings/globals/moment/index.d.ts" />
+
+
+import {ColorMap} from './colormap';
+import {DateRect} from './date-rect';
 
 
 
-class PunchcardDateCircle extends PunchcardDateRect {
+export class DateCircle extends DateRect {
 
 
     constructor (cf: any, domElemId: string) {
@@ -14,17 +16,17 @@ class PunchcardDateCircle extends PunchcardDateRect {
         super(cf, domElemId);
 
         this.xlabel = '';
-        this.title = 'PunchcardDateCircle title';
-        this.colormap = new PunchcardColorMap('rainbow');
+        this.title = 'DateCircle title';
+        this.colormap = new ColorMap('rainbow');
     }
 
 
 
 
-    protected drawSymbols():PunchcardDateCircle {
+    protected drawSymbols():DateCircle {
 
         // capture the this object
-        let that:PunchcardDateCircle = this;
+        let that:DateCircle = this;
 
         let w :number = this.domElem.clientWidth - this.marginLeft - this.marginRight - this.legendWidth;
         let h :number = this.domElem.clientHeight - this.marginTop - this.marginBottom;

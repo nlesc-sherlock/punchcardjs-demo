@@ -1,28 +1,30 @@
-/// <reference path="../../../../typings/browser/ambient/crossfilter/index.d.ts" />
-/// <reference path="../../../../typings/browser/ambient/d3/index.d.ts" />
-/// <reference path="./punchcard-weekday-rect.ts" />
-/// <reference path="./punchcard-colormap.ts" />
+/// <reference path="../../../typings/globals/crossfilter/index.d.ts" />
+/// <reference path="../../../typings/globals/d3/index.d.ts" />
+
+
+import {ColorMap} from './colormap';
+import {WeekdayRect} from './weekday-rect';
 
 
 
-class PunchcardWeekdayCircle extends PunchcardWeekdayRect {
+export class WeekdayCircle extends WeekdayRect {
 
     constructor (cf: any, domElemId: string) {
 
         super(cf, domElemId);
 
         this.xlabel = 'Day of week';
-        this.title = 'PunchcardWeekdayCircle title';
-        this.colormap = new PunchcardColorMap('blues');
+        this.title = 'WeekdayCircle title';
+        this.colormap = new ColorMap('blues');
     }
 
 
 
 
-    protected drawSymbols():PunchcardWeekdayCircle {
+    protected drawSymbols():WeekdayCircle {
 
         // capture the this object
-        let that:PunchcardWeekdayCircle = this;
+        let that:WeekdayCircle = this;
 
         let w :number = this.domElem.clientWidth - this.marginLeft - this.marginRight - this.legendWidth;
         let h :number = this.domElem.clientHeight - this.marginTop - this.marginBottom;

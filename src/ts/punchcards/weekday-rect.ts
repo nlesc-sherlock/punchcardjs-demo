@@ -1,11 +1,12 @@
-/// <reference path="../../../../typings/browser/ambient/crossfilter/index.d.ts" />
-/// <reference path="../../../../typings/browser/ambient/d3/index.d.ts" />
-/// <reference path="./punchcard-base.ts" />
-/// <reference path="./punchcard-colormap.ts" />
+/// <reference path="../../../typings/globals/crossfilter/index.d.ts" />
+/// <reference path="../../../typings/globals/d3/index.d.ts" />
 
 
+import {Base} from './base';
+import {ColorMap} from './colormap';
 
-class PunchcardWeekdayRect extends PunchcardBase {
+
+export class WeekdayRect extends Base {
 
     private _dayOfWeekScale: any;
     private _xFrom         : number;
@@ -18,8 +19,8 @@ class PunchcardWeekdayRect extends PunchcardBase {
 
         this.marginBottom = 50;
         this.xlabel = 'Day of week';
-        this.title = 'PunchcardWeekdayRect title';
-        this.colormap = new PunchcardColorMap('summer');
+        this.title = 'WeekdayRect title';
+        this.colormap = new ColorMap('summer');
 
     }
 
@@ -27,7 +28,7 @@ class PunchcardWeekdayRect extends PunchcardBase {
 
 
     // define the crossfilter dimensions as used by this class
-    public defineDimensions():PunchcardWeekdayRect {
+    public defineDimensions():WeekdayRect {
 
         // based on example from
         // http://stackoverflow.com/questions/16766986/is-it-possible-to-group-by-multiple-dimensions-in-crossfilter
@@ -48,7 +49,7 @@ class PunchcardWeekdayRect extends PunchcardBase {
 
 
     // overrides stub method in parent class
-    public draw():PunchcardWeekdayRect {
+    public draw():WeekdayRect {
 
         if (this.domElem.classList.contains('hidden')) {
             // div is hidden
@@ -75,7 +76,7 @@ class PunchcardWeekdayRect extends PunchcardBase {
 
 
 
-    private drawHorizontalAxis():PunchcardWeekdayRect {
+    private drawHorizontalAxis():WeekdayRect {
 
         let w :number = this.domElem.clientWidth - this.marginLeft - this.marginRight - this.legendWidth;
         let dx:number = this.marginLeft;
@@ -110,10 +111,10 @@ class PunchcardWeekdayRect extends PunchcardBase {
 
 
 
-    protected drawSymbols():PunchcardWeekdayRect {
+    protected drawSymbols():WeekdayRect {
 
         // capture the this object
-        let that:PunchcardWeekdayRect = this;
+        let that:WeekdayRect = this;
 
         let w :number = this.domElem.clientWidth - this.marginLeft - this.marginRight - this.legendWidth;
         let h :number = this.domElem.clientHeight - this.marginTop - this.marginBottom;

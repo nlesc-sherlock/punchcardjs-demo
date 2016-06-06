@@ -1,14 +1,17 @@
-/// <reference path="../../../../typings/browser/ambient/d3/index.d.ts" />
-/// <reference path="./punchcard-colormap.ts" />
+/// <reference path="../../../typings/globals/d3/index.d.ts" />
+
+import {Base} from './base';
+import {DateCircle} from './date-circle';
+import {DateRect} from './date-rect';
+import {WeekdayCircle} from './weekday-circle';
+import {WeekdayRect} from './weekday-rect';
 
 
+type PunchcardVisualization = Base|DateCircle|DateRect|
+                                    WeekdayCircle|WeekdayRect;
 
 
-type PunchcardVisualization = PunchcardBase|PunchcardDateCircle|PunchcardDateRect|
-                                    PunchcardWeekdayCircle|PunchcardWeekdayRect;
-
-
-class PunchcardLegend {
+export class Legend {
 
     private _marginLeft      : number;
     private _marginRight     : number;
@@ -44,7 +47,7 @@ class PunchcardLegend {
 
 
 
-    public draw(): PunchcardLegend {
+    public draw(): Legend {
         // draw the legend
 
         this.drawLegendBody();
@@ -61,7 +64,7 @@ class PunchcardLegend {
 
 
 
-    protected drawBox():PunchcardLegend {
+    protected drawBox():Legend {
         // draw box
 
         let dx:number = this.sibling.domElem.clientWidth - this.sibling.legendWidth + this.marginLeft;
@@ -81,7 +84,7 @@ class PunchcardLegend {
 
 
 
-    private drawHorizontalAxis():PunchcardLegend {
+    private drawHorizontalAxis():Legend {
 
         let dx:number = this.sibling.domElem.clientWidth - this.sibling.legendWidth + this.marginLeft;
         let dy:number = this.sibling.domElem.clientHeight - this.marginBottom;
@@ -102,7 +105,7 @@ class PunchcardLegend {
 
 
 
-    protected drawLegendBody():PunchcardLegend {
+    protected drawLegendBody():Legend {
         //
         let dx:number = this.sibling.domElem.clientWidth - this.sibling.legendWidth + this.marginLeft;
         let dy:number = this.sibling.domElem.clientHeight - this.marginBottom - this.height;
@@ -122,10 +125,10 @@ class PunchcardLegend {
 
 
 
-    protected drawSymbols():PunchcardLegend {
+    protected drawSymbols():Legend {
         // pass
 
-        let that:PunchcardLegend = this;
+        let that:Legend = this;
 
         let dx:number = this.sibling.domElem.clientWidth - this.sibling.legendWidth + this.marginLeft;
         let dy:number = this.sibling.domElem.clientHeight - this.marginBottom;
@@ -167,7 +170,7 @@ class PunchcardLegend {
 
 
 
-    protected drawTitle():PunchcardLegend {
+    protected drawTitle():Legend {
 
         let dx:number = this.sibling.domElem.clientWidth - this.sibling.legendWidth + this.marginLeft + 0.5 * this.width;
         let dy:number = this.marginTop - 20;
@@ -185,7 +188,7 @@ class PunchcardLegend {
 
 
 
-    protected drawVerticalAxis():PunchcardLegend {
+    protected drawVerticalAxis():Legend {
         //
         let w :number = this.sibling.legendWidth - this.marginLeft - this.marginRight;
         let h :number = this.sibling.domElem.clientHeight - this.marginTop - this.marginBottom;
@@ -214,7 +217,7 @@ class PunchcardLegend {
 
 
 
-    protected drawVerticalAxisLabel():PunchcardLegend {
+    protected drawVerticalAxisLabel():Legend {
         //
         let h :number = this.sibling.domElem.clientHeight - this.marginTop - this.marginBottom;
         let dx:number = this.sibling.domElem.clientWidth - this.marginRight + 40;
