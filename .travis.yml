@@ -11,11 +11,10 @@ addons:
       - g++-4.8
 
 before_script:
-  - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
   - npm install --global typescript
   - npm install --global typings
   - npm install --global bower
-  - npm run install && npm run tslint && npm run tslint && npm run tsc && npm run dist
 
 script:
-  - npm run test
+  - bower install
+  
