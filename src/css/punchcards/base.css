@@ -1,4 +1,4 @@
-.punchcard-common {
+div.punchcard-common {
     width: 90%;
     background-color: #fff;
     border: thin;
@@ -13,20 +13,20 @@
 }
 
 
-.punchcard-common.controls {
+div.controls {
     position: absolute;
     right: 0px;
     top: 0px;
     background-color: none;
 }
 
-.punchcard-common.controls button {
+div.controls button {
     margin-bottom: 4px;
     margin-right: 4px;
     margin-top: 4px;
     margin-left: 0px;
 }
 
-.punchcard-common.hidden {
+div.hidden {
     display: none;
 }
