@@ -5,22 +5,33 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <title>punchcards</title>
 
-    <link rel="stylesheet" type="text/css" href="css/punchcard-common.css">
-    <link rel="stylesheet" type="text/css" href="css/punchcard-date-circle.css">
-    <link rel="stylesheet" type="text/css" href="css/punchcard-date-rect.css">
-    <link rel="stylesheet" type="text/css" href="css/punchcard-legend.css">
-    <link rel="stylesheet" type="text/css" href="css/punchcard-weekday-circle.css">
-    <link rel="stylesheet" type="text/css" href="css/punchcard-weekday-rect.css">
+    <link rel="stylesheet" type="text/css" href="css/base.css">
+    <link rel="stylesheet" type="text/css" href="css/date-circle.css">
+    <link rel="stylesheet" type="text/css" href="css/date-rect.css">
+    <link rel="stylesheet" type="text/css" href="css/legend.css">
+    <link rel="stylesheet" type="text/css" href="css/weekday-circle.css">
+    <link rel="stylesheet" type="text/css" href="css/weekday-rect.css">
+
+    <!-- not sure what to do about the missing font error (besides including a cdn address) -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 
     <script type="text/javascript" src="js/punchcards.js"></script>
+    <script type="text/javascript" src="js/crossfilter.min.js"></script>
+    <script type="text/javascript" src="js/moment.min.js"></script>
+    <script type="text/javascript" src="js/d3.min.js"></script>
+
+
   </head>
 
   <body style="background-color: #b5d3e2">
 
-        <div class="punchcard-common punchcard-weekday-circle"></div>
-        <div class="punchcard-common punchcard-weekday-rect"></div>
-        <div class="punchcard-common punchcard-date-circle"></div>
-        <div class="punchcard-common punchcard-date-rect"></div>
+        <div id="punchcard-weekday-circle" class="punchcard-common punchcard-weekday-circle"></div>
+        <div id="punchcard-weekday-rect" class="punchcard-common punchcard-weekday-rect"></div>
+        <div id="punchcard-date-circle" class="punchcard-common punchcard-date-circle"></div>
+        <div id="punchcard-date-rect" class="punchcard-common punchcard-date-rect"></div>
+
+        <script type="text/javascript" src="js/dataloader.js"></script>
+        <script src="js/main-script.js"></script>
 
   </body>
 </html>
