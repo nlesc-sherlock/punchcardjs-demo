@@ -1,0 +1,5 @@
+# ignore the /js directory here, since it is a generated file 
+# from <projectroot>/dist which is the copied for usage in 
+# the demo web site.
+/js
+
