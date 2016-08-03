@@ -71,7 +71,7 @@ export class Legend {
         let dy:number = this.marginTop;
 
         this.sibling.svg.append('g')
-            .attr('class', 'legend legendbody-box')
+            .attr('class', 'punchcard-legend legendbody-box')
             .attr('transform', 'translate(' + dx + ',' + dy + ')' )
             .append('rect')
                 .attr('width', this.width)
@@ -95,7 +95,7 @@ export class Legend {
             .ticks(0);
 
         this.sibling.svg.append('g')
-            .attr('class', 'legend horizontal-axis')
+            .attr('class', 'punchcard-legend horizontal-axis')
             .attr('transform', 'translate(' + dx + ',' + dy + ')' );
 
         return this;
@@ -112,7 +112,7 @@ export class Legend {
 
 
         this.sibling.svg.append('g')
-            .attr('class', 'legend legendbody')
+            .attr('class', 'punchcard-legend legendbody')
             .attr('transform', 'translate(' + dx + ',' + dy + ')' )
             .append('rect')
                 .attr('width', this.width)
@@ -147,7 +147,7 @@ export class Legend {
         // draw the rects
         this.sibling.svg
             .append('g')
-            .attr('class', 'legend symbol')
+            .attr('class', 'punchcard-legend symbol')
             .attr('transform', 'translate(' + dx + ',' + dy + ')')
             .selectAll('rect.symbol')
                 .data(data)
@@ -176,7 +176,7 @@ export class Legend {
         let dy:number = this.marginTop - 20;
 
         this.sibling.svg.append('g')
-            .attr('class', 'legend title')
+            .attr('class', 'punchcard-legend title')
             .attr('transform', 'translate(' + dx + ',' + dy + ')')
             .append('text')
             .text(this.title)
@@ -206,7 +206,7 @@ export class Legend {
             .outerTickSize(5);
 
         this.sibling.svg.append('g')
-            .attr('class', 'legend vertical-axis')
+            .attr('class', 'punchcard-legend vertical-axis')
             .attr('transform', 'translate(' + dx + ',' + dy + ')' )
             .call(verticalAxis);
 
@@ -224,7 +224,7 @@ export class Legend {
         let dy:number = this.marginTop + 0.5 * h;
 
         this.sibling.svg.append('g')
-            .attr('class', 'legend vertical-axis-label')
+            .attr('class', 'punchcard-legend vertical-axis-label')
             .attr('transform', 'translate(' + dx + ',' + dy + ') rotate(-90)')
             .append('text')
             .text(this.ylabel)
