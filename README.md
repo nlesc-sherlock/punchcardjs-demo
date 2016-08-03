@@ -41,6 +41,11 @@ npm run dist
 # run the unit tests against the distributable
 npm run test
 
+# do the above steps plus some other things to get a demo website...
+npm run site
+# ...and transpile a few more typescript files not directly related to the library
+node_modules/.bin/tsc --target es5 site/ts/*.ts --outDir site/js
+
 # change directory to the demo site
 cd site
  
