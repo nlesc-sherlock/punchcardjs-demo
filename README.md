@@ -40,5 +40,13 @@ npm run dist
 
 # run the unit tests against the distributable
 npm run test
+
+# change directory to the demo site
+cd site
+ 
+# start a webserver in that directory that serves the 
+# webpage at localhost:8089
+python3 -m http.server 8089
+
 ```
 
