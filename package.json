@@ -13,8 +13,8 @@
     "tsdoc": "typedoc --out dist/doc/ .",
     "clean": "trash build/ dist/ site/js/ site/css/",
     "purge": "npm run clean & trash bower_components/ typings/ node_modules/",
-    "copy-site-deps": "cp bower_components/crossfilter/crossfilter.min.js bower_components/moment/min/moment.min.js bower_components/d3/d3.min.js site/js && cp src/css/punchcards/*.css bower_components/bootstrap/dist/css/bootstrap.min.css bower_components/bootstrap/dist/css/bootstrap-theme.min.css site/css",
-    "presite": "trash site/js/ && mkdirp site/js && trash site/css/ && mkdirp site/css && npm run copy-site-deps",
+    "copy-site-deps": "cp bower_components/crossfilter/crossfilter.min.js bower_components/moment/min/moment.min.js bower_components/d3/d3.min.js site/js && cp src/css/punchcards/*.css bower_components/bootstrap/dist/css/bootstrap.min.css bower_components/bootstrap/dist/css/bootstrap-theme.min.css site/css && cp bower_components/bootstrap/dist/fonts/* site/fonts/",
+    "presite": "trash site/js/ && mkdirp site/js && trash site/css/ && mkdirp site/css && trash site/fonts/ && mkdirp site/fonts && npm run copy-site-deps",
     "site": "npm run tslint && npm run tsc && npm run dist && npm run test && cp dist/punchcards.js site/js/"
   },
   "keywords": [
