@@ -48,27 +48,34 @@ node_modules/.bin/tsc --target es5 site/ts/*.ts --outDir site/js
 
 # change directory to the demo site
 cd site
- 
-# start a webserver in that directory that serves the 
+
+# start a webserver in that directory that serves the
 # webpage at localhost:8089
 python3 -m http.server 8089
 
+# you should be able to debug the TypeScript code from the browser (uses source maps)
+```
+
+**some other useful tasks**
+
+```
+
+# clean up generated files
+npm run clean
+
+# do an npm run clean and additionally throw away any downloaded files
+npm run purge
+
+# generate the TypeDoc, inspect afterwards in a browser (output will be at <projectroot>/dist/doc)
+npm run tsdoc
+
+# generate code coverage in various formats. output will be at <projectroot>/test-coverage/, e.g.
+# test-coverage/coverage-remapped/index.html
+npm run istanbul
+
 ```
 
 
-**some notes on code coverage generation (incomplete)**
-
-```bash
-# install node package that lets you do code coverage (I'm using a specific version 
-# because I may want to use the remap-istanbul npm package later, which uses istanbul@0.4.3
-npm install istanbul@0.4.3 --save-dep
-
-# start the code coverage calculation, this yields a <projectroot>/test-coverage directory
-node_modules/.bin/istanbul cover --config .istanbul.yml test/ts/punchcards/colormap.test.js
-
-# use a browser to explore the contents of <projectroot>/test-coverage
-
-```
 
 
 
