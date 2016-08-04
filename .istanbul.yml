@@ -1,6 +1,6 @@
 verbose: false
 instrumentation:
-    root: .
+    root: ./dist/
     extensions:
         - .js
     default-excludes: true
