@@ -9,7 +9,7 @@
         "outDir": "./build/",
         "rootDir": "./src/",
         "inlineSourceMap": true,
-        "inlineSources": false
+        "inlineSources": true
     },
     "files": [
         "./src/ts/punchcards.ts"
