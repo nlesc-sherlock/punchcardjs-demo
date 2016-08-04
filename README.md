@@ -3,7 +3,7 @@
 
 Get a local copy of the punchcardjs repository using ``git``:
 
-```sh
+```bash
 # use package manager to install git
 sudo apt-get install git
 
@@ -21,14 +21,14 @@ local copies of the development tools, `bower` needs to fetch client-side depend
 our code, and `typings` needs to get the typescript annotations for those. You can
 do all of these in one go using:
 
-```sh
+```bash
 # run npm install, bower install, typings install through one command
 npm install
 ```
 
 Next, the software needs to be built. We use `npm` for that as well. We've defined a few build tasks under `scripts` in `packages.json`.
 
-```sh
+```bash
 # lint the typescript code
 npm run tslint
 
@@ -58,7 +58,7 @@ python3 -m http.server 8089
 
 **some other useful tasks**
 
-```
+```bash
 
 # clean up generated files
 npm run clean
