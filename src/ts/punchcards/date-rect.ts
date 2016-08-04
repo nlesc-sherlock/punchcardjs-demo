@@ -32,7 +32,7 @@ export class DateRect extends Base {
 
         // based on example from
         // http://stackoverflow.com/questions/16766986/is-it-possible-to-group-by-multiple-dimensions-in-crossfilter
-        this.dim.dateAndHourOfDay = this.cf.dimension(function (d) {
+        this.dim.dateAndHourOfDay = this.cf.dimension(function (d:any) {
             let m:moment.Moment = moment(d.datestr);
             //stringify() and later, parse() to get keyed objects
             return JSON.stringify({
@@ -85,8 +85,8 @@ export class DateRect extends Base {
         let lastResultDate = new Date(this.dim.dateAndHourOfDay.top(1)[0].datestr);
         this.dateTo = new Date(lastResultDate.getFullYear(), lastResultDate.getMonth(), lastResultDate.getDate(), 23, 59, 59, 999);
 
-        let tickFormat;
-        let ticks;
+        let tickFormat:d3.time.Format;
+        let ticks: number | any; // FIXME second type should be Date[] but that doesn't work somehow
         let nHoursDiff: number = moment(this.dateTo).diff(moment(this.dateFrom), 'hour', true);
 
         if (nHoursDiff > 5 * 24) {
@@ -147,7 +147,7 @@ export class DateRect extends Base {
         // http://stackoverflow.com/questions/16766986/is-it-possible-to-group-by-multiple-dimensions-in-crossfilter
         // forEach method could be very expensive on write.
         let group = this.dim.dateAndHourOfDay.group();
-        group.all().forEach(function(d) {
+        group.all().forEach(function(d:any) {
             //parse the json string created above
             d.key = JSON.parse(d.key);
         });
@@ -180,15 +180,15 @@ export class DateRect extends Base {
                 .enter()
                 .append('rect')
                     .attr('class', 'symbol')
-                    .attr('x', function(d){
+                    .attr('x', function(d:any){
                         return that.dateScale(new Date(d.key.datestr));
                         })
-                    .attr('y', function(d){
+                    .attr('y', function(d:any){
                         return that.todScale(parseInt(d.key.hourOfDay, 10));
                     })
                     .attr('width', symbolWidth)
                     .attr('height', symbolHeight)
-                    .attr('fill', function(d){
+                    .attr('fill', function(d:any){
                         return that.colormap.getColorRGB(d.value);
                     });
 

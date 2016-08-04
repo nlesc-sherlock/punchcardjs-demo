@@ -155,12 +155,12 @@ export class Legend {
                 .append('rect')
                     .attr('class', 'symbol')
                     .attr('x', 0)
-                    .attr('y', function(d){
+                    .attr('y', function(d:any){
                         return that.verticalScale(d.value) - 0.5 * symbolHeight;
                     })
                     .attr('width', this.width)
                     .attr('height', symbolHeight)
-                    .attr('fill', function(d){
+                    .attr('fill', function(d:any){
                         return that.sibling.colormap.getColorRGB(d.value);
                     });
 

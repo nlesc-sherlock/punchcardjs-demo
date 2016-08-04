@@ -81,7 +81,7 @@ export class ColorMap {
 
 
 
-    protected expandColorTableStr(str) {
+    protected expandColorTableStr(str:string) {
 
         let colortable:ColorTable;
 
@@ -259,8 +259,8 @@ export class ColorMap {
         let atUnity = (at - this.cLimLow) / (this.cLimHigh - this.cLimLow);
         let nColors = this.colortable.length;
 
-        let prev;
-        let next;
+        let prev:ColorTableItem;
+        let next:ColorTableItem;
 
         for (let iColor = 0; iColor < nColors; iColor++) {
             let cond1 = this.colortable[iColor].at <= atUnity;

@@ -33,7 +33,7 @@ export class WeekdayRect extends Base {
         // based on example from
         // http://stackoverflow.com/questions/16766986/is-it-possible-to-group-by-multiple-dimensions-in-crossfilter
 
-        this.dim.weekdayAndHourOfDay = this.cf.dimension(function (d) {
+        this.dim.weekdayAndHourOfDay = this.cf.dimension(function (d:any) {
             //stringify() and later, parse() to get keyed objects
             let m:moment.Moment = moment(d.datestr);
             return JSON.stringify({
@@ -128,7 +128,7 @@ export class WeekdayRect extends Base {
         // http://stackoverflow.com/questions/16766986/is-it-possible-to-group-by-multiple-dimensions-in-crossfilter
         // forEach method could be very expensive on write.
         let group = this.dim.weekdayAndHourOfDay.group();
-        group.all().forEach(function(d) {
+        group.all().forEach(function(d:any) {
             //parse the json string created above
             d.key = JSON.parse(d.key);
         });
@@ -161,15 +161,15 @@ export class WeekdayRect extends Base {
                 .enter()
                 .append('rect')
                     .attr('class', 'symbol')
-                    .attr('x', function(d){
+                    .attr('x', function(d:any){
                         return that.dayOfWeekScale(d.key['weekday']) - symbolWidth / 2;
                     })
-                    .attr('y', function(d){
+                    .attr('y', function(d:any){
                         return that.todScale(d.key['hourOfDay']);
                     })
                     .attr('width', symbolWidth)
                     .attr('height', symbolHeight)
-                    .attr('fill', function(d){
+                    .attr('fill', function(d:any){
                         return that.colormap.getColorRGB(d.value);
                     });
 

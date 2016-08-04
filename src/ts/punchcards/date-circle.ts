@@ -43,7 +43,7 @@ export class DateCircle extends DateRect {
         // http://stackoverflow.com/questions/16766986/is-it-possible-to-group-by-multiple-dimensions-in-crossfilter
         // forEach method could be very expensive on write.
         let group = this.dim.dateAndHourOfDay.group();
-        group.all().forEach(function(d) {
+        group.all().forEach(function(d:any) {
             //parse the json string created above
             d.key = JSON.parse(d.key);
         });
@@ -76,16 +76,16 @@ export class DateCircle extends DateRect {
                 .enter()
                 .append('circle')
                     .attr('class', 'symbol')
-                    .attr('cx', function(d){
+                    .attr('cx', function(d:any){
                         return that.dateScale(new Date(d.key.datestr));
                         })
-                    .attr('cy', function(d){
+                    .attr('cy', function(d:any){
                         return that.todScale(parseInt(d.key.hourOfDay, 10)) + symbolMargin.top + symbolHeight / 2;
                     })
-                    .attr('r', function(d) {
+                    .attr('r', function(d:any) {
                         return Math.max(r * (d.value - that.colormap.cLimLow) / (that.colormap.cLimHigh - that.colormap.cLimLow), 1);
                     })
-                    .attr('fill', function(d){
+                    .attr('fill', function(d:any){
                         return that.colormap.getColorRGB(d.value);
                     });
 
