@@ -10,6 +10,8 @@
     "predist": "trash dist/ && mkdirp dist",
     "dist": "browserify --debug build/ts/punchcards.js --outfile dist/punchcards.js --standalone punchcards",
     "test": "tape ./test/**/*.test.js | tap-spec",
+    "preistanbul": "trash test-coverage/",
+    "istanbul": "istanbul cover --config .istanbul.yml test/ts/punchcards/colormap.test.js",
     "pretsdoc": "trash dist/doc/ && mkdirp dist/doc",
     "tsdoc": "typedoc --out dist/doc/ .",
     "clean": "trash build/ dist/ site/js/ site/css/",
@@ -36,6 +38,7 @@
   "devDependencies": {
     "bower": "^1.7.9",
     "browserify": "^13.0.1",
+    "istanbul": "^0.4.3",
     "mkdirp": "^0.5.1",
     "remap-istanbul": "^0.6.4",
     "tap-spec": "^4.1.1",

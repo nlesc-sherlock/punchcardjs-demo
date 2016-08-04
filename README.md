@@ -55,3 +55,21 @@ python3 -m http.server 8089
 
 ```
 
+
+**some notes on code coverage generation (incomplete)**
+
+```bash
+# install node package that lets you do code coverage (I'm using a specific version 
+# because I may want to use the remap-istanbul npm package later, which uses istanbul@0.4.3
+npm install istanbul@0.4.3 --save-dep
+
+# start the code coverage calculation, this yields a <projectroot>/test-coverage directory
+node_modules/.bin/istanbul cover --config .istanbul.yml test/ts/punchcards/colormap.test.js
+
+# use a browser to explore the contents of <projectroot>/test-coverage
+
+```
+
+
+
+
