@@ -8,14 +8,18 @@
     "tslint": "tslint --config tslint.json ./src/ts/**/*.ts",
     "tsc": "tsc --project .",
     "predist": "trash dist/ && mkdirp dist",
-    "dist": "browserify build/ts/punchcards.js --outfile dist/punchcards.js --standalone punchcards",
+    "dist": "browserify --debug build/ts/punchcards.js --outfile dist/punchcards.js --standalone punchcards",
     "test": "tape ./test/**/*.test.js | tap-spec",
     "tsdoc": "typedoc --out dist/doc/ .",
     "clean": "trash build/ dist/ site/js/ site/css/",
     "purge": "npm run clean & trash bower_components/ typings/ node_modules/",
-    "copy-site-deps": "cp bower_components/crossfilter/crossfilter.min.js bower_components/moment/min/moment.min.js bower_components/d3/d3.min.js site/js && cp src/css/punchcards/*.css bower_components/bootstrap/dist/css/bootstrap.min.css bower_components/bootstrap/dist/css/bootstrap-theme.min.css site/css && cp bower_components/bootstrap/dist/fonts/* site/fonts/",
+    "copy-site-deps": "npm run copy-site-js && npm run copy-site-css && npm run copy-site-fonts",
+    "copy-site-css": "cp src/css/punchcards/*.css bower_components/bootstrap/dist/css/bootstrap.min.css bower_components/bootstrap/dist/css/bootstrap-theme.min.css site/css",
+    "copy-site-fonts": "cp bower_components/bootstrap/dist/fonts/* site/fonts/",
+    "copy-site-js": "cp bower_components/crossfilter/crossfilter.min.js bower_components/moment/min/moment.min.js bower_components/d3/d3.min.js site/js",
     "presite": "trash site/js/ && mkdirp site/js && trash site/css/ && mkdirp site/css && trash site/fonts/ && mkdirp site/fonts && npm run copy-site-deps",
-    "site": "npm run tslint && npm run tsc && npm run dist && npm run test && cp dist/punchcards.js site/js/"
+    "site": "npm run tslint && npm run tsc && npm run dist && npm run test",
+    "postsite": "cp dist/punchcards.js site/js/"
   },
   "keywords": [
     "typescript",
