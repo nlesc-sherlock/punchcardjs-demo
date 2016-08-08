@@ -81,7 +81,7 @@ export class ColorMap {
 
 
 
-    protected expandColorTableStr(str:string) {
+    protected expandColorTableStr(str:string):ColorTable {
 
         let colortable:ColorTable;
 
