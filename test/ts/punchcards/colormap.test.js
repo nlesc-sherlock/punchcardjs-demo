@@ -3,7 +3,7 @@ var punchcards = require('./../../../dist/punchcards.js');
 
 
 
-test('punchcards.ColorMap', function(t) {
+test('punchcards.ColorMap constructor', function(t) {
 
     var actual,
         expected,
@@ -16,6 +16,10 @@ test('punchcards.ColorMap', function(t) {
     actual = (new punchcards.ColorMap('default')).colortable;
     expected = punchcards.ColorMap.defaultColorTable;
     t.deepEqual(actual, expected, '...constructing with string argument \'default\' should return a colortable equal to the class property \'defaultColorTable\'.');
+
+    // construct without arguments
+
+    // construct with a ColorTable
 
     // notify tape that there are no more tests
     t.end();
@@ -75,6 +79,26 @@ test('punchcards.ColorMap.addColor()', function(t) {
     actual = hascolor(cmgray.colortable, testcolor);
     expected = true;
     t.equal(actual, expected, '...the colortable should include the test color at this stage.');
+
+    // notify tape that there are no more tests
+    t.end();
+
+})
+
+
+test('punchcards.ColorMap.getColorRGB()', function(t) {
+
+    var actual,
+        expected,
+        cmgray;
+
+    // instantiate the colormap object using the predefined gray colormap
+    cmgray = new punchcards.ColorMap('gray');
+
+    // check that the colormap.colortable now includes the testcolor.
+    actual = cmgray.getColorRGB(0.0);
+    expected = 'rgb(0,0,0)';
+    t.equal(actual, expected, '...the rgb string representation of the color at value 0.0 should be \'rgb(0,0,0)\' when using the predefined \'gray\' colormap.');
 
     // notify tape that there are no more tests
     t.end();
