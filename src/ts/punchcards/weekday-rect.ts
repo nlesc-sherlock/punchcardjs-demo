@@ -1,7 +1,7 @@
 /// <reference path="../../../typings/globals/crossfilter/index.d.ts" />
 /// <reference path="../../../typings/globals/d3/index.d.ts" />
 
-
+import {IDataRow} from '../idatarow';
 import {Base} from './base';
 import {ColorMap} from './colormap';
 
@@ -13,7 +13,7 @@ export class WeekdayRect extends Base {
     private _xTo           : number;
 
 
-    constructor (cf: any, domElemId: string) {
+    constructor (cf: CrossFilter.CrossFilter<IDataRow>, domElemId: string) {
 
         super(cf, domElemId);
 

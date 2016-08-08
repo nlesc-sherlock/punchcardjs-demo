@@ -3,7 +3,7 @@
 /// <reference path="../../../typings/globals/moment/index.d.ts" />
 
 
-
+import {IDataRow} from '../idatarow';
 import {Base} from './base';
 import {ColorMap} from './colormap';
 
@@ -15,7 +15,7 @@ export class DateRect extends Base {
     private _dateTo      : Date;
 
 
-    constructor (cf: any, domElemId: string) {
+    constructor (cf: CrossFilter.CrossFilter<IDataRow>, domElemId: string) {
 
         super(cf, domElemId);
 

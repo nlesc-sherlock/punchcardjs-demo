@@ -2,7 +2,7 @@
 /// <reference path="../../../typings/globals/d3/index.d.ts" />
 /// <reference path="../../../typings/globals/moment/index.d.ts" />
 
-
+import {IDataRow} from '../idatarow';
 import {ColorMap} from './colormap';
 import {DateRect} from './date-rect';
 
@@ -11,7 +11,7 @@ import {DateRect} from './date-rect';
 export class DateCircle extends DateRect {
 
 
-    constructor (cf: any, domElemId: string) {
+    constructor (cf: CrossFilter.CrossFilter<IDataRow>, domElemId: string) {
 
         super(cf, domElemId);
 
