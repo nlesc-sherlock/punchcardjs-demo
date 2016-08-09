@@ -49,10 +49,16 @@ export class ColorMap {
             str = undefined;
             ct = this.expandColorTableStr(colortable);
 
-        } else if (typeof colortable === 'ColorTable') {
+        } else if (typeof colortable === 'object') {
 
             str = undefined;
-            ct = colortable;
+            try {
+                ct = <ColorTable>colortable;
+            } catch (Error) {
+                throw new Error('Can\'t cast to ColorTable type');
+            }
+        } else {
+            throw new Error('Undefined behavior for these input arguments.');
         }
 
         // use my own compare function to sort the array based on the value of

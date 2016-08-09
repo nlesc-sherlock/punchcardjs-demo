@@ -7,19 +7,45 @@ test('punchcards.ColorMap constructor', function(t) {
 
     var actual,
         expected,
-        colormap;
+        colortable;
 
+    // construct with a string argument
     actual = (new punchcards.ColorMap('default')) instanceof punchcards.ColorMap;
     expected = true;
     t.equal(actual, expected, '...constructor should return an object of type \'ColorMap\' when called with a valid string.');
+    actual = undefined;
+    expected = undefined;
 
+    // construct with a string argument
     actual = (new punchcards.ColorMap('default')).colortable;
     expected = punchcards.ColorMap.defaultColorTable;
     t.deepEqual(actual, expected, '...constructing with string argument \'default\' should return a colortable equal to the class property \'defaultColorTable\'.');
+    actual = undefined;
+    expected = undefined;
 
-    // construct without arguments
+    // construct with no arguments
+    actual = (new punchcards.ColorMap()).colortable;
+    expected = punchcards.ColorMap.defaultColorTable;
+    t.deepEqual(actual, expected, '...constructing without any arguments should yield the default color table.');
+    actual = undefined;
+    expected = undefined;
 
-    // construct with a ColorTable
+    // construct with a ColorTable argument
+    colortable = punchcards.ColorMap.defaultColorTable;
+    actual = (new punchcards.ColorMap(colortable)).colortable;
+    expected = punchcards.ColorMap.defaultColorTable;
+    t.deepEqual(actual, expected, '...constructing with a ColorTable argument should yield a ColorMap with that ColorTable as .colortable.');
+    actual = undefined;
+    expected = undefined;
+    colortable = undefined;
+
+    actual = function() {
+        return new punchcards.ColorMap(8.682727);
+    };
+    expected = Error;
+    t.throws(actual, expected, '...constructing with a number is undefined and results in an Error.');
+    actual = undefined;
+    expected = undefined;
 
     // notify tape that there are no more tests
     t.end();
@@ -84,6 +110,42 @@ test('punchcards.ColorMap.addColor()', function(t) {
     t.end();
 
 })
+
+
+test('punchcards.ColorMap.addColors()', function(t) {
+
+    var colortable,
+        colormap;
+
+    // construct with a ColorTable
+    colortable = [
+        {
+            at: 0.0,
+            color: [0, 0, 0, 0]
+        },
+        {
+            at: 1.0,
+            color: [255, 255, 255, 0]
+        }
+    ];
+
+    // make a colormap with an 'empty' colortable
+    colormap = new punchcards.ColorMap('empty');
+
+    // add the colortable info
+    colormap.addColors(colortable);
+
+    // get the colortable after we added the colors
+    actual = colormap.colortable;
+    expected = (new punchcards.ColorMap('gray')).colortable;
+
+    t.deepEqual(actual, expected, '...constructing with a ColorTable argument should yield a ColorMap with that ColorTable.');
+
+    // notify tape that there are no more tests
+    t.end();
+
+})
+
 
 
 test('punchcards.ColorMap.getColorRGB()', function(t) {
