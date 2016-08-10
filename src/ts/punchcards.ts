@@ -10,3 +10,5 @@ export {Legend} from './punchcards/legend';
 export {WeekdayCircle} from './punchcards/weekday-circle';
 export {WeekdayRect} from './punchcards/weekday-rect';
 
+// the tests
+export {BaseTest} from './punchcards/base.test';
