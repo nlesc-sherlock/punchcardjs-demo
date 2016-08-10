@@ -1,0 +1,7 @@
+# ignore the /fonts, /js and /css directories here, since they contain generated files 
+# from <projectroot>/dist and <projectroot>/src/css which are copied here for 
+# usage in the demo web site.
+/js
+/css
+/fonts
+
