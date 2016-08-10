@@ -5,7 +5,6 @@
   "main": "./dist/punchcards.js",
   "scripts": {
     "postinstall": "bower install && typings install",
-    "postuninstall": "echo TODO",
     "tslint": "tslint --config tslint.json ./src/ts/**/*.ts",
     "pretsc": "npm run tslint",
     "tsc": "tsc --project .",
