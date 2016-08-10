@@ -10,6 +10,7 @@
     "tsc": "tsc --project .",
     "predist": "trash dist/ && mkdirp dist",
     "dist": "browserify --debug build/ts/punchcards.js --outfile dist/punchcards.js --standalone punchcards",
+    "pretest": "npm run tsc && npm run dist && echo 'TODO compile the test ts files'",
     "test": "istanbul test --config .istanbul.yml tape ./test/**/*.test.js | tap-spec",
     "precover": "trash sites/coverage/ && npm run tsc && npm run dist",
     "cover": "npm run test --coverage && npm run remap-istanbul-json && npm run remap-istanbul-html",
@@ -33,7 +34,7 @@
     "predemo": "npm run clean-demo && mkdirp sites/demo/js sites/demo/css sites/demo/fonts/ && npm run copy-sites-demo-deps",
     "demo": "npm run tsc && npm run dist && npm run test",
     "postdemo": "cp dist/punchcards.js sites/demo/js/",
-    "everything": "npm run demo && npm run tsdoc && npm run cover "
+    "everything": "npm run demo && npm run tsdoc && npm run cover"
   },
   "keywords": [
     "typescript",
