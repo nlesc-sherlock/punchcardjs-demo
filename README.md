@@ -42,12 +42,14 @@ npm run dist
 npm run test
 
 # do the above steps plus some other things to get a demo website...
-npm run site
-# ...and transpile a few more typescript files not directly related to the library
-node_modules/.bin/tsc --target es5 site/ts/*.ts --outDir site/js
+npm run demo
+
+# ...and transpile a few more typescript files not directly related to the
+# library (compiles into JavaScript despite errors)
+node_modules/.bin/tsc --target es5 sites/demo/ts/*.ts --outDir sites/demo/js
 
 # change directory to the demo site
-cd site
+cd sites/demo/
 
 # start a webserver in that directory that serves the
 # webpage at localhost:8089
@@ -71,7 +73,7 @@ npm run tsdoc
 
 # generate code coverage in various formats. output will be at <projectroot>/test-coverage/, e.g.
 # test-coverage/coverage-remapped/index.html
-npm run istanbul
+npm run cover
 
 ```
 
