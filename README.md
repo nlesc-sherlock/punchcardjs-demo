@@ -71,8 +71,8 @@ npm run purge
 # generate the TypeDoc, inspect afterwards in a browser (output will be at <projectroot>/dist/doc)
 npm run tsdoc
 
-# generate code coverage in various formats. output will be at <projectroot>/test-coverage/, e.g.
-# test-coverage/coverage-remapped/index.html
+# generate code coverage in various formats. output will be at <projectroot>/sites/coverage/, e.g.
+# sites/coverage/coverage-remapped/index.html
 npm run cover
 
 ```
