@@ -58,7 +58,7 @@ python3 -m http.server 8089
 # you should be able to debug the TypeScript code from the browser (uses source maps)
 ```
 
-**some other useful tasks**
+## some other useful tasks
 
 ```bash
 
@@ -77,8 +77,74 @@ npm run cover
 
 ```
 
+# Project layout with explanation:
+
+```bash
+.                                              # project root directory
+├── bower.json                                 # defines the client-side dependencies
+├── CONTRIBUTING                               # outlines the rules/for contributing to this repository
+├── doc                                        # directory containing files that help document the repository
+│   └── installing-node.md                     #
+├── karma.conf.js                              # configuration file for Karma, the test runner
+├── LICENSE                                    # describes the license for dissemination and use of this software
+├── notes.md                                   #
+├── package.json                               # the Node package manager file describes the server-side / development dependencies
+├── README.md                                  # this file
+├── sites                                      # there are a few websites associated with this repository:
+│   └── demo                                   # the demo website serves as an illustration of the punchcards library
+│       ├── index.html                         # the demo website's main file
+│       ├── README.md                          #
+│       └── ts                                 # some TypeScript files that are needed to display the demo site:
+│           ├── dataloader.ts                  # a script that loads data from the web
+│           └── main-script.ts                 # a script that calls dataloader, then passes its data to the punchcards library
+├── src                                        # the source code in this directory constitutes the heart of this repository
+│   ├── css                                    # there are corresponding style files for most TypeScript files in 'src/ts/punchcards'
+│   │   └── punchcards                         #
+│   │       ├── base.css                       # the base appearance that is shared by all types of punchcards
+│   │       ├── date-circle.css                # style file determining the appearance of the DateCircle punchcard
+│   │       ├── date-rect.css                  # style file determining the appearance of the DateRect punchcard
+│   │       ├── legend.css                     # style file determining the appearance of the Legend
+│   │       ├── weekday-circle.css             # style file determining the appearance of the WeekdayCircle punchcard
+│   │       └── weekday-rect.css               # style file determining the appearance of the WeekdayRect punchcard
+│   └── ts                                     # contains the TypeScript source code that get transpiled into JavaScript
+│       ├── idatarow.ts                        # interface definition for the data structure that punchcards expects
+│       ├── punchcards                         #
+│       │   ├── base.ts                        # the punchcards Base class
+│       │   ├── colormap.ts                    # the punchcards ColorMap class
+│       │   ├── date-circle.ts                 # the punchcards DateCircle class (inherits from DateRect)
+│       │   ├── date-rect.ts                   # the punchcards DateRect class (inherits from Base)
+│       │   ├── legend.ts                      # the punchcards Legend class
+│       │   ├── weekday-circle.ts              # the punchcards WeekdayCircle class (inherits from WeekdayRect)
+│       │   └── weekday-rect.ts                # the punchcards WeekdayRect class (inherits from Base)
+│       └── punchcards.ts                      #
+├── test                                       # the test directory has the exact same structure as 'src'
+│   ├── README.md                              #
+│   ├── html                                   # html files pertaining to the tests (so-called fixtures)
+│   │   └── punchcards                         # format is *.test.html
+│   │       └── base.test.html                 # html fixture file pertaining to the test of the Base class from 'src/ts/punchcards/'
+│   └── ts                                     #
+│       └── punchcards                         # format is *.test.js
+│           ├── base.test.js                   # JavaScript unit test file pertaining to the test of the Base class from 'src/ts/punchcards/'
+│           ├── colormap.test.js               # JavaScript unit test file pertaining to the test of the ColorMap class from 'src/ts/punchcards/'
+├── tsconfig.json                              # configuration file for the TypeScript compiler
+├── tslint.json                                # configuration file for linting/static analysis of the TypeScript code
+└── typings.json                               # type information for the client-side libraries
+```
 
 
+## How it all fits together
 
+### General
 
+So you wrote some **source code**. A **distributable** can be created from the source code. Distributables are great, because that's what people can use in their own websites later. However, distributables are only good if they work --you don't want to break other people's websites, now do you? So, the distributable needs to be tested using **unit tests**. For this you typically need to do two things: first, you need to be able to do **assertions**. Assertions help you test different kinds of equality (''is the test result what it is supposed to be?''). Secondly, you need a  **test runner**, i.e. something that runs the tests (and then, typically, reports on their results). Now that you have tests, you also want to generate **code coverage** reports. Code coverage helps to make transparent which parts of the code are covered by tests.
+
+### In our case
+
+- Our **source code** lives at ``src``. The meat of it is written in TypeScript.
+- We create the **distributable** using ``npm run`` scripting, so there are no Gulp or Grunt files.
+- We use **unit tests** written in the style of [``tape``](https://www.npmjs.com/package/tape).
+- Tape also provides a simple **assertion** library. In fact, we expand [``tape``](https://www.npmjs.com/package/tape) with [``tapes``](https://www.npmjs.com/package/tapes) in order to do ``beforeEach`` and ``afterEach``.
+- Tape is also the **test runner**; well, it's one of the ways in which to run the tests. It is a versatile little library.
+- We generate code coverage in different formats using [``istanbul``](https://www.npmjs.com/package/istanbul). However, this gives us code coverage of the (generated) JavaScript, which is not really what we're interested in. So we have [``remap-istanbul``](https://www.npmjs.com/package/remap-istanbul) figure out which parts of the generated JavaScript correspond with which parts of the (written) TypeScript.
+- We currently don't have a working setup for running any tests in the browser.
 
