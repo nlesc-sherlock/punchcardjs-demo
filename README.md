@@ -143,7 +143,7 @@ So you wrote some **source code**. A **distributable** can be created from the s
 - Our **source code** lives at ``src``. The meat of it is written in TypeScript.
 - We create the **distributable** using ``npm run`` scripting, so there are no Gulp or Grunt files.
 - We use **unit tests** written in the style of [``tape``](https://www.npmjs.com/package/tape).
-- Tape also provides a simple **assertion** library. In fact, we expand [``tape``](https://www.npmjs.com/package/tape) with [``tapes``](https://www.npmjs.com/package/tapes) in order to do ``beforeEach`` and ``afterEach``.
+- Tape also provides a simple **assertion** library. We expand [``tape``](https://www.npmjs.com/package/tape) with [``tapes``](https://www.npmjs.com/package/tapes) in order to do ``beforeEach`` and ``afterEach``.
 - Tape is also the **test runner**; well, it's one of the ways in which to run the tests. It is a versatile little library.
 - We generate code coverage in different formats using [``istanbul``](https://www.npmjs.com/package/istanbul). However, this gives us code coverage of the (generated) JavaScript, which is not really what we're interested in. So we have [``remap-istanbul``](https://www.npmjs.com/package/remap-istanbul) figure out which parts of the generated JavaScript correspond with which parts of the (written) TypeScript.
 - We currently don't have a working setup for running any tests in the browser.
