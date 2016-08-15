@@ -8,6 +8,7 @@
 - karma [tutorial](http://www.bradoncode.com/blog/2015/02/27/karma-tutorial/) simple project with DOM interactions and fixtures, [karma-seed](https://github.com/bbraithwaite/karma-seed) project on github 
 - various browserify [articles](http://browserify.org/articles.html)
 - https://www.npmjs.com/package/karma-coverage plugin is actually using istanbul for generating code coverage, should be easy to integrate with my setup
+- [yeoman generator](https://github.com/yohangz/generator-typescript-npm-bower) with similar setup to ours 
 
 
 
