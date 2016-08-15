@@ -1,53 +1,81 @@
-var test = require('tape').test;
+var tape = require('tape');
+var tapes = require('tapes');
 var punchcards = require('./../../../dist/punchcards.js');
 
+// tapes expands tape's functionality with beforeEach and afterEach methods:
+var test = tapes(tape);
 
 
-test('punchcards.ColorMap constructor', function(t) {
+test('punchcards.ColorMap', function(t) {
 
-    var actual,
-        expected,
-        colortable;
+    // In this test suite, I have defined .beforeEach and .afterEach methods
+    // that are run for each test (they curently don't do anything but that's
+    // ok). With this approach it's also easier to let each test run in its own
+    // scope, so the 'actual' and 'expected' variables from one test can't
+    // affect the result of another test.
 
-    // construct with a string argument
-    actual = (new punchcards.ColorMap('default')) instanceof punchcards.ColorMap;
-    expected = true;
-    t.equal(actual, expected, '...constructor should return an object of type \'ColorMap\' when called with a valid string.');
-    actual = undefined;
-    expected = undefined;
+    t.beforeEach(function(t) {
+        // do some set up for each test
+        // console.log('before each test, we do this...');
+        t.end();
+    });
 
-    // construct with a string argument
-    actual = (new punchcards.ColorMap('default')).colortable;
-    expected = punchcards.ColorMap.defaultColorTable;
-    t.deepEqual(actual, expected, '...constructing with string argument \'default\' should return a colortable equal to the class property \'defaultColorTable\'.');
-    actual = undefined;
-    expected = undefined;
 
-    // construct with no arguments
-    actual = (new punchcards.ColorMap()).colortable;
-    expected = punchcards.ColorMap.defaultColorTable;
-    t.deepEqual(actual, expected, '...constructing without any arguments should yield the default color table.');
-    actual = undefined;
-    expected = undefined;
+    t.afterEach(function (t) {
+        // do some tear down for each test
+        // console.log('...and after each test, we do this.');
+        t.end();
+    });
 
-    // construct with a ColorTable argument
-    colortable = punchcards.ColorMap.defaultColorTable;
-    actual = (new punchcards.ColorMap(colortable)).colortable;
-    expected = punchcards.ColorMap.defaultColorTable;
-    t.deepEqual(actual, expected, '...constructing with a ColorTable argument should yield a ColorMap with that ColorTable as .colortable.');
-    actual = undefined;
-    expected = undefined;
-    colortable = undefined;
 
-    actual = function() {
-        return new punchcards.ColorMap(8.682727);
-    };
-    expected = Error;
-    t.throws(actual, expected, '...constructing with a number is undefined and results in an Error.');
-    actual = undefined;
-    expected = undefined;
+    t.test('constructing with a string argument', function (t) {
+        var actual, expected;
+        actual = (new punchcards.ColorMap('default')) instanceof punchcards.ColorMap;
+        expected = true;
+        t.equal(actual, expected, '...should return an object of type \'ColorMap\' when called with a valid string.');
+        t.end();
+    });
 
-    // notify tape that there are no more tests
+
+    t.test('constructing with a string argument \'default\'', function (t) {
+        var actual, expected;
+        actual = (new punchcards.ColorMap('default')).colortable;
+        expected = punchcards.ColorMap.defaultColorTable;
+        t.deepEqual(actual, expected, '...should return a colortable equal to the class property \'defaultColorTable\'.');
+        t.end();
+    });
+
+
+    t.test('constructing with no arguments', function (t) {
+        var actual, expected;
+        actual = (new punchcards.ColorMap()).colortable;
+        expected = punchcards.ColorMap.defaultColorTable;
+        t.deepEqual(actual, expected, '...should yield the default color table.');
+        t.end();
+    });
+
+
+    t.test('constructing with a ColorTable argument', function (t) {
+        var actual, expected, colortable;
+        colortable = punchcards.ColorMap.defaultColorTable;
+        actual = (new punchcards.ColorMap(colortable)).colortable;
+        expected = punchcards.ColorMap.defaultColorTable;
+        t.deepEqual(actual, expected, '...should yield a ColorMap with that ColorTable as .colortable.');
+        t.end();
+    });
+
+
+    t.test('constructing with a Number', function (t) {
+        var actual, expected;
+        actual = function() {
+            return new punchcards.ColorMap(8.682727);
+        };
+        expected = Error;
+        t.throws(actual, expected, '...is undefined and results in an Error.');
+        t.end();
+    });
+
+    // notify tape that there are no more tests in this suite
     t.end();
 
 })
