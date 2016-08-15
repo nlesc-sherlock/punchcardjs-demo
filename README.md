@@ -1,6 +1,8 @@
 [![devDependency Status](https://david-dm.org/nlesc-sherlock/punchcardjs/dev-status.svg)](https://david-dm.org/nlesc-sherlock/punchcardjs#info=devDependencies)
 [![Build Status](https://travis-ci.org/nlesc-sherlock/punchcardjs.svg?branch=master)](https://travis-ci.org/nlesc-sherlock/punchcardjs)
 
+# Setting up, building and running
+
 Get a local copy of the punchcardjs repository using ``git``:
 
 ```bash
@@ -13,8 +15,6 @@ git clone https://github.com/nlesc-sherlock/punchcardjs.git
 # change into punchcardjs directory
 cd punchcardjs
 ```
-
-# Setting up, building and running
 
 After getting the source, three things need to be done: `npm` needs to install
 local copies of the development tools, `bower` needs to fetch client-side dependencies of
