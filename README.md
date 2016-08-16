@@ -148,3 +148,6 @@ So you wrote some **source code**. A **distributable** can be created from the s
 - We generate code coverage in different formats using [``istanbul``](https://www.npmjs.com/package/istanbul). However, this gives us code coverage of the (generated) JavaScript, which is not really what we're interested in. So we have [``remap-istanbul``](https://www.npmjs.com/package/remap-istanbul) figure out which parts of the generated JavaScript correspond with which parts of the (written) TypeScript.
 - We currently [don't have a working setup](https://github.com/nlesc-sherlock/punchcardjs/issues/15) for running any tests in the browser.
 
+# Some examples of the type of visualizations you can make with this library
+
+![example-date-circle.png](https://github.com/nlesc-sherlock/punchcardjs/raw/testing/doc/example-date-circle.png "example-date-circle.png")
