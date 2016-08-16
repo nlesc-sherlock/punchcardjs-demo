@@ -72,7 +72,7 @@ npm run purge
 npm run tsdoc
 
 # generate code coverage in various formats. output will be at <projectroot>/sites/coverage/, e.g.
-# sites/coverage/coverage-remapped/index.html
+# sites/coverage/coverage-remapped/ts/punchcards/index.html
 npm run cover
 
 ```
