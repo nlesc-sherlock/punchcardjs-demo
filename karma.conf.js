@@ -7,7 +7,6 @@ module.exports = function(config) {
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
 
-
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['jasmine','fixture'],
@@ -17,7 +16,11 @@ module.exports = function(config) {
     files: [
         {pattern: 'dist/punchcards.js', included: true},
         {pattern: 'test/**/*.unit.js', included: true},
-        {pattern: 'test/**/*.fixture.html', included: true}
+        {pattern: 'bower_components/crossfilter/crossfilter.js', included: true},
+        {pattern: 'bower_components/d3/d3.js', included: true},
+        {pattern: 'bower_components/moment/moment.js', included: true},
+        {pattern: 'test/html/*.fixture.html', included: true},
+        {pattern: 'test/data/*.fixture.json', included: true}
     ],
 
 
@@ -29,8 +32,9 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-        '**/*.html'   : ['html2js'],
-        '**/*.json'   : ['json_fixtures']
+        '**/*.html': ['html2js'],
+        '**/*.json': ['json_fixtures'],
+        'dist/punchcards.js': ['coverage']
     },
 
     // I think this next property is a custom field (not part of the default
@@ -39,11 +43,20 @@ module.exports = function(config) {
       variableName: '__json__'
     },
 
+    // This is also a custom property AFAICT.
+    coverageReporter: {
+      // specify a common output directory
+      dir: './sites/coverage',
+      reporters: [
+        { type: 'json', subdir: '.', file: 'coverage.json' }
+      ]
+    },
+
+
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
-
+    reporters: ['progress', 'coverage'],
 
     // web server port
     port: 9876,
