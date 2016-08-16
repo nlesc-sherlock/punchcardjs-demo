@@ -1,24 +1,15 @@
-var test = require('tape').test;
-var punchcards = require('./../../../dist/punchcards.js');
+/*
+ * Unit tests for punchcards.Base from dist/punchcards.js
+ */
+
+describe('The punchcards.Base constructor...\n', function() {
+
+    it('...should be able to find the html fixtures', function() {
+        fixture.base = 'test/html';
+        var html = fixture.load('calculator.fixture.html');
+        expect(html).not.toBe(null);
+    });
 
 
-
-test('punchcards.Base constructor', function(t) {
-
-    var actual,
-        expected;
-
-
-    actual = 1;
-    expected = 1;
-
-
-    // dummy test
-    t.equal(actual, expected, '...should do stuff.')
-
-
-    // notify tape that there are no more tests
-    t.end();
 
 })
-
