@@ -13,5 +13,6 @@
     },
     "files": [
         "./src/ts/punchcards.ts"
-    ]
+    ],
+    "exclude": ["sites"]
 }
