@@ -518,6 +518,15 @@ export class Base {
      */
     protected onResize() {
 
+        let isempty = function(obj:any) {
+            if (Object.getOwnPropertyNames(obj).length === 0) {
+                return true;
+            } else {
+                return false;
+            };
+        };
+
+
         // get the div element that we want to redraw
         let div = this.domElem;
 
@@ -526,8 +535,14 @@ export class Base {
             div.removeChild(div.firstChild);
         }
 
-        // draw the figure again, given that the window just changed size
-        this.draw();
+        // when the constructor first creates the instance, this.dim is empty,
+        // which can lead to problems during unit testing (even if you can't
+        // tell the difference in the browser). Anyway, those problems are
+        // avoided by checking if the this.dim is empty.
+        if (!isempty(this.dim)) {
+            // draw the figure again, given that the window just changed size
+            this.draw();
+        }
     }
 
 
