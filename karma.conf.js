@@ -14,13 +14,14 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-        {pattern: 'dist/punchcards.js', included: true},
-        {pattern: 'test/**/*.unit.js', included: true},
         {pattern: 'bower_components/crossfilter/crossfilter.js', included: true},
         {pattern: 'bower_components/d3/d3.js', included: true},
         {pattern: 'bower_components/moment/moment.js', included: true},
+        {pattern: 'dist/punchcards.js', included: true},
+        {pattern: 'test/**/*.unit.js', included: true},
         {pattern: 'test/html/*.fixture.html', included: true},
-        {pattern: 'test/data/*.fixture.json', included: true}
+        {pattern: 'test/json/*.fixture.json', included: true},
+        {pattern: 'test/**/*.dom.js', included: true}
     ],
 
 
