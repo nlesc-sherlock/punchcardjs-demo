@@ -10,7 +10,6 @@
     "tsc": "tsc --project .",
     "predist": "trash dist/ && mkdirp dist",
     "dist": "browserify --debug build/ts/punchcards.js --outfile dist/punchcards.js --standalone punchcards",
-    "pretest": "npm run tsc && npm run dist",
     "test": "karma start karma.conf.js",
     "precover": "trash sites/coverage/ && npm run tsc && npm run dist",
     "cover": "npm run test && npm run remap-istanbul-json && npm run remap-istanbul-html",
