@@ -27,25 +27,6 @@ export class DateRect extends Base {
 
 
 
-    // define the crossfilter dimensions as used by this class
-    public defineDimensions():DateRect {
-
-        // based on example from
-        // http://stackoverflow.com/questions/16766986/is-it-possible-to-group-by-multiple-dimensions-in-crossfilter
-        this.dim.dateAndHourOfDay = this.cf.dimension(function (d:any) {
-            let m:moment.Moment = moment(d.datestr);
-            //stringify() and later, parse() to get keyed objects
-            return JSON.stringify({
-                datestr: m.format('YYYY-MM-DD'),
-                hourOfDay: m.hour()
-            });
-        });
-        return this;
-    }
-
-
-
-
     // overrides stub method in parent class
     public draw():DateRect {
 
