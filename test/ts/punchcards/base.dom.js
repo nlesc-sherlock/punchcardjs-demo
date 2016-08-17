@@ -50,10 +50,11 @@ describe('punchcards Base class...', function() {
 
 
 
-    it('\n...constructor should not return null when called with valid arguments', function() {
-        var actual;
-        actual = new punchcards.Base(cf, 'punchcard-base');
-        expect(actual).not.toEqual(null);
+    it('\n...constructor should return an instance of punchcards.Base when called with valid arguments', function() {
+        var actual, base;
+        base = new punchcards.Base(cf, 'punchcard-base');
+        actual = base instanceof punchcards.Base;
+        expect(actual).toBe(true);
     });
 
 
