@@ -25,14 +25,14 @@ describe('punchcards general testing functionality\n', function() {
 
 
     it('...should have loaded the test data', function() {
-        fixture.base = 'test/json';
+        fixture.base = 'test/fixtures';
         var data = fixture.load('cityofchicago-police-data.fixture.json');
         expect(data).not.toBe(null);
     });
 
 
     it('...should have created a crossfilter object out of the test data', function() {
-        fixture.base = 'test/json';
+        fixture.base = 'test/fixtures';
         var data = fixture.load('cityofchicago-police-data.fixture.json');
         var cf = crossfilter(data);
         expect(cf).not.toBe(null);
@@ -40,7 +40,7 @@ describe('punchcards general testing functionality\n', function() {
 
 
     it('...should be able to find the html fixtures', function() {
-        fixture.base = 'test/html';
+        fixture.base = 'test/fixtures';
         var html = fixture.load('base.fixture.html');
         expect(html).not.toBe(null);
     });
