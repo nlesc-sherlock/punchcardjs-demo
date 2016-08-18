@@ -11,7 +11,7 @@ describe('punchcards DateRect class...', function() {
         var data;
 
         // set the base directory for loading of fixtures
-        fixture.setBase('test/fixtures');
+        fixture.setBase('test');
 
         // load the html and json fixtures
         fixtures = fixture.load('date-rect.fixture.html',

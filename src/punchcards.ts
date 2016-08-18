@@ -2,11 +2,11 @@
 /**
  * This is the Punchcards module
  */
-export {Base} from './punchcards/base';
-export {ColorMap} from './punchcards/colormap';
-export {DateCircle} from './punchcards/date-circle';
-export {DateRect} from './punchcards/date-rect';
-export {Legend} from './punchcards/legend';
-export {WeekdayCircle} from './punchcards/weekday-circle';
-export {WeekdayRect} from './punchcards/weekday-rect';
+export {Base} from './base';
+export {ColorMap} from './colormap';
+export {DateCircle} from './date-circle';
+export {DateRect} from './date-rect';
+export {Legend} from './legend';
+export {WeekdayCircle} from './weekday-circle';
+export {WeekdayRect} from './weekday-rect';
 

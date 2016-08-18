@@ -1,4 +1,4 @@
-/// <reference path="../../../typings/globals/d3/index.d.ts" />
+/// <reference path="../typings/globals/d3/index.d.ts" />
 
 import {Base} from './base';
 import {DateCircle} from './date-circle';
