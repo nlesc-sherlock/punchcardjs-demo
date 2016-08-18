@@ -3,7 +3,7 @@
 # usage in the demo web site.
 /*.js
 /*.css
-/glyphicons-halflings-regular.*
+/fonts/glyphicons-halflings-regular.*
 
 # do versioning on index.html
 !index.html
