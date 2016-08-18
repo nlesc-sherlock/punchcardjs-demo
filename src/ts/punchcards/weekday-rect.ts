@@ -56,17 +56,20 @@ export class WeekdayRect extends Base {
             return this;
         } else {
             // div is visible
-            super.drawSvg();
-            super.drawChartBody();
-            this.drawHorizontalAxis();
-            super.drawHorizontalAxisLabel();
-            super.drawVerticalAxis();
-            super.drawVerticalAxisLabel();
-            super.drawTitle();
-            this.drawSymbols();
-            super.drawBox();
-            this.drawControls();
-            super.drawLegend();
+            if (this.canDraw) {
+                // dimensions have been defined
+                super.drawSvg();
+                super.drawChartBody();
+                this.drawHorizontalAxis();
+                super.drawHorizontalAxisLabel();
+                super.drawVerticalAxis();
+                super.drawVerticalAxisLabel();
+                super.drawTitle();
+                this.drawSymbols();
+                super.drawBox();
+                this.drawControls();
+                super.drawLegend();
+            }
 
             return this;
         }
