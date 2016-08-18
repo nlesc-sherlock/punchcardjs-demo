@@ -113,49 +113,6 @@ describe('punchcards DateRect class...', function() {
 
 
 
-
-    // this.drawHorizontalAxis();
-    // this.drawSymbols();
-
-
-
-
-    // it('...after calling .drawBox(), the chart should have an ' +
-    //     'SVG g element of class "chartbody-box" attached to it.', function() {
-    //
-    //     var actual, base;
-    //
-    //     base = new punchcards.Base(cf, 'punchcard-base');
-    //     base.defineDimensions();
-    //     base.drawSvg();
-    //     base.drawBox();
-    //
-    //     actual = base.svg.select('g.chartbody-box')[0][0];
-    //     expect(actual).not.toBe(null);
-    // });
-    //
-    //
-    //
-    //
-    // it('...after calling .drawTitle(), the chart should have an ' +
-    //     'SVG g element of class "chartbody-box" with an SVG rect ' +
-    //     'element of class "chartbody-box" attached to it.', function() {
-    //
-    //     var actual, base;
-    //
-    //     base = new punchcards.Base(cf, 'punchcard-base');
-    //     base.defineDimensions();
-    //     base.drawSvg();
-    //     base.drawBox();
-    //
-    //     actual = base.svg.select('g.chartbody-box').select('rect.chartbody-box')[0][0];
-    //     expect(actual).not.toBe(null);
-    // });
-
-
-
-
-
 })
 
 
