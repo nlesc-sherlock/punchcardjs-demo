@@ -44,6 +44,7 @@ export class WeekdayRect extends Base {
                 hourOfDay: m.hour()
             });
         });
+        this.canDraw = true;
 
         return this;
     }
