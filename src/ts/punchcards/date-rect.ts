@@ -22,6 +22,7 @@ export class DateRect extends Base {
         this.xlabel = '';
         this.title = 'DateRect title';
         this.colormap = new ColorMap('default');
+
     }
 
 
@@ -35,18 +36,20 @@ export class DateRect extends Base {
             return this;
         } else {
             // div is visible
-            super.drawSvg();
-            super.drawChartBody();
-            this.drawHorizontalAxis();
-            super.drawHorizontalAxisLabel();
-            super.drawVerticalAxis();
-            super.drawVerticalAxisLabel();
-            super.drawTitle();
-            this.drawSymbols();
-            super.drawBox();
-            super.drawControls();
-            super.drawLegend();
-
+            if (this.canDraw) {
+                // dimensions have been defined
+                super.drawSvg();
+                super.drawChartBody();
+                this.drawHorizontalAxis();
+                super.drawHorizontalAxisLabel();
+                super.drawVerticalAxis();
+                super.drawVerticalAxisLabel();
+                super.drawTitle();
+                this.drawSymbols();
+                super.drawBox();
+                super.drawControls();
+                super.drawLegend();
+            }
             return this;
         }
     }
