@@ -31,7 +31,7 @@
     "copy-sites-demo-fonts": "cp bower_components/bootstrap/dist/fonts/* sites/demo/fonts/",
     "copy-sites-demo-js": "cp bower_components/crossfilter/crossfilter.min.js bower_components/moment/min/moment.min.js bower_components/d3/d3.min.js sites/demo/js",
     "predemo": "npm run clean-demo && mkdirp sites/demo/js sites/demo/css sites/demo/fonts/ && npm run copy-sites-demo-deps",
-    "demo": "npm run tsc && npm run dist && npm run test",
+    "demo": "npm run tsc && npm run dist",
     "postdemo": "cp dist/punchcards.js sites/demo/js/",
     "everything": "npm run demo && npm run tsdoc && npm run cover"
   },
