@@ -1,8 +1,8 @@
 /*
- * tests requiring DOM manipulation for punchcards.DateRect from dist/punchcards.js
+ * tests requiring DOM manipulation for punchcards.WeekdayRect from dist/punchcards.js
  */
 
-describe('punchcards DateRect class...', function() {
+describe('punchcards WeekdayRect class...', function() {
 
     var fixtures, cf;
 
@@ -11,10 +11,10 @@ describe('punchcards DateRect class...', function() {
         var data;
 
         // set the base directory for loading of fixtures
-        fixture.setBase('test/fixtures');
+        fixture.setBase('test');
 
         // load the html and json fixtures
-        fixtures = fixture.load('date-rect.fixture.html',
+        fixtures = fixture.load('weekday-rect.fixture.html',
             'cityofchicago-police-data.fixture.json');
 
         data = fixtures[1];
@@ -35,7 +35,7 @@ describe('punchcards DateRect class...', function() {
     it('...html fixture should have loaded correctly', function() {
         var actual, expected;
         actual = fixtures[0][0].outerHTML;
-        expected = '<div id="punchcard-date-rect"></div>';
+        expected = '<div id="punchcard-weekday-rect"></div>';
         expect(actual).toEqual(expected);
     });
 
@@ -59,10 +59,10 @@ describe('punchcards DateRect class...', function() {
 
 
 
-    it('...constructor should return an instance of punchcards.DateRect when called with valid arguments', function() {
-        var actual, daterect;
-        daterect = new punchcards.DateRect(cf, 'punchcard-date-rect');
-        actual = daterect instanceof punchcards.DateRect;
+    it('...constructor should return an instance of punchcards.WeekdayRect when called with valid arguments', function() {
+        var actual, weekdayrect;
+        weekdayrect = new punchcards.WeekdayRect(cf, 'punchcard-weekday-rect');
+        actual = weekdayrect instanceof punchcards.WeekdayRect;
         expect(actual).toBe(true);
     });
 
@@ -70,12 +70,12 @@ describe('punchcards DateRect class...', function() {
 
     it('...after calling .drawHorizontalAxis(), the chart should have an ' +
         'SVG g element of class "horizontal-axis" attached to it', function() {
-        var actual, daterect;
-        daterect = new punchcards.DateRect(cf, 'punchcard-date-rect');
-        daterect.defineDimensions();
-        daterect.drawSvg();
-        daterect.drawHorizontalAxis();
-        actual = daterect.svg.select('g.horizontal-axis')[0][0];
+        var actual, weekdayrect;
+        weekdayrect = new punchcards.WeekdayRect(cf, 'punchcard-weekday-rect');
+        weekdayrect.defineDimensions();
+        weekdayrect.drawSvg();
+        weekdayrect.drawHorizontalAxis();
+        actual = weekdayrect.svg.select('g.horizontal-axis')[0][0];
         expect(actual).not.toBe(null);
     });
 
@@ -83,14 +83,14 @@ describe('punchcards DateRect class...', function() {
 
     it('...after calling .drawSymbols(), the chart should have an ' +
         'SVG g element of class "symbol" attached to it', function() {
-        var actual, daterect;
-        daterect = new punchcards.DateRect(cf, 'punchcard-date-rect');
-        daterect.defineDimensions();
-        daterect.drawSvg();
-        daterect.drawHorizontalAxis();
-        daterect.drawVerticalAxis();
-        daterect.drawSymbols();
-        actual = daterect.svg.select('g.symbol')[0][0];
+        var actual, weekdayrect;
+        weekdayrect = new punchcards.WeekdayRect(cf, 'punchcard-weekday-rect');
+        weekdayrect.defineDimensions();
+        weekdayrect.drawSvg();
+        weekdayrect.drawHorizontalAxis();
+        weekdayrect.drawVerticalAxis();
+        weekdayrect.drawSymbols();
+        actual = weekdayrect.svg.select('g.symbol')[0][0];
         expect(actual).not.toBe(null);
     });
 
@@ -99,14 +99,14 @@ describe('punchcards DateRect class...', function() {
     it('...after calling .drawSymbols(), the chart should have an ' +
         'SVG g element of class "symbol" with 139 SVG rects of class ' +
         '"symbol" attached to it', function() {
-        var actual, daterect, symbols;
-        daterect = new punchcards.DateRect(cf, 'punchcard-date-rect');
-        daterect.defineDimensions();
-        daterect.drawSvg();
-        daterect.drawHorizontalAxis();
-        daterect.drawVerticalAxis();
-        daterect.drawSymbols();
-        symbols = daterect.svg.select('g.symbol').selectAll('rect.symbol')[0];
+        var actual, weekdayrect, symbols;
+        weekdayrect = new punchcards.WeekdayRect(cf, 'punchcard-weekday-rect');
+        weekdayrect.defineDimensions();
+        weekdayrect.drawSvg();
+        weekdayrect.drawHorizontalAxis();
+        weekdayrect.drawVerticalAxis();
+        weekdayrect.drawSymbols();
+        symbols = weekdayrect.svg.select('g.symbol').selectAll('rect.symbol')[0];
         actual = symbols.length;;
         expect(actual).toEqual(139);
     });

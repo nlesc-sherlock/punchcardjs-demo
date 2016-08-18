@@ -1,7 +1,7 @@
-/// <reference path="../../../typings/globals/crossfilter/index.d.ts" />
-/// <reference path="../../../typings/globals/d3/index.d.ts" />
+/// <reference path="../typings/globals/crossfilter/index.d.ts" />
+/// <reference path="../typings/globals/d3/index.d.ts" />
 
-import {IDataRow} from '../idatarow';
+import {IDataRow} from './idatarow';
 import {ColorMap} from './colormap';
 import {WeekdayRect} from './weekday-rect';
 

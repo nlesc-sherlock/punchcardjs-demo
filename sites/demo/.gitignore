@@ -1,7 +1,12 @@
-# ignore the /fonts, /js and /css directories here, since they contain generated files 
-# from <projectroot>/dist and <projectroot>/src/css which are copied here for 
+# ignore the fonts, js and css here, since they are files
+# from <projectroot>/dist and <projectroot>/src/css which are copied here for
 # usage in the demo web site.
-/js
-/css
-/fonts
+/*.js
+/*.css
+/fonts/glyphicons-halflings-regular.*
 
+# do versioning on index.html
+!index.html
+!README.md
+!main-script.ts
+!dataloader.ts
