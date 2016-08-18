@@ -1,6 +1,6 @@
 describe('punchcards.ColorMap', function() {
 
-    it('\n...constructing with a string argument should return an object of ' +
+    it('...constructing with a string argument should return an object of ' +
         'type \'ColorMap\' when called with a valid string.', function () {
         var actual, expected;
         actual = (new punchcards.ColorMap('default')) instanceof punchcards.ColorMap;
@@ -9,7 +9,7 @@ describe('punchcards.ColorMap', function() {
     });
 
 
-    it('\n...constructing with a string argument \'default\' ...should return ' +
+    it('...constructing with a string argument \'default\' ...should return ' +
         'a colortable equal to the class property \'defaultColorTable\'.', function () {
         var actual, expected;
         actual = (new punchcards.ColorMap('default')).colortable;
@@ -18,7 +18,7 @@ describe('punchcards.ColorMap', function() {
     });
 
 
-    it('\n...constructing with no arguments ...should yield the default color table.', function () {
+    it('...constructing with no arguments ...should yield the default color table.', function () {
         var actual, expected;
         actual = (new punchcards.ColorMap()).colortable;
         expected = punchcards.ColorMap.defaultColorTable;
@@ -26,7 +26,7 @@ describe('punchcards.ColorMap', function() {
     });
 
 
-    it('\n...constructing with a ColorTable argument should yield a ColorMap ' +
+    it('...constructing with a ColorTable argument should yield a ColorMap ' +
         'with that ColorTable as .colortable.', function () {
         var actual, expected, colortable;
         colortable = punchcards.ColorMap.defaultColorTable;
@@ -36,7 +36,7 @@ describe('punchcards.ColorMap', function() {
     });
 
 
-    it('\n...constructing with a Number is undefined and results in an Error.', function () {
+    it('...constructing with a Number is undefined and results in an Error.', function () {
         var actual, expected;
         actual = function() {
             return new punchcards.ColorMap(8.682727);
@@ -51,7 +51,7 @@ describe('punchcards.ColorMap', function() {
 
 describe('punchcards.ColorMap.addColor()', function() {
 
-    it('\n...the colortable should include the test color after we add it.', function (){
+    it('...the colortable should include the test color after we add it.', function (){
 
         var actual,
             expected,
@@ -115,7 +115,7 @@ describe('punchcards.ColorMap.addColor()', function() {
 
 describe('punchcards.ColorMap.addColors()', function() {
 
-    it('\n...constructing with a ColorTable argument should yield a ' +
+    it('...constructing with a ColorTable argument should yield a ' +
         'ColorMap with that ColorTable.', function() {
 
         var colortable,
@@ -153,7 +153,7 @@ describe('punchcards.ColorMap.addColors()', function() {
 
 describe('punchcards.ColorMap.getColorRGB()', function() {
 
-    it('\n...the rgb string representation of the color at value 0.0 should ' +
+    it('...the rgb string representation of the color at value 0.0 should ' +
        'be \'rgb(0,0,0)\' when using the predefined \'gray\' colormap.', function() {
 
         var actual,

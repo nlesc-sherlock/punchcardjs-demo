@@ -2,7 +2,7 @@
  * Tests whether the general testing setup works
  */
 
-describe('punchcards general testing functionality\n', function() {
+describe('punchcards general testing functionality', function() {
 
     it('...should know about Punchcards', function() {
         expect(punchcards).not.toBe(null);
