@@ -98,6 +98,11 @@ export class Base {
      * @type {number}
      */
     private _legendWidth : number;
+    /**
+     * [_canDraw description]
+     * @type {boolean}
+     */
+    private _canDraw : boolean;
 
 
     /**
@@ -120,6 +125,9 @@ export class Base {
         // all the dimensions are collected into one object, dim, which is
         // initialized here:
         this.dim = {};
+
+        // can only draw stuff after user has defined some dimensions
+        this.canDraw = false;
 
         // the margins around the graph body
         this.marginLeft = 70;
@@ -160,6 +168,7 @@ export class Base {
                 hourOfDay: m.hour()
             });
         });
+        this.canDraw = true;
         return this;
     }
 
@@ -518,15 +527,6 @@ export class Base {
      */
     protected onResize() {
 
-        let isempty = function(obj:any) {
-            if (Object.getOwnPropertyNames(obj).length === 0) {
-                return true;
-            } else {
-                return false;
-            };
-        };
-
-
         // get the div element that we want to redraw
         let div = this.domElem;
 
@@ -535,14 +535,8 @@ export class Base {
             div.removeChild(div.firstChild);
         }
 
-        // when the constructor first creates the instance, this.dim is empty,
-        // which can lead to problems during unit testing (even if you can't
-        // tell the difference in the browser). Anyway, those problems are
-        // avoided by checking if the this.dim is empty.
-        if (!isempty(this.dim)) {
-            // draw the figure again, given that the window just changed size
-            this.draw();
-        }
+        this.draw();
+
     }
 
 
@@ -909,6 +903,23 @@ export class Base {
      */
     public get legendWidth():number {
         return this._legendWidth;
+    }
+
+    /**
+     * [canDraw description]
+     * @param  {boolean} canDraw [description]
+     * @return {[type]}             [description]
+     */
+    public set canDraw(canDraw:boolean) {
+        this._canDraw = canDraw;
+    }
+
+    /**
+     * [canDraw description]
+     * @return {boolean} [description]
+     */
+    public get canDraw():boolean {
+        return this._canDraw;
     }
 
 }
