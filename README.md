@@ -1,6 +1,10 @@
 [![devDependency Status](https://david-dm.org/nlesc-sherlock/punchcardjs/dev-status.svg)](https://david-dm.org/nlesc-sherlock/punchcardjs#info=devDependencies)
 [![Build Status](https://travis-ci.org/nlesc-sherlock/punchcardjs.svg?branch=master)](https://travis-ci.org/nlesc-sherlock/punchcardjs)
 
+- For the demo website, go [here](http://nlesc-sherlock.github.io/punchcardjs/demo/);
+- For the code coverage report, go [here](http://nlesc-sherlock.github.io/punchcardjs/coverage/coverage-remapped/);
+- For TypeDoc documentation of the code, go [here](http://nlesc-sherlock.github.io/punchcardjs/tsdoc/);
+
 # Setting up, building and running
 
 Get a local copy of the punchcardjs repository using ``git``:
