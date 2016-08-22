@@ -80,55 +80,61 @@ npm run cover
 # Project layout with explanation:
 
 ```bash
-.                                              # project root directory
-├── bower.json                                 # defines the client-side dependencies
-├── CONTRIBUTING                               # outlines the rules/for contributing to this repository
-├── doc                                        # directory containing files that help document the repository
-│   └── installing-node.md                     #
-├── karma.conf.js                              # configuration file for Karma, the test runner
-├── LICENSE                                    # describes the license for dissemination and use of this software
-├── notes.md                                   #
-├── package.json                               # the Node package manager file describes the server-side / development dependencies
-├── README.md                                  # this file
-├── sites                                      # there are a few websites associated with this repository:
-│   └── demo                                   # the demo website serves as an illustration of the punchcards library
-│       ├── index.html                         # the demo website's main file
-│       ├── README.md                          #
-│       └── ts                                 # some TypeScript files that are needed to display the demo site:
-│           ├── dataloader.ts                  # a script that loads data from the web
-│           └── main-script.ts                 # a script that calls dataloader, then passes its data to the punchcards library
-├── src                                        # the source code in this directory constitutes the heart of this repository
-│   ├── css                                    # there are corresponding style files for most TypeScript files in 'src/ts/punchcards'
-│   │   └── punchcards                         #
-│   │       ├── base.css                       # the base appearance that is shared by all types of punchcards
-│   │       ├── date-circle.css                # style file determining the appearance of the DateCircle punchcard
-│   │       ├── date-rect.css                  # style file determining the appearance of the DateRect punchcard
-│   │       ├── legend.css                     # style file determining the appearance of the Legend
-│   │       ├── weekday-circle.css             # style file determining the appearance of the WeekdayCircle punchcard
-│   │       └── weekday-rect.css               # style file determining the appearance of the WeekdayRect punchcard
-│   └── ts                                     # contains the TypeScript source code that get transpiled into JavaScript
-│       ├── idatarow.ts                        # interface definition for the data structure that punchcards expects
-│       ├── punchcards                         #
-│       │   ├── base.ts                        # the punchcards Base class
-│       │   ├── colormap.ts                    # the punchcards ColorMap class
-│       │   ├── date-circle.ts                 # the punchcards DateCircle class (inherits from DateRect)
-│       │   ├── date-rect.ts                   # the punchcards DateRect class (inherits from Base)
-│       │   ├── legend.ts                      # the punchcards Legend class
-│       │   ├── weekday-circle.ts              # the punchcards WeekdayCircle class (inherits from WeekdayRect)
-│       │   └── weekday-rect.ts                # the punchcards WeekdayRect class (inherits from Base)
-│       └── punchcards.ts                      #
-├── test                                       # the test directory has the exact same structure as 'src'
-│   ├── README.md                              #
-│   ├── html                                   # html files pertaining to the tests (so-called fixtures)
-│   │   └── punchcards                         # format is *.test.html
-│   │       └── base.test.html                 # html fixture file pertaining to the test of the Base class from 'src/ts/punchcards/'
-│   └── ts                                     #
-│       └── punchcards                         # format is *.test.js
-│           ├── base.test.js                   # JavaScript unit test file pertaining to the test of the Base class from 'src/ts/punchcards/'
-│           ├── colormap.test.js               # JavaScript unit test file pertaining to the test of the ColorMap class from 'src/ts/punchcards/'
-├── tsconfig.json                              # configuration file for the TypeScript compiler
-├── tslint.json                                # configuration file for linting/static analysis of the TypeScript code
-└── typings.json                               # type information for the client-side libraries
+.                                      # project root directory
+├── bower.json                         # defines the client-side dependencies
+├── CONTRIBUTING                       # outlines the rules/for contributing to this repository
+├── doc                                # directory containing files that help document the repository
+│   ├── example-date-circle.png        # example image of DateCircle class
+│   ├── example-date-rect.png          # example image of DateRect class
+│   ├── example-weekday-circle.png     # example image of WeekdayCircle class
+│   ├── example-weekday-rect.png       # example image of WeekdayRect class
+│   └── installing-node.md             # some notes on how to install nodejs
+├── karma.conf.js                      # configuration file for Karma, the test runner
+├── LICENSE                            # describes the license for dissemination and use of this software
+├── notes.md
+├── package.json                       # the Node package manager file describes the server-side / development dependencies
+├── README.md                          # this file
+├── sites                              # there are a few websites associated with this repository:
+│   └── demo                           # the demo website serves as an illustration of the punchcards library
+│       ├── dataloader.ts              # script that helps load the data for the demo website
+│       ├── fonts                      # required directory for bootstrap (contents added by an npm run task)
+│       ├── index.html                 # the demo website's main file
+│       ├── main-script.ts             # the demo website's main script
+│       └── README.md                  #
+├── src                                # this directory contains all the sources (css, ts) for the punchcards library
+│   ├── base.css                       # the CSS for the Base class
+│   ├── base.ts                        # the TypeScript for the Base class
+│   ├── colormap.ts                    # the TypeScript for the ColorMap class
+│   ├── date-circle.css                # the CSS for the DateCircle class
+│   ├── date-circle.ts                 # the TypeScript for the DateCircle class
+│   ├── date-rect.css                  # the CSS for the DateRect class
+│   ├── date-rect.ts                   # the TypeScript for the DateRect class
+│   ├── idatarow.ts                    # the TypeScript for the IDataRow interface
+│   ├── legend.css                     # the CSS for the Legend class
+│   ├── legend.ts                      # the TypeScript for the Legend class
+│   ├── punchcards.ts                  # the TypeScript for the punchcards module
+│   ├── weekday-circle.css             # the CSS for the WeekdayCircle class
+│   ├── weekday-circle.ts              # the TypeScript for the WeekdayCircle class
+│   ├── weekday-rect.css               # the CSS for the WeekdayRect class
+│   └── weekday-rect.ts                # the TypeScript for the WeekdayRect class
+├── test                               # this directory contains all the sources (*.dom.js, *.unit.js, *.fixture.html, *.fixture.json) for testing the code from src/
+│   ├── base.dom.js                    # DOM test of the Base class
+│   ├── base.fixture.html              # HTML fixture for the DOM test of the Base class
+│   ├── cityofchicago-police-data.fixture.json # JSON fixture containing a test data set
+│   ├── colormap.unit.js               # unit tests of the ColorMap class
+│   ├── date-circle.dom.js             # DOM test of the DateCircle class
+│   ├── date-circle.fixture.html       # HTML fixture for the DOM test of the DateCircle class
+│   ├── date-rect.dom.js               # DOM test of the DateRect class
+│   ├── date-rect.fixture.html         # HTML fixture for the DOM test of the DateRect class
+│   ├── general.unit.js                # some general unit tests to test the testing setup
+│   ├── README.md
+│   ├── weekday-circle.dom.js          # DOM test of the WeekdayCircle class
+│   ├── weekday-circle.fixture.html    # HTML fixture for the DOM test of the WeekdayCircle class
+│   ├── weekday-rect.dom.js            # DOM test of the WeekdayRect class
+│   └── weekday-rect.fixture.html      # HTML fixture for the DOM test of the WeekdayRect class
+├── tsconfig.json                      # configuration file for the TypeScript compiler
+├── tslint.json                        # configuration file for linting/static analysis of the TypeScript code
+└── typings.json                       # type information for the client-side libraries
 ```
 
 
