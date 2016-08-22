@@ -1,0 +1,52 @@
+# I deliberately made this a txt file, to avoid blindly running the commands
+# (we should really add exception handling, maybe using Python)
+
+
+# record the state: branch and directory
+# TODO
+
+# make sure you're on the master branch
+git checkout master
+
+# delete branch gh-pages from the github repo
+git push origin --delete gh-pages
+
+# delete branch gh-pages from the local computer's repo
+git branch -D gh-pages
+
+# make a new, local gh-pages branch...
+git branch gh-pages
+
+# ...and switch to it
+git checkout gh-pages
+
+# install npm dependencies (if you don't have them already)
+npm install
+
+# generate content for gh-pages...
+npm run demo
+npm run tsdoc
+npm run cover
+
+# ...and transpile a few more typescript files not directly related to the
+# library (compiles into JavaScript despite errors)
+node_modules/.bin/tsc --target es5 sites/demo/*.ts --outDir sites/demo
+
+# remove any .gitignores from under sites/
+git rm `find ./sites/ -name '.gitignore' -type f`
+
+# tell git about all the content we added as well as what we removed
+git add --all sites/demo sites/coverage sites/tsdoc
+
+# commit to local gh-pages branch
+git commit -m "gh-pages content"
+
+# push the 'sites' directory to github using the subtree command
+git subtree push --prefix sites origin gh-pages
+
+# switch back to the master branch
+git checkout master
+
+# or switch back to the recorded state (branch and directory)
+# TODO
+
