@@ -152,7 +152,6 @@ So you wrote some **source code**. A **distributable** can be created from the s
 - Tape also provides a simple **assertion** library. We expand [``tape``](https://www.npmjs.com/package/tape) with [``tapes``](https://www.npmjs.com/package/tapes) in order to do ``beforeEach`` and ``afterEach``.
 - Tape is also the **test runner**; well, it's one of the ways in which to run the tests. It is a versatile little library.
 - We generate code coverage in different formats using [``istanbul``](https://www.npmjs.com/package/istanbul). However, this gives us code coverage of the (generated) JavaScript, which is not really what we're interested in. So we have [``remap-istanbul``](https://www.npmjs.com/package/remap-istanbul) figure out which parts of the generated JavaScript correspond with which parts of the (written) TypeScript.
-- We currently [don't have a working setup](https://github.com/nlesc-sherlock/punchcardjs/issues/15) for running any tests in the browser.
 
 # Examples
 
