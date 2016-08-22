@@ -46,7 +46,7 @@ npm run demo
 
 # ...and transpile a few more typescript files not directly related to the
 # library (compiles into JavaScript despite errors)
-node_modules/.bin/tsc --target es5 sites/demo/ts/*.ts --outDir sites/demo/js
+node_modules/.bin/tsc --target es5 sites/demo/*.ts --outDir sites/demo
 
 # change directory to the demo site
 cd sites/demo/
