@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/nlesc-sherlock/punchcardjs.svg?branch=master)](https://travis-ci.org/nlesc-sherlock/punchcardjs)
 
 - For the demo website, go [here](http://nlesc-sherlock.github.io/punchcardjs/demo/);
-- For the code coverage report, go [here](http://nlesc-sherlock.github.io/punchcardjs/coverage/coverage-remapped/);
+- For the code coverage report, go [here](http://nlesc-sherlock.github.io/punchcardjs/coverage/coverage-remapped/src/index.html);
 - For TypeDoc documentation of the code, go [here](http://nlesc-sherlock.github.io/punchcardjs/tsdoc/);
 
 # Setting up, building and running
