@@ -1,5 +1,5 @@
-/// <reference path="../../typings/globals/moment/index.d.ts" />
-/// <reference path="../../typings/globals/moment-node/index.d.ts" />
+/// <reference path="../typings/globals/moment/index.d.ts" />
+/// <reference path="../typings/globals/moment-node/index.d.ts" />
 
 
 export interface IDataRow {

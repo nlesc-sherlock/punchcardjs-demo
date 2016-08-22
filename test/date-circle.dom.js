@@ -1,8 +1,8 @@
 /*
- * tests requiring DOM manipulation for punchcards.WeekdayCircle from dist/punchcards.js
+ * tests requiring DOM manipulation for punchcards.DateCircle from dist/punchcards.js
  */
 
-describe('punchcards WeekdayCircle class...', function() {
+describe('punchcards DateCircle class...', function() {
 
     var fixtures, cf;
 
@@ -11,10 +11,10 @@ describe('punchcards WeekdayCircle class...', function() {
         var data;
 
         // set the base directory for loading of fixtures
-        fixture.setBase('test/fixtures');
+        fixture.setBase('test');
 
         // load the html and json fixtures
-        fixtures = fixture.load('weekday-circle.fixture.html',
+        fixtures = fixture.load('date-circle.fixture.html',
             'cityofchicago-police-data.fixture.json');
 
         data = fixtures[1];
@@ -35,7 +35,7 @@ describe('punchcards WeekdayCircle class...', function() {
     it('...html fixture should have loaded correctly', function() {
         var actual, expected;
         actual = fixtures[0][0].outerHTML;
-        expected = '<div id="punchcard-weekday-circle"></div>';
+        expected = '<div id="punchcard-date-circle"></div>';
         expect(actual).toEqual(expected);
     });
 
@@ -59,23 +59,23 @@ describe('punchcards WeekdayCircle class...', function() {
 
 
 
-    it('...constructor should return an instance of punchcards.WeekdayCircle when called with valid arguments', function() {
-        var actual, weekdaycircle;
-        weekdaycircle = new punchcards.WeekdayCircle(cf, 'punchcard-weekday-circle');
-        actual = weekdaycircle instanceof punchcards.WeekdayCircle;
+    it('...constructor should return an instance of punchcards.DateCircle when called with valid arguments', function() {
+        var actual, datecircle;
+        datecircle = new punchcards.DateCircle(cf, 'punchcard-date-circle');
+        actual = datecircle instanceof punchcards.DateCircle;
         expect(actual).toBe(true);
     });
 
     it('...after calling .drawSymbols(), the chart should have an ' +
         'SVG g element of class "symbol" attached to it', function() {
-        var actual, weekdaycircle;
-        weekdaycircle = new punchcards.WeekdayCircle(cf, 'punchcard-weekday-circle');
-        weekdaycircle.defineDimensions();
-        weekdaycircle.drawSvg();
-        weekdaycircle.drawHorizontalAxis();
-        weekdaycircle.drawVerticalAxis();
-        weekdaycircle.drawSymbols();
-        actual = weekdaycircle.svg.select('g.symbol')[0][0];
+        var actual, datecircle;
+        datecircle = new punchcards.DateCircle(cf, 'punchcard-date-circle');
+        datecircle.defineDimensions();
+        datecircle.drawSvg();
+        datecircle.drawHorizontalAxis();
+        datecircle.drawVerticalAxis();
+        datecircle.drawSymbols();
+        actual = datecircle.svg.select('g.symbol')[0][0];
         expect(actual).not.toBe(null);
     });
 
@@ -84,14 +84,14 @@ describe('punchcards WeekdayCircle class...', function() {
     it('...after calling .drawSymbols(), the chart should have an ' +
         'SVG g element of class "symbol" with 139 SVG circles of class ' +
         '"symbol" attached to it', function() {
-        var actual, weekdaycircle, symbols;
-        weekdaycircle = new punchcards.WeekdayCircle(cf, 'punchcard-weekday-circle');
-        weekdaycircle.defineDimensions();
-        weekdaycircle.drawSvg();
-        weekdaycircle.drawHorizontalAxis();
-        weekdaycircle.drawVerticalAxis();
-        weekdaycircle.drawSymbols();
-        symbols = weekdaycircle.svg.select('g.symbol').selectAll('circle.symbol')[0];
+        var actual, datecircle, symbols;
+        datecircle = new punchcards.DateCircle(cf, 'punchcard-date-circle');
+        datecircle.defineDimensions();
+        datecircle.drawSvg();
+        datecircle.drawHorizontalAxis();
+        datecircle.drawVerticalAxis();
+        datecircle.drawSymbols();
+        symbols = datecircle.svg.select('g.symbol').selectAll('circle.symbol')[0];
         actual = symbols.length;;
         expect(actual).toEqual(139);
     });

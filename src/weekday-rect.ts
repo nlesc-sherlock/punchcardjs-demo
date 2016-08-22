@@ -1,7 +1,10 @@
-/// <reference path="../../../typings/globals/crossfilter/index.d.ts" />
-/// <reference path="../../../typings/globals/d3/index.d.ts" />
+/// <reference path="../typings/globals/crossfilter/index.d.ts" />
+/// <reference path="../typings/globals/d3/index.d.ts" />
+/// <reference path="../typings/globals/moment/index.d.ts" />
+/// <reference path="../typings/globals/moment-node/index.d.ts" />
 
-import {IDataRow} from '../idatarow';
+
+import {IDataRow} from './idatarow';
 import {Base} from './base';
 import {ColorMap} from './colormap';
 
@@ -41,6 +44,7 @@ export class WeekdayRect extends Base {
                 hourOfDay: m.hour()
             });
         });
+        this.canDraw = true;
 
         return this;
     }
