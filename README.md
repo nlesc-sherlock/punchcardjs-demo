@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/nlesc-sherlock/punchcardjs.svg?branch=master)](https://travis-ci.org/nlesc-sherlock/punchcardjs)
 
 - For the demo website, go [here](http://nlesc-sherlock.github.io/punchcardjs/demo/);
-- For the code coverage report, go [here](http://nlesc-sherlock.github.io/punchcardjs/coverage/coverage-remapped/src/index.html);
+- For the code coverage report, go [here](http://nlesc-sherlock.github.io/punchcardjs/coverage/remapped/src/index.html);
 - For TypeDoc documentation of the code, go [here](http://nlesc-sherlock.github.io/punchcardjs/tsdoc/);
 
 # Setting up, building and running
@@ -76,7 +76,7 @@ npm run purge
 npm run tsdoc
 
 # generate code coverage in various formats. output will be at <projectroot>/sites/coverage/, e.g.
-# sites/coverage/coverage-remapped/ts/punchcards/index.html
+# sites/coverage/remapped/ts/punchcards/index.html
 npm run cover
 
 ```
@@ -153,7 +153,7 @@ So you wrote some **source code**. A **distributable** can be created from the s
 - Our **source code** lives at ``src``. The meat of it is written in TypeScript.
 - We create the **distributable** using ``npm run`` scripting, so there are no Gulp or Grunt files.
 - We use **unit tests** written in the style of [``Jasmine``](http://jasmine.github.io/2.0/introduction.html) (i.e. ``describe()`` and ``it()``).
-- Our **assertion** library is [Karma](https://karma-runner.github.io/1.0/index.html) (e.g. ``expect(actual).toEqual(expected)``). 
+- Our **assertion** library is [Karma](https://karma-runner.github.io/1.0/index.html) (e.g. ``expect(actual).toEqual(expected)``).
 - Karma is also the **test runner**.
 - We generate code coverage in different formats using [``karma-coverage``](https://www.npmjs.com/package/karma-coverage). However, this gives us code coverage of the (generated) JavaScript, which is not really what we're interested in. So we have [``remap-istanbul``](https://www.npmjs.com/package/remap-istanbul) figure out which parts of the generated JavaScript correspond with which parts of the (written) TypeScript.
 

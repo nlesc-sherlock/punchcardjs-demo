@@ -14,7 +14,7 @@
     "precover": "trash sites/coverage/ && npm run tsc && npm run dist",
     "cover": "npm run test && npm run remap-istanbul-json && npm run remap-istanbul-html",
     "remap-istanbul-json": "remap-istanbul --input sites/coverage/coverage.json --output sites/coverage/coverage-remapped.json",
-    "remap-istanbul-html": "remap-istanbul --input sites/coverage/coverage-remapped.json --output sites/coverage/coverage-remapped --type html --exclude 'node_modules'",
+    "remap-istanbul-html": "remap-istanbul --input sites/coverage/coverage-remapped.json --output sites/coverage/remapped --type html --exclude 'node_modules'",
     "pretsdoc": "npm run clean-tsdoc && mkdirp sites/tsdoc",
     "tsdoc": "typedoc --out sites/tsdoc/ .",
     "clean": "npm run clean-build & npm run clean-dist & npm run clean-sites",
