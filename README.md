@@ -83,7 +83,7 @@ npm run cover
 
 # Project layout with explanation:
 
-```bash
+```text
 .                                      # project root directory
 ├── bower.json                         # defines the client-side dependencies
 ├── CONTRIBUTING                       # outlines the rules/for contributing to this repository

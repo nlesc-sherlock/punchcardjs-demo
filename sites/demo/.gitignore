@@ -1,7 +1,7 @@
 # ignore the fonts, js and css here, since they are files
 # from <projectroot>/dist and <projectroot>/src/css which are copied here for
 # usage in the demo web site.
-/*.js
+/**/*.js
 /*.css
 /fonts/glyphicons-halflings-regular.*
 
