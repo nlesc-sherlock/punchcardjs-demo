@@ -48,10 +48,6 @@ npm run test
 # do the above steps plus some other things to get a demo website...
 npm run demo
 
-# ...and transpile a few more typescript files not directly related to the
-# library (compiles into JavaScript despite errors)
-node_modules/.bin/tsc --target es5 sites/demo/*.ts --outDir sites/demo
-
 # change directory to the demo site
 cd sites/demo/
 

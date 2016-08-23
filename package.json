@@ -22,7 +22,7 @@
     "clean-dist": "trash dist/",
     "clean-sites": "npm run clean-cover & npm run clean-demo & npm run clean-tsdoc",
     "clean-cover": "trash sites/coverage/",
-    "clean-demo": "trash sites/demo/*.js sites/demo/*.css sites/demo/bootstrap-css/*.css sites/demo/fonts/glyphicons-halflings-regular.*",
+    "clean-demo": "trash sites/demo/*.js !sites/demo/main-script.js sites/demo/*.css sites/demo/bootstrap-css sites/demo/fonts",
     "clean-tsdoc": "trash sites/tsdoc/",
     "clean-downloaded": "trash bower_components/ typings/ node_modules/",
     "purge": "npm run clean & npm run clean-downloaded",
@@ -32,7 +32,7 @@
     "copy-sites-demo-js": "cp bower_components/crossfilter/crossfilter.min.js bower_components/moment/min/moment.min.js bower_components/d3/d3.min.js sites/demo/",
     "predemo": "npm run clean-demo && mkdirp sites/demo/fonts && mkdirp sites/demo/bootstrap-css && npm run copy-sites-demo-deps",
     "demo": "npm run tsc && npm run dist",
-    "postdemo": "cp dist/punchcards.js sites/demo/",
+    "postdemo": "cp dist/punchcards.js sites/demo/ && tsc --target es5 sites/demo/dataloader.ts --outDir sites/demo",
     "everything": "npm run demo && npm run tsdoc && npm run cover"
   },
   "keywords": [
