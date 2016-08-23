@@ -2,12 +2,9 @@
     "compilerOptions": {
         "target": "es5",
         "module": "commonjs",
-        "declaration": false,
         "noImplicitAny": true,
-        "removeComments": true,
-        "noLib": false,
-        "outDir": "./build/",
-        "rootDir": "./src/",
+        "outDir": "build",
+        "rootDir": "src",
         "inlineSourceMap": true,
         "inlineSources": true
     },
