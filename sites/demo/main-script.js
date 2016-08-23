@@ -1,12 +1,9 @@
 
-function doit(data: IDataRow[]) {
+function doit(data) {
 
-    let dateCircle   : punchcards.DateCircle;
-    let dateRect     : punchcards.DateRect;
-    let weekdayCircle: punchcards.WeekdayCircle;
-    let weekdayRect  : punchcards.WeekdayRect;
+    var dateCircle, dateRect, weekdayCircle, weekdayRect;
 
-    let cf:CrossFilter.CrossFilter<IDataRow> = crossfilter(data);
+    var cf = crossfilter(data);
 
     // draw the punchcard-weekday with svg circles using the crossfilter object and D3
     weekdayCircle = new punchcards.WeekdayCircle(cf, 'punchcard-weekday-circle');
@@ -32,7 +29,7 @@ function doit(data: IDataRow[]) {
 
 
 // make a new dataloader
-let dataloader: DataLoader = new DataLoader();
+var dataloader = new DataLoader();
 
 // configure the dataloader
 dataloader.limit = 5000;
