@@ -18,10 +18,10 @@ module.exports = function(config) {
         {pattern: 'bower_components/d3/d3.js', included: true},
         {pattern: 'bower_components/moment/moment.js', included: true},
         {pattern: 'dist/punchcards.js', included: true},
-        {pattern: 'test/*.unit.js', included: true},
+        {pattern: 'test/*.dom.js', included: true},
         {pattern: 'test/*.fixture.html', included: true},
         {pattern: 'test/*.fixture.json', included: true},
-        {pattern: 'test/*.dom.js', included: true}
+        {pattern: 'test/*.unit.js', included: true}
     ],
 
 
