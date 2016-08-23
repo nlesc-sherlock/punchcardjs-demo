@@ -1,12 +1,20 @@
-# ignore the fonts, js and css here, since they are files
-# from <projectroot>/dist and <projectroot>/src/css which are copied here for
-# usage in the demo web site.
-/**/*.js
-/*.css
-/fonts/glyphicons-halflings-regular.*
+punchcards.js
+date-circle.css
+bootstrap-css
+bootstrap-css/bootstrap-theme.min.css
+bootstrap-css/bootstrap.min.css
+dataloader.js
+weekday-circle.css
+base.css
+weekday-rect.css
+fonts/glyphicons-halflings-regular.ttf
+fonts/glyphicons-halflings-regular.woff2
+fonts/glyphicons-halflings-regular.svg
+fonts/glyphicons-halflings-regular.woff
+fonts/glyphicons-halflings-regular.eot
+crossfilter.min.js
+legend.css
+moment.min.js
+d3.min.js
+date-rect.css
 
-# do versioning on index.html
-!index.html
-!README.md
-!main-script.ts
-!dataloader.ts
