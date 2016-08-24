@@ -80,7 +80,7 @@ describe('punchcards Base class...', function () {
         div = fixtures[0][0];
         // capture the svg opening and closing tags using a regular expression
         // see https://regex101.com/ for testing/debugging regular expressions
-        re = new RegExp(/^<svg.*>.*<\/svg>$/);
+        re = new RegExp(/^<svg[\w\W]*>[\w\W]*<\/svg>$/);
         actual = re.test(div.innerHTML);
         expected = true;
         expect(actual).toEqual(expected);
@@ -116,7 +116,7 @@ describe('punchcards Base class...', function () {
             // use a regular expression to verify that there is a 'width' property
             // attached to the svg opening tag with a numerical value.
             // see https://regex101.com/ for testing/debugging regular expressions
-            re = new RegExp(/^<svg.*width\s*=\s*["']\d{1,}\%?["'].*>.*<\/svg>$/);
+            re = new RegExp(/^<svg[\w\W]*width\s*=\s*["']\d{1,}\%?["'][\w\W]*>[\w\W]*<\/svg>$/);
             actual = re.test(div.innerHTML);
             expected = true;
             expect(actual).toEqual(expected);
@@ -149,7 +149,7 @@ describe('punchcards Base class...', function () {
             base = new punchcards.Base(cf, 'punchcard-base');
             base.drawSvg();
             div = fixtures[0][0];
-            re = new RegExp(/^<svg.*height\s*=\s*["']\d{1,}\%?["'].*>.*<\/svg>$/);
+            re = new RegExp(/^<svg[\w\W]*height\s*=\s*["']\d{1,}\%?["'][\w\W]*>[\w\W]*<\/svg>$/);
             actual = re.test(div.innerHTML);
             expected = true;
             expect(actual).toEqual(expected);
