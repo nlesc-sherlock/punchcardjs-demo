@@ -2,11 +2,14 @@
  * tests requiring DOM manipulation for punchcards.DateCircle from dist/punchcards.js
  */
 
-describe('punchcards DateCircle class...', function() {
+/*global describe, beforeEach, fixture, crossfilter, afterEach, it, expect, punchcards*/
+
+describe('punchcards DateCircle class...', function () {
+    'use strict';
 
     var fixtures, cf;
 
-    beforeEach(function() {
+    beforeEach(function () {
 
         var data;
 
@@ -24,7 +27,7 @@ describe('punchcards DateCircle class...', function() {
 
 
 
-    afterEach(function(){
+    afterEach(function () {
         // clean up the DOM
         fixture.cleanup();
         cf = undefined;
@@ -32,7 +35,7 @@ describe('punchcards DateCircle class...', function() {
 
 
 
-    it('...html fixture should have loaded correctly', function() {
+    it('...html fixture should have loaded correctly', function () {
         var actual, expected;
         actual = fixtures[0][0].outerHTML;
         expected = '<div id="punchcard-date-circle"></div>';
@@ -41,7 +44,7 @@ describe('punchcards DateCircle class...', function() {
 
 
 
-    it('...json fixture should have loaded correctly', function() {
+    it('...json fixture should have loaded correctly', function () {
         var actual, expected;
         actual = Object.keys(fixtures[1][0]).sort();
         expected = ["casenumber", "datestr", "description", "latitude", "longitude", "primary"];
@@ -50,7 +53,7 @@ describe('punchcards DateCircle class...', function() {
 
 
 
-    it('...json fixture should have 5000 records', function() {
+    it('...json fixture should have 5000 records', function () {
         var actual, expected;
         actual = cf.size();
         expected = 5000;
@@ -59,7 +62,7 @@ describe('punchcards DateCircle class...', function() {
 
 
 
-    it('...constructor should return an instance of punchcards.DateCircle when called with valid arguments', function() {
+    it('...constructor should return an instance of punchcards.DateCircle when called with valid arguments', function () {
         var actual, datecircle;
         datecircle = new punchcards.DateCircle(cf, 'punchcard-date-circle');
         actual = datecircle instanceof punchcards.DateCircle;
@@ -67,37 +70,36 @@ describe('punchcards DateCircle class...', function() {
     });
 
     it('...after calling .drawSymbols(), the chart should have an ' +
-        'SVG g element of class "symbol" attached to it', function() {
-        var actual, datecircle;
-        datecircle = new punchcards.DateCircle(cf, 'punchcard-date-circle');
-        datecircle.defineDimensions();
-        datecircle.drawSvg();
-        datecircle.drawHorizontalAxis();
-        datecircle.drawVerticalAxis();
-        datecircle.drawSymbols();
-        actual = datecircle.svg.select('g.symbol')[0][0];
-        expect(actual).not.toBe(null);
-    });
+        'SVG g element of class "symbol" attached to it', function () {
+            var actual, datecircle;
+            datecircle = new punchcards.DateCircle(cf, 'punchcard-date-circle');
+            datecircle.defineDimensions();
+            datecircle.drawSvg();
+            datecircle.drawHorizontalAxis();
+            datecircle.drawVerticalAxis();
+            datecircle.drawSymbols();
+            actual = datecircle.svg.select('g.symbol')[0][0];
+            expect(actual).not.toBe(null);
+        });
 
 
 
     it('...after calling .drawSymbols(), the chart should have an ' +
         'SVG g element of class "symbol" with 139 SVG circles of class ' +
-        '"symbol" attached to it', function() {
-        var actual, datecircle, symbols;
-        datecircle = new punchcards.DateCircle(cf, 'punchcard-date-circle');
-        datecircle.defineDimensions();
-        datecircle.drawSvg();
-        datecircle.drawHorizontalAxis();
-        datecircle.drawVerticalAxis();
-        datecircle.drawSymbols();
-        symbols = datecircle.svg.select('g.symbol').selectAll('circle.symbol')[0];
-        actual = symbols.length;;
-        expect(actual).toEqual(139);
-    });
+        '"symbol" attached to it', function () {
+            var actual, datecircle, symbols;
+            datecircle = new punchcards.DateCircle(cf, 'punchcard-date-circle');
+            datecircle.defineDimensions();
+            datecircle.drawSvg();
+            datecircle.drawHorizontalAxis();
+            datecircle.drawVerticalAxis();
+            datecircle.drawSymbols();
+            symbols = datecircle.svg.select('g.symbol').selectAll('circle.symbol')[0];
+            actual = symbols.length;
+            expect(actual).toEqual(139);
+        });
 
-
-
-})
+    
+});
 
 
