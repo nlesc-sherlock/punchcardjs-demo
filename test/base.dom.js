@@ -5,7 +5,7 @@
 /*global describe,beforeEach,it,afterEach,crossfilter,fixture,expect,punchcards*/
 
 describe('punchcards Base class...', function () {
-    
+
     'use strict';
 
     var fixtures, cf;

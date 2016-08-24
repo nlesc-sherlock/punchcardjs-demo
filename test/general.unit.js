@@ -5,7 +5,7 @@
 /*global describe, it, expect, punchcards, crossfilter, d3, moment, fixture*/
 
 describe('punchcards general testing functionality', function () {
-    
+
     'use strict';
 
     it('...should know about Punchcards', function () {

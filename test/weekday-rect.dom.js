@@ -5,7 +5,7 @@
 /*global describe, beforeEach, fixture, crossfilter, afterEach, it, expect, punchcards*/
 
 describe('punchcards WeekdayRect class...', function () {
-    
+
     'use strict';
 
     var fixtures, cf;
@@ -115,7 +115,6 @@ describe('punchcards WeekdayRect class...', function () {
             expect(actual).toEqual(139);
         });
 
-    
 });
 
 

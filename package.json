@@ -5,6 +5,7 @@
   "main": "./dist/punchcards.js",
   "scripts": {
     "postinstall": "bower install && typings install",
+    "lint": "npm run tslint && npm run jshint && npm run jslint",
     "tslint": "tslint --config tslint.json ./src/**/*.ts",
     "jslint": "jslint test/*.js",
     "jshint": "jshint test/*.js",
@@ -12,6 +13,7 @@
     "tsc": "tsc --project .",
     "predist": "trash dist/ && mkdirp dist",
     "dist": "browserify --no-bundle-external --debug build/punchcards.js --outfile dist/punchcards.js --standalone punchcards",
+    "pretest": "npm run jshint && npm run jslint",
     "test": "karma start karma.conf.js",
     "precover": "trash sites/coverage/ && npm run tsc && npm run dist",
     "cover": "npm run test && npm run remap-istanbul-json && echo 'TODO npm run remap-istanbul-html'",
@@ -58,6 +60,7 @@
     "istanbul": "^0.4.4",
     "jasmine-core": "^2.4.1",
     "jshint": "^2.9.3",
+    "jslint": "^0.10.3",
     "karma": "^1.2.0",
     "karma-coverage": "^1.1.1",
     "karma-fixture": "^0.2.6",

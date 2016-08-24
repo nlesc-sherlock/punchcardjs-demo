@@ -5,9 +5,9 @@
 /*global describe, beforeEach, fixture, crossfilter, afterEach, it, expect, punchcards*/
 
 describe('punchcards DateRect class...', function () {
-    
+
     'use strict';
-    
+
     var fixtures, cf;
 
     beforeEach(function () {

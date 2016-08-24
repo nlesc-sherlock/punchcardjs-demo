@@ -161,7 +161,7 @@ describe('punchcards.ColorMap.addColors()', function () {
 describe('punchcards.ColorMap.getColorRGB()', function () {
 
     'use strict';
-    
+
     it('...the rgb string representation of the color at value 0.0 should ' +
         'be \'rgb(0,0,0)\' when using the predefined \'gray\' colormap.', function () {
 

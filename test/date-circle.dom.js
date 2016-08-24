@@ -5,6 +5,7 @@
 /*global describe, beforeEach, fixture, crossfilter, afterEach, it, expect, punchcards*/
 
 describe('punchcards DateCircle class...', function () {
+
     'use strict';
 
     var fixtures, cf;
@@ -99,7 +100,7 @@ describe('punchcards DateCircle class...', function () {
             expect(actual).toEqual(139);
         });
 
-    
+
 });
 
 
