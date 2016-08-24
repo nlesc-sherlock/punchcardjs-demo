@@ -1,8 +1,7 @@
-/// <reference path="../typings/globals/crossfilter/index.d.ts" />
-/// <reference path="../typings/globals/d3/index.d.ts" />
-/// <reference path="../typings/globals/moment/index.d.ts" />
-/// <reference path="../typings/globals/moment-node/index.d.ts" />
 
+import 'crossfilter';
+import 'd3';
+import 'moment';
 
 import {IDataRow} from './idatarow';
 import {Base} from './base';

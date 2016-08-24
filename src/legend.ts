@@ -1,4 +1,5 @@
-/// <reference path="../typings/globals/d3/index.d.ts" />
+
+import 'd3';
 
 import {Base} from './base';
 import {DateCircle} from './date-circle';

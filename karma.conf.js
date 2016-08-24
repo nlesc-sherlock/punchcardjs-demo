@@ -14,9 +14,9 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-        {pattern: 'bower_components/crossfilter/crossfilter.js', included: true},
-        {pattern: 'bower_components/d3/d3.js', included: true},
-        {pattern: 'bower_components/moment/moment.js', included: true},
+        {pattern: 'node_modules/crossfilter/crossfilter.js', included: true},
+        {pattern: 'node_modules/d3/d3.js', included: true},
+        {pattern: 'node_modules/moment/moment.js', included: true},
         {pattern: 'dist/punchcards.js', included: true},
         {pattern: 'test/*.dom.js', included: true},
         {pattern: 'test/*.fixture.html', included: true},

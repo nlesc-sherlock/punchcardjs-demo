@@ -9,7 +9,8 @@
         "inlineSources": true
     },
     "files": [
-        "./src/punchcards.ts"
+        "src/punchcards.ts",
+        "typings/index.d.ts"
     ],
     "exclude": ["sites"]
 }
