@@ -1,5 +1,5 @@
 /*global describe, it, punchcards, expect */
-//,beforeEach,it,afterEach,crossfilter,fixture,expect,punchcards
+
 describe('punchcards.ColorMap', function () {
     'use strict';
 
