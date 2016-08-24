@@ -1,21 +1,24 @@
-describe('punchcards.ColorMap', function() {
+/*global describe, it, punchcards, expect */
+//,beforeEach,it,afterEach,crossfilter,fixture,expect,punchcards
+describe('punchcards.ColorMap', function () {
+    'use strict';
 
     it('...constructing with a string argument should return an object of ' +
         'type \'ColorMap\' when called with a valid string.', function () {
-        var actual, expected;
-        actual = (new punchcards.ColorMap('default')) instanceof punchcards.ColorMap;
-        expected = true;
-        expect(actual).toEqual(expected);
-    });
+            var actual, expected;
+            actual = (new punchcards.ColorMap('default')) instanceof punchcards.ColorMap;
+            expected = true;
+            expect(actual).toEqual(expected);
+        });
 
 
     it('...constructing with a string argument \'default\' ...should return ' +
         'a colortable equal to the class property \'defaultColorTable\'.', function () {
-        var actual, expected;
-        actual = (new punchcards.ColorMap('default')).colortable;
-        expected = punchcards.ColorMap.defaultColorTable;
-        expect(actual).toEqual(expected);
-    });
+            var actual, expected;
+            actual = (new punchcards.ColorMap('default')).colortable;
+            expected = punchcards.ColorMap.defaultColorTable;
+            expect(actual).toEqual(expected);
+        });
 
 
     it('...constructing with no arguments ...should yield the default color table.', function () {
@@ -28,30 +31,31 @@ describe('punchcards.ColorMap', function() {
 
     it('...constructing with a ColorTable argument should yield a ColorMap ' +
         'with that ColorTable as .colortable.', function () {
-        var actual, expected, colortable;
-        colortable = punchcards.ColorMap.defaultColorTable;
-        actual = (new punchcards.ColorMap(colortable)).colortable;
-        expected = punchcards.ColorMap.defaultColorTable;
-        expect(actual).toEqual(expected);
-    });
+            var actual, expected, colortable;
+            colortable = punchcards.ColorMap.defaultColorTable;
+            actual = (new punchcards.ColorMap(colortable)).colortable;
+            expected = punchcards.ColorMap.defaultColorTable;
+            expect(actual).toEqual(expected);
+        });
 
 
     it('...constructing with a Number is undefined and results in an Error.', function () {
         var actual, expected;
-        actual = function() {
+        actual = function () {
             return new punchcards.ColorMap(8.682727);
         };
         expected = 'Undefined behavior for these input arguments.';
         expect(actual).toThrowError(expected);
     });
 
-})
+});
 
 
 
-describe('punchcards.ColorMap.addColor()', function() {
+describe('punchcards.ColorMap.addColor()', function () {
+    'use strict';
 
-    it('...the colortable should include the test color after we add it.', function (){
+    it('...the colortable should include the test color after we add it.', function () {
 
         var actual,
             expected,
@@ -70,13 +74,13 @@ describe('punchcards.ColorMap.addColor()', function() {
 
             nColors = colortable.length;
 
-            for (iColor = 0; iColor < nColors; iColor+=1) {
+            for (iColor = 0; iColor < nColors; iColor += 1) {
                 cond1 = colortable[iColor].at === testcolor.at;
                 cond2 = colortable[iColor].color[0] === testcolor.color[0];
                 cond3 = colortable[iColor].color[1] === testcolor.color[1];
                 cond4 = colortable[iColor].color[2] === testcolor.color[2];
                 cond5 = colortable[iColor].color[3] === testcolor.color[3];
-                if (cond1 & cond2 & cond3 & cond4 & cond5) {
+                if (cond1 && cond2 && cond3 && cond4 && cond5) {
                     return true;
                 }
             }
@@ -96,7 +100,7 @@ describe('punchcards.ColorMap.addColor()', function() {
 
         if (actual !== expected) {
             throw new Error('The colortable already includes the color we want ' +
-            'to add, rendering the test pointless.');
+                'to add, rendering the test pointless.');
         }
 
         // add the test color
@@ -108,66 +112,71 @@ describe('punchcards.ColorMap.addColor()', function() {
 
         expect(actual).toEqual(expected);
 
-    })
-})
+    });
+});
 
 
 
-describe('punchcards.ColorMap.addColors()', function() {
+describe('punchcards.ColorMap.addColors()', function () {
+    'use strict';
 
     it('...constructing with a ColorTable argument should yield a ' +
-        'ColorMap with that ColorTable.', function() {
+        'ColorMap with that ColorTable.', function () {
 
-        var colortable,
-            colormap;
+            var colortable,
+                colormap,
+                actual,
+                expected;
 
-        // construct with a ColorTable
-        colortable = [
-            {
-                at: 0.0,
-                color: [0, 0, 0, 0]
-            },
-            {
-                at: 1.0,
-                color: [255, 255, 255, 0]
-            }
-        ];
+            // construct with a ColorTable
+            colortable = [
+                {
+                    at: 0.0,
+                    color: [0, 0, 0, 0]
+                },
+                {
+                    at: 1.0,
+                    color: [255, 255, 255, 0]
+                }
+            ];
 
-        // make a colormap with an 'empty' colortable
-        colormap = new punchcards.ColorMap('empty');
+            // make a colormap with an 'empty' colortable
+            colormap = new punchcards.ColorMap('empty');
 
-        // add the colortable info
-        colormap.addColors(colortable);
+            // add the colortable info
+            colormap.addColors(colortable);
 
-        // get the colortable after we added the colors
-        actual = colormap.colortable;
-        expected = (new punchcards.ColorMap('gray')).colortable;
+            // get the colortable after we added the colors
+            actual = colormap.colortable;
+            expected = (new punchcards.ColorMap('gray')).colortable;
 
-        expect(actual).toEqual(expected);
+            expect(actual).toEqual(expected);
 
-    })
+        });
 
-})
+});
 
 
 
-describe('punchcards.ColorMap.getColorRGB()', function() {
+describe('punchcards.ColorMap.getColorRGB()', function () {
 
+    'use strict';
+    
     it('...the rgb string representation of the color at value 0.0 should ' +
-       'be \'rgb(0,0,0)\' when using the predefined \'gray\' colormap.', function() {
+        'be \'rgb(0,0,0)\' when using the predefined \'gray\' colormap.', function () {
 
-        var actual,
-            expected,
-            cmgray;
+            var actual,
+                expected,
+                cmgray;
 
-        // instantiate the colormap object using the predefined gray colormap
-        cmgray = new punchcards.ColorMap('gray');
+            // instantiate the colormap object using the predefined gray colormap
+            cmgray = new punchcards.ColorMap('gray');
 
-        // check that the colormap.colortable now includes the testcolor.
-        actual = cmgray.getColorRGB(0.0);
-        expected = 'rgb(0,0,0)';
-        expect(actual).toEqual(expected);
+            // check that the colormap.colortable now includes the testcolor.
+            actual = cmgray.getColorRGB(0.0);
+            expected = 'rgb(0,0,0)';
+            expect(actual).toEqual(expected);
 
-    })
+        });
 
-})
+});
