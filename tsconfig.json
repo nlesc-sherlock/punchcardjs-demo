@@ -4,9 +4,7 @@
         "module": "commonjs",
         "noImplicitAny": true,
         "outDir": "build",
-        "rootDir": "src",
-        "inlineSourceMap": true,
-        "inlineSources": true
+        "sourceMap": true
     },
     "files": [
         "src/punchcards.ts",
