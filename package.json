@@ -14,7 +14,9 @@
     "tsc": "tsc --project .",
     "predist": "trash dist/ && mkdirp dist",
     "dist": "browserify --no-bundle-external --debug build/punchcards.js --outfile build/punchcards-with-sourcemaps.js --standalone punchcards",
-    "postdist": "<build/punchcards-with-sourcemaps.js exorcist dist/punchcards.js.map > dist/punchcards.js",
+    "postdist": "npm run exorcist && npm run uglify",
+    "exorcist":"<build/punchcards-with-sourcemaps.js exorcist dist/punchcards.js.map > dist/punchcards.js",
+    "uglify": "uglifyjs dist/punchcards.js --output dist/punchcards.min.js --source-map punchcards.min.js.map --in-source-map dist/punchcards.js.map",
     "pretest": "npm run jshint && npm run jslint",
     "test": "karma start karma.conf.js",
     "precover": "trash sites/coverage/ && npm run tsc && npm run dist",
@@ -38,7 +40,7 @@
     "copy-sites-demo-js": "cp node_modules/crossfilter/crossfilter.min.js node_modules/moment/min/moment.min.js node_modules/d3/d3.min.js sites/demo/",
     "predemo": "npm run clean-demo && mkdirp sites/demo/fonts && mkdirp sites/demo/bootstrap-css && npm run copy-sites-demo-deps",
     "demo": "npm run tsc && npm run dist",
-    "postdemo": "cp dist/punchcards.js sites/demo/ && tsc --target es5 sites/demo/dataloader.ts --outDir sites/demo",
+    "postdemo": "cp dist/punchcards.js dist/punchcards.js.map dist/punchcards.min.js dist/punchcards.min.js.map sites/demo/ && tsc --target es5 sites/demo/dataloader.ts --outDir sites/demo",
     "everything": "npm run demo && npm run tsdoc && npm run cover"
   },
   "keywords": [
@@ -80,7 +82,8 @@
     "tslint": "^3.9.0",
     "typedoc": "^0.4.1",
     "typescript": "^1.8.10",
-    "typings": "^1.0.4"
+    "typings": "^1.0.4",
+    "uglifyjs": "^2.4.10"
   },
   "dependencies": {},
   "browser": {
