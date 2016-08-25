@@ -83,6 +83,7 @@
     "typedoc": "^0.4.1",
     "typescript": "^1.8.10",
     "typings": "^1.0.4",
+    "uglify-js": "^2.7.3",
     "uglifyjs": "^2.4.10"
   },
   "dependencies": {},
