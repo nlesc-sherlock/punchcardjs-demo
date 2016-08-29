@@ -21,7 +21,13 @@ export class WeekdayCircle extends WeekdayRect {
 
 
 
-
+    /**
+     * This method adds an SVG g element containing many SVG circle elements,
+     * i.e. the 'symbols', to the DOM. Each symbol represents the count of how
+     * many rows from the data fall on a given day/time-of-day combination.
+     * @return {WeekdayCircle} Returns a reference to the instance of
+     * WeekdayCircle
+     */
     protected drawSymbols():WeekdayCircle {
 
         // capture the this object
