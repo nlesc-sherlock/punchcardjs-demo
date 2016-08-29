@@ -19,99 +19,105 @@ export class Base {
      * The crossfilter that contains the data which needs to be visualized.
      * @type {CrossFilter.CrossFilter<IDataRow>}
      */
-    private _cf          : CrossFilter.CrossFilter<IDataRow>;
+    private _cf: CrossFilter.CrossFilter<IDataRow>;
     /**
      * The colormap: i.e. the element that determines what color is used to
      * display a certain value.
      * @type {ColorMap}
      */
-    private _colormap    : ColorMap;
+    private _colormap: ColorMap;
     /**
      * The user-defined dimensions that are used to manipulate the crossfilter
      * data.
      * @type {any}
      */
-    private _dim         : any;
+    private _dim: any;
     /**
      * The element of the DOM where the punchcard should be visualized.
      * @type {HTMLElement}
      */
-    private _domElem     : HTMLElement;
+    private _domElem: HTMLElement;
     /**
      * The element ID of the this._domElem object.
      * @type {string}
      */
-    private _domElemId   : string;
+    private _domElemId: string;
     /**
      * The SVG DOM element that is used to draw a punchcard in.
      * @type {any}
      */
-    private _svg         : any;
+    private _svg: any;
     /**
-     * The space in pixels between the left side of axis background and edge of
+     * The space in pixels between the left side of the axis background and
+     * edge of the SVG element.
+     * @type {number}
+     */
+    private _marginLeft: number;
+    /**
+     * The space in pixels between the right side of the  axis background and
+     * edge of the SVG element.
+     * @type {number}
+     */
+    private _marginRight: number;
+    /**
+     * The space in pixels between the top side of axis background and edge of
      * the SVG element.
      * @type {number}
      */
-    private _marginLeft  : number;
+    private _marginTop: number;
     /**
-     * [_marginRight description]
-     * @type {number}
-     */
-    private _marginRight : number;
-    /**
-     * [_marginTop description]
-     * @type {number}
-     */
-    private _marginTop   : number;
-    /**
-     * [_marginBottom description]
+     * The space in pixels between the bottom side of axis background and edge
+     * of the SVG element.
      * @type {number}
      */
     private _marginBottom: number;
     /**
-     * [_title description]
+     * Text to use as title for the graph
      * @type {string}
      */
-    private _title       : string;
+    private _title: string;
     /**
-     * [_xlabel description]
+     * Text to use as label for the horizontal axis
      * @type {string}
      */
-    private _xlabel      : string;
+    private _xlabel: string;
     /**
-     * [_ylabel description]
+     * Text to use as label for the vertical axis
      * @type {string}
      */
-    private _ylabel      : string;
+    private _ylabel: string;
     /**
-     * [_todScale description]
-     * @type {any}
+     * d3 time scale for the vertical axis
+     * @type {d3.scale.Linear<any, any>}
      */
-    private _todScale    : any;
+    private _todScale: d3.scale.Linear<any, any>;
     /**
-     * [_height description]
+     * height of the axis
      * @type {number}
      */
-    private _height      : number;
+    private _height: number;
     /**
-     * [_legendWidth description]
+     * width in pixels that is occupied by the legend
      * @type {number}
      */
-    private _legendWidth : number;
+    private _legendWidth: number;
     /**
-     * [_canDraw description]
+     * Whether or not there is enough data defined to be able to draw anything.
      * @type {boolean}
      */
-    private _canDraw : boolean;
+    private _canDraw: boolean;
 
 
     /**
-     * [constructor description]
-     * @param  {any}    cf        [description]
-     * @param  {string} domElemId [description]
-     * @return {[type]}           [description]
+     * Constructs an instance of Base when given a crossfilter object and the
+     * name of a DOM element to draw in.
+     * @param  {CrossFilter.CrossFilter<IDataRow>} cf Crossfilter object
+     * containing the data
+     * @param  {string} domElemId DOM element identifier for the div in which to
+     * draw the punchcard graph
+     * @return {[type]} Returns an instance of Base class
      */
-    constructor (cf: any, domElemId: string) {
+    constructor (cf: CrossFilter.CrossFilter<IDataRow>, domElemId: string) {
 
         // the crossfilter object
         this.cf = cf;
@@ -152,8 +158,10 @@ export class Base {
 
 
     /**
-     * [draw description]
-     * @return {Base} [description]
+     * Placeholder method that does not do anything but needs to be here because
+     * it's called by .onResize(). This method should be overridden by classes
+     * that inherit from Base.
+     * @return {Base} return the (unchanged) instance of Base
      */
     public draw():Base {
 
@@ -164,8 +172,9 @@ export class Base {
 
 
     /**
-     * [drawBox description]
-     * @return {Base} [description]
+     * Adds an SVG g element containing an SVG rect element with which to draw a
+     * border around the punchcard graph.
+     * @return {Base} returns a reference to the instance of Base
      */
     protected drawBox():Base {
         //
@@ -190,6 +199,8 @@ export class Base {
 
     /**
      * [drawControls description]
+     * This method is going to be removed from the library in a future release
+     * (https://github.com/nlesc-sherlock/punchcardjs/issues/32)
      */
     protected drawControls():void {
 
@@ -244,8 +255,11 @@ export class Base {
 
 
     /**
-     * [drawChartBody description]
-     * @return {Base} [description]
+     * Appends an SVG g element containing an SVG rect, the size of which is
+     * determined by the size of the SVG element minus the margins on 4 sides,
+     * and minus the width taken up by the legend. The rect constitutes the
+     * background of the punchcard's axes.
+     * @return {Base} returns a reference to the instance of Base
      */
     protected drawChartBody():Base {
         //
@@ -269,8 +283,9 @@ export class Base {
 
 
     /**
-     * [drawHorizontalAxisLabel description]
-     * @return {Base} [description]
+     * Adds an SVG g element containing an SVG text element with which to label
+     * the horizontal axis.
+     * @return {Base} returns a reference to the instance of Base
      */
     protected drawHorizontalAxisLabel():Base {
 
@@ -292,8 +307,8 @@ export class Base {
 
 
     /**
-     * [drawLegend description]
-     * @return {Base} [description]
+     * Adds a Legend to the plot, while resizing the punchcard as necessary.
+     * @return {Base} returns a reference to the instance of Base
      */
     protected drawLegend():Base {
         // draw the legend
@@ -308,8 +323,9 @@ export class Base {
 
 
     /**
-     * [drawSvg description]
-     * @return {Base} [description]
+     * Adds an SVG element to the DOM, so that other methods you can do d3
+     * things with it later.
+     * @return {Base} returns a reference to the instance of Base
      */
     protected drawSvg():Base {
 
@@ -323,8 +339,9 @@ export class Base {
 
 
     /**
-     * [drawTitle description]
-     * @return {Base} [description]
+     * Adds an SVG g element containing an SVG text element representing the
+     * title of the punchcard graph.
+     * @return {Base} returns a reference to the instance of Base
      */
     protected drawTitle():Base {
 
@@ -345,8 +362,9 @@ export class Base {
 
 
     /**
-     * [drawVerticalAxis description]
-     * @return {Base} [description]
+     * Adds an SVG g element containing a d3.linear.axis representing the hour
+     * of day.
+     * @return {Base} returns a reference to the instance of Base
      */
     protected drawVerticalAxis():Base {
         //
@@ -378,8 +396,9 @@ export class Base {
 
 
     /**
-     * [drawVerticalAxisLabel description]
-     * @return {Base} [description]
+     * Adds an SVG g element containing an SVG text element with which to label
+     * the vertical axis.
+     * @return {Base} returns a reference to the instance of Base
      */
     protected drawVerticalAxisLabel():Base {
         //
@@ -401,8 +420,9 @@ export class Base {
 
 
     /**
-     * [hide description]
-     * @return {Base} [description]
+     * This method is going to be removed from the library in a future release
+     * (https://github.com/nlesc-sherlock/punchcardjs/issues/32)
+     * @return {Base} returns a reference to the instance of Base
      */
     protected hide():Base {
 
@@ -413,7 +433,8 @@ export class Base {
 
 
     /**
-     * [minimize description]
+     * This method is going to be removed from the library in a future release
+     * (https://github.com/nlesc-sherlock/punchcardjs/issues/32)
      */
     protected minimize():void {
 
@@ -456,7 +477,8 @@ export class Base {
 
 
     /**
-     * [moveDown description]
+     * This method is going to be removed from the library in a future release
+     * (https://github.com/nlesc-sherlock/punchcardjs/issues/32)
      */
     protected moveDown():void {
 
@@ -477,7 +499,8 @@ export class Base {
 
 
     /**
-     * [moveUp description]
+     * This method is going to be removed from the library in a future release
+     * (https://github.com/nlesc-sherlock/punchcardjs/issues/32)
      */
     protected moveUp():void {
 
@@ -498,7 +521,8 @@ export class Base {
 
 
     /**
-     * [onResize description]
+     * When the window is resized, redraw the punchcard graph in its entirety,
+     * while observing the new maximum size.
      * @return {[type]} [description]
      */
     protected onResize() {
@@ -518,7 +542,8 @@ export class Base {
 
 
     /**
-     * [restore description]
+     * This method is going to be removed from the library in a future release
+     * (https://github.com/nlesc-sherlock/punchcardjs/issues/32)
      */
     protected restore():void {
 
@@ -557,8 +582,10 @@ export class Base {
 
 
     /**
-     * [updateMinHeight description]
-     * @return {Base} [description]
+     * Sets the CSS style min-height such that the body of the punchcard graph
+     * cannot become smaller than 100px in height, while taking into account the
+     * margins on the top and bottom of the graph.
+     * @return {Base} returns a reference to the instance of Base
      */
     private updateMinHeight():Base {
 
@@ -581,8 +608,10 @@ export class Base {
 
 
     /**
-     * [updateMinWidth description]
-     * @return {Base} [description]
+     * Sets the CSS style min-width such that the body of the punchcard graph
+     * cannot become narrower than 100px, while taking into account the
+     * margins on the left and right of the graph.
+     * @return {Base} returns a reference to the instance of Base
      */
     private updateMinWidth():Base {
 
@@ -606,10 +635,10 @@ export class Base {
 
     /**
      * [cf description]
-     * @param  {any}    cf [description]
+     * @param  {CrossFilter.CrossFilter<IDataRow>}    cf [description]
      * @return {[type]}    [description]
      */
-    protected set cf(cf:any) {
+    protected set cf(cf:CrossFilter.CrossFilter<IDataRow>) {
         this._cf = cf;
     }
 
@@ -617,7 +646,7 @@ export class Base {
      * [cf description]
      * @return {any} [description]
      */
-    protected get cf():any {
+    protected get cf():CrossFilter.CrossFilter<IDataRow> {
         return this._cf;
     }
 
@@ -831,18 +860,18 @@ export class Base {
 
     /**
      * [todScale description]
-     * @param  {any}    todScale [description]
+     * @param  {d3.scale.Linear<any, any>} todScale [description]
      * @return {[type]}          [description]
      */
-    protected set todScale(todScale:any) {
+    protected set todScale(todScale:d3.scale.Linear<any, any>) {
         this._todScale = todScale;
     }
 
     /**
      * [todScale description]
-     * @return {any} [description]
+     * @return {d3.scale.Linear<any, any>} [description]
      */
-    protected get todScale():any {
+    protected get todScale():d3.scale.Linear<any, any> {
         return this._todScale;
     }
 
