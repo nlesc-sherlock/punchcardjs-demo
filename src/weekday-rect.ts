@@ -10,11 +10,20 @@ import {ColorMap} from './colormap';
 
 export class WeekdayRect extends Base {
 
-    private _dayOfWeekScale: any;
+    private _dayOfWeekScale: d3.scale.Ordinal<any, any>;
     private _xFrom         : number;
     private _xTo           : number;
 
-
+    /**
+     * Constructor method for making a punchcard visualization with the day of
+     * week on the horizontal axis, and hour of day on the vertical axis, using
+     * rectangular symbols to represent how many rows from the input data fall
+     * within the area covered by each rectangle.
+     * @param  {CrossFilter.CrossFilter<IDataRow>} cf Crossfilter object
+     * containing the data.
+     * @param  {string} domElemId Name of the DOM element in which to draw.
+     * @return {[type]} A reference to the instance of WeekdayRect.
+     */
     constructor (cf: CrossFilter.CrossFilter<IDataRow>, domElemId: string) {
 
         super(cf, domElemId);
@@ -29,7 +38,10 @@ export class WeekdayRect extends Base {
 
 
 
-    // define the crossfilter dimensions as used by this class
+    /**
+     * define the crossfilter dimensions as used by this class
+     * @return {WeekdayRect} A reference to the instance of WeekdayRect
+     */
     public defineDimensions():WeekdayRect {
 
         // based on example from
@@ -51,7 +63,21 @@ export class WeekdayRect extends Base {
 
 
 
-    // overrides stub method in parent class
+    /**
+     * This method defines which other methods to call in order to create
+     * a punchcard graph with the day of week on the horizontal axis and the
+     * time of day on the vertical axis. Mostly calls methods of the parent
+     * class, Base, but for example the symbols for this class are SVG rects,
+     * so it calls its own method .drawSymbols() for that.
+     *
+     * Successful drawing depends on whether the container is currently visible,
+     * and whether there is enough information in the instance to draw anything
+     * at all.
+     *
+     * This method overrides stub method in parent class.
+     *
+     * @return {WeekdayRect} A reference to an instance of WeekdayRect.
+     */
     public draw():WeekdayRect {
 
         if (this.domElem.classList.contains('hidden')) {
@@ -70,7 +96,7 @@ export class WeekdayRect extends Base {
                 super.drawTitle();
                 this.drawSymbols();
                 super.drawBox();
-                this.drawControls();
+                super.drawControls();
                 super.drawLegend();
             }
 
@@ -81,7 +107,11 @@ export class WeekdayRect extends Base {
 
 
 
-
+    /**
+     * Adds an SVG g element containing a d3.scale.ordinal for plotting
+     * the day of the week on the horizontal axis of the punchcard graph.
+     * @return {WeekdayRect} A reference to the instance of WeekdayRect.
+     */
     private drawHorizontalAxis():WeekdayRect {
 
         let w :number = this.domElem.clientWidth - this.marginLeft - this.marginRight - this.legendWidth;
@@ -116,7 +146,13 @@ export class WeekdayRect extends Base {
 
 
 
-
+    /**
+     * This method adds an SVG g element with many SVG rects in it. Each rect
+     * represents the count of how many data rows fall within the area covered
+     * by the rect, where the horizontal boundaries dictate the day-of-week and
+     * the vertical boundaries dictate the time of day range.
+     * @return {WeekdayRect} A reference to the instance of WeekdayRect.
+     */
     protected drawSymbols():WeekdayRect {
 
         // capture the this object
@@ -185,11 +221,11 @@ export class WeekdayRect extends Base {
 
 
 
-    protected set dayOfWeekScale(dayOfWeekScale:any) {
+    protected set dayOfWeekScale(dayOfWeekScale:d3.scale.Ordinal<any, any>) {
         this._dayOfWeekScale = dayOfWeekScale;
     }
 
-    protected get dayOfWeekScale():any {
+    protected get dayOfWeekScale():d3.scale.Ordinal<any, any> {
         return this._dayOfWeekScale;
     }
 
