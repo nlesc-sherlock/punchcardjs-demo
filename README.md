@@ -153,6 +153,11 @@ So you wrote some **source code**. A **distributable** can be created from the s
 - [Karma](https://karma-runner.github.io/1.0/index.html) is our **test runner**.
 - We generate code coverage in different formats using [``karma-coverage``](https://www.npmjs.com/package/karma-coverage). However, this gives us code coverage of the (generated) JavaScript, which is not really what we're interested in. So we have [``remap-istanbul``](https://www.npmjs.com/package/remap-istanbul) figure out which parts of the generated JavaScript correspond with which parts of the (written) TypeScript.
 
+Here is a visual representation of our build process:
+
+![visual-description-of-setup.png](https://github.com/nlesc-sherlock/punchcardjs/raw/testing/doc/visual-description-of-setup.png "visual-description-of-setup.png")
+
+
 # Examples
 
 Here are some examples of the type of visualizations you can make with this library:
@@ -164,3 +169,6 @@ Here are some examples of the type of visualizations you can make with this libr
 ![example-weekday-circle.png](https://github.com/nlesc-sherlock/punchcardjs/raw/testing/doc/example-weekday-circle.png "example-weekday-circle.png")
 
 ![example-weekday-rect.png](https://github.com/nlesc-sherlock/punchcardjs/raw/testing/doc/example-weekday-rect.png "example-weekday-rect.png")
+
+
+
