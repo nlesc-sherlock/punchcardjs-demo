@@ -10,11 +10,18 @@ import {ColorMap} from './colormap';
 
 export class DateRect extends Base {
 
-    private _dateScale   : any;
+    private _dateScale   : d3.time.Scale<any, any>;
     private _dateFrom    : Date;
     private _dateTo      : Date;
 
 
+    /**
+     * Constructor method for DateRect
+     * @param  {CrossFilter.CrossFilter<IDataRow>} cf Crossfilter object
+     * containing the data.
+     * @param  {string} domElemId name of the DOM element to draw in.
+     * @return {[type]} A reference to an instance of DateRect.
+     */
     constructor (cf: CrossFilter.CrossFilter<IDataRow>, domElemId: string) {
 
         super(cf, domElemId);
@@ -29,9 +36,8 @@ export class DateRect extends Base {
 
 
     /**
-     * define the crossfilter dimensions as used by this class
-     *
-     *
+     * Defines the crossfilter dimensions as used by this class
+     * @return {Base} A reference to an instance of DateRect.
      */
     public defineDimensions():Base {
 
@@ -52,7 +58,21 @@ export class DateRect extends Base {
 
 
 
-    // overrides stub method in parent class
+    /**
+     * This method defines which other methods to call in order to create
+     * a punchcard graph with the date on the horizontal axis and the time of
+     * day on the vertical axis. Mostly calls methods of the parent class, Base,
+     * but for example the symbols for this class are SVG rects, so it calls its
+     * own method .drawSymbols() for that.
+     *
+     * Successful drawing depends on whether the container is currently visible,
+     * and whether there is enough information in the instance to draw anything
+     * at all.
+     *
+     * This method overrides stub method in parent class.
+     *
+     * @return {DateRect} A reference to an instance of DateRect.
+     */
     public draw():DateRect {
 
         if (this.domElem.classList.contains('hidden')) {
@@ -80,7 +100,11 @@ export class DateRect extends Base {
 
 
 
-
+    /**
+     * Adds an SVG g element containing a horizontal d3.time.scale axis to the
+     * DOM, representing the date.
+     * @return {DateRect} A reference to an instance of DateRect.
+     */
     private drawHorizontalAxis():DateRect {
 
         let w :number = this.domElem.clientWidth - this.marginLeft - this.marginRight - this.legendWidth;
@@ -135,7 +159,13 @@ export class DateRect extends Base {
 
 
 
-
+    /**
+     * This method add an SVG g element with many SVG rects in it. Each rect
+     * represents the count of how many data rows fall within the area covered
+     * by the rect, where the horizontal boundaries dictate the date range and
+     * the vertical boundaries dictate the time of day range.
+     * @return {DateRect} A reference to the instance of DateRect.
+     */
     protected drawSymbols():DateRect {
 
         // capture the this object
@@ -207,11 +237,11 @@ export class DateRect extends Base {
 
 
 
-    protected set dateScale(dateScale:any) {
+    protected set dateScale(dateScale:d3.time.Scale<any, any>) {
         this._dateScale = dateScale;
     }
 
-    protected get dateScale():any {
+    protected get dateScale():d3.time.Scale<any, any> {
         return this._dateScale;
     }
 
