@@ -81,21 +81,22 @@ npm run cover
 
 ```
 .                                      # project root directory
-├── bower.json                         # defines the client-side dependencies
 ├── CONTRIBUTING                       # outlines the rules/for contributing to this repository
 ├── doc                                # directory containing files that help document the repository
 │   ├── example-date-circle.png        # example image of DateCircle class
 │   ├── example-date-rect.png          # example image of DateRect class
 │   ├── example-weekday-circle.png     # example image of WeekdayCircle class
 │   ├── example-weekday-rect.png       # example image of WeekdayRect class
-│   └── installing-node.md             # some notes on how to install nodejs
+│   ├── installing-node.md             # some notes on how to install nodejs
+│   ├── visual-description-of-setup.png# PNG rendering of the corresponding SVG image
+│   └── visual-description-of-setup.svg# SVG image that explains the build setup
 ├── karma.conf.js                      # configuration file for Karma, the test runner
 ├── LICENSE                            # describes the license for dissemination and use of this software
-├── notes.md
 ├── package.json                       # the Node package manager file describes the server-side / development dependencies
 ├── README.md                          # this file
 ├── sites                              # there are a few websites associated with this repository:
 │   └── demo                           # the demo website serves as an illustration of the punchcards library
+│       ├── controls.ts                # adds controls for minimizing/restoring widgets in the demo page
 │       ├── dataloader.ts              # script that helps load the data for the demo website
 │       ├── fonts                      # required directory for bootstrap (contents added by an npm run task)
 │       ├── index.html                 # the demo website's main file
