@@ -28,10 +28,6 @@ npm run demo
 npm run tsdoc
 npm run cover
 
-# ...and transpile a few more typescript files not directly related to the
-# library (compiles into JavaScript despite errors)
-node_modules/.bin/tsc --target es5 sites/demo/*.ts --outDir sites/demo
-
 # remove any .gitignores from under sites/
 git rm `find ./sites/ -name '.gitignore' -type f`
 
@@ -39,7 +35,7 @@ git rm `find ./sites/ -name '.gitignore' -type f`
 git add --all sites/demo sites/coverage sites/tsdoc
 
 # commit to local gh-pages branch
-git commit -m "gh-pages content"
+git commit -m "gh-pages content: demo site, code coverage, tsdoc"
 
 # push the 'sites' directory to github using the subtree command
 git subtree push --prefix sites origin gh-pages
