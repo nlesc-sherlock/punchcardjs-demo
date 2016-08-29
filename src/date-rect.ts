@@ -160,7 +160,7 @@ export class DateRect extends Base {
 
 
     /**
-     * This method add an SVG g element with many SVG rects in it. Each rect
+     * This method adds an SVG g element with many SVG rects in it. Each rect
      * represents the count of how many data rows fall within the area covered
      * by the rect, where the horizontal boundaries dictate the date range and
      * the vertical boundaries dictate the time of day range.
