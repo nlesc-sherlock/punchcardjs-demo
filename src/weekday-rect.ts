@@ -96,7 +96,6 @@ export class WeekdayRect extends Base {
                 super.drawTitle();
                 this.drawSymbols();
                 super.drawBox();
-                super.drawControls();
                 super.drawLegend();
             }
 

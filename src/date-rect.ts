@@ -91,7 +91,6 @@ export class DateRect extends Base {
                 super.drawTitle();
                 this.drawSymbols();
                 super.drawBox();
-                super.drawControls();
                 super.drawLegend();
             }
             return this;
