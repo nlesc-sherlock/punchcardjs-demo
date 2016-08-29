@@ -1,7 +1,14 @@
 
 function doit(data) {
 
-    var dateCircle, dateRect, weekdayCircle, weekdayRect;
+    var dateCircle,
+        dateCircleControls,
+        dateRect,
+        dateRectControls,
+        weekdayCircle,
+        weekdayCircleControls,
+        weekdayRect,
+        weekdayRectControls;
 
     var cf = crossfilter(data);
 
@@ -9,21 +16,29 @@ function doit(data) {
     weekdayCircle = new punchcards.WeekdayCircle(cf, 'punchcard-weekday-circle');
     weekdayCircle.defineDimensions();
     weekdayCircle.draw();
+    weekdayCircleControls = new Controls('punchcard-weekday-circle');
+    weekdayCircleControls.drawControls();
 
     // draw the punchcard-weekday with svg rects using the crossfilter object and D3
     weekdayRect = new punchcards.WeekdayRect(cf, 'punchcard-weekday-rect');
     weekdayRect.defineDimensions();
     weekdayRect.draw();
+    weekdayRectControls = new Controls('punchcard-weekday-rect');
+    weekdayRectControls.drawControls();
 
     // draw the punchcard-date with svg circles using the crossfilter object and D3
     dateCircle = new punchcards.DateCircle(cf, 'punchcard-date-circle');
     dateCircle.defineDimensions();
     dateCircle.draw();
+    dateCircleControls = new Controls('punchcard-date-circle');
+    dateCircleControls.drawControls();
 
     // draw the punchcard-date with svg rects using the crossfilter object and D3
     dateRect = new punchcards.DateRect(cf, 'punchcard-date-rect');
     dateRect.defineDimensions();
     dateRect.draw();
+    dateRectControls = new Controls('punchcard-date-rect');
+    dateRectControls.drawControls();
 
 };
 

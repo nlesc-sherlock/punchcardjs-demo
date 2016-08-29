@@ -1,9 +1,9 @@
 
-
-export class Controls {
+class Controls {
 
     private _domElem: HTMLElement;
     private _domElemId: string;
+    private _height: number;
 
 
     constructor (domElemId: string) {
@@ -49,7 +49,7 @@ export class Controls {
         this.domElem.appendChild(controlsDiv);
 
         // beware: JavaScript magic happens here
-        let that:Base = this;
+        let that:Controls = this;
 
         controlsDiv.getElementsByClassName('glyphicon-triangle-bottom')[0].parentNode.addEventListener('click', function() {
             that.minimize();
@@ -81,7 +81,7 @@ export class Controls {
      * (https://github.com/nlesc-sherlock/punchcardjs/issues/32)
      * @return {Base} returns a reference to the instance of Base
      */
-    protected hide():Base {
+    protected hide():Controls {
 
         this.domElem.classList.add('hidden');
         return this;
@@ -178,27 +178,6 @@ export class Controls {
 
 
     /**
-     * When the window is resized, redraw the punchcard graph in its entirety,
-     * while observing the new maximum size.
-     * @return {[type]} [description]
-     */
-    protected onResize() {
-
-        // get the div element that we want to redraw
-        let div = this.domElem;
-
-        // delete the contents of the div
-        while (div.firstChild) {
-            div.removeChild(div.firstChild);
-        }
-
-        this.draw();
-
-    }
-
-
-
-    /**
      * This method is going to be removed from the library in a future release
      * (https://github.com/nlesc-sherlock/punchcardjs/issues/32)
      */
@@ -268,6 +247,16 @@ export class Controls {
     protected get domElemId():string {
         return this._domElemId;
     }
+
+
+    protected set height(height:number) {
+        this._height = height;
+    }
+
+    protected get height():number {
+        return this._height;
+    }
+
 
 }
 
