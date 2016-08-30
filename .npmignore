@@ -1,0 +1,12 @@
+# ignore everything...
+*
+
+# ...except whatever is in dist/
+!dist
+
+# and some stuff you need for installing the package at all
+!package.json
+!typings.json
+
+# to avoid confusion, also include license
+!LICENSE
