@@ -4,9 +4,12 @@
 # ...except whatever is in dist/
 !dist
 
-# and some stuff you need for installing the package at all
-!package.json
+# and some stuff you need for installing the package at all (due to 'npm run postinstall' task)
 !typings.json
 
-# to avoid confusion, also include license
+# these are never ignored by .npmignore, add them for added explicitness
+!package.json
 !LICENSE
+!README
+!CHANGELOG
+
