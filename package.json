@@ -28,6 +28,7 @@
     "postdemo": "cp dist/punchcards.js dist/punchcards.js.map dist/punchcards.min.js dist/punchcards.min.js.map sites/demo/ && tsc --target es5 sites/demo/*.ts --outDir sites/demo",
     "postdist": "npm run exorcist && npm run uglify",
     "postinstall": "typings install",
+    "postversion": "git log --pretty=oneline --max-count 10",
     "precover": "trash sites/coverage/ && npm run lint && npm run dist",
     "predemo": "npm run clean-demo && mkdirp sites/demo/fonts && mkdirp sites/demo/bootstrap-css",
     "predist": "trash build/ && mkdirp build && trash dist/ && mkdirp dist",
