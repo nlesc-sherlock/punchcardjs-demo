@@ -101,5 +101,16 @@
     "transform": [
       "browserify-shim"
     ]
-  }
+  },
+  "files": [
+    "dist/punchcards.js",
+    "dist/punchcards.js.map",
+    "dist/punchcards.min.js",
+    "dist/punchcards.min.js.map",
+    "typings.json",
+    "package.json",
+    "LICENSE",
+    "README",
+    "CHANGELOG"
+  ]
 }
