@@ -1,6 +1,6 @@
 {
   "name": "punchcardjs",
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.0-alpha.1",
   "description": "Punchcard visualization using TypeScript and D3.js",
   "main": "./dist/punchcards.min.js",
   "scripts": {
