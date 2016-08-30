@@ -1,11 +1,35 @@
 [![devDependency Status](https://david-dm.org/nlesc-sherlock/punchcardjs/dev-status.svg)](https://david-dm.org/nlesc-sherlock/punchcardjs#info=devDependencies)
 [![Build Status](https://travis-ci.org/nlesc-sherlock/punchcardjs.svg?branch=master)](https://travis-ci.org/nlesc-sherlock/punchcardjs)
 
+# For users
+
+Installation of the library through ``npm`` in the normal way:
+```
+npm install punchcardjs
+```
+
 - For the demo website, go [here](http://nlesc-sherlock.github.io/punchcardjs/demo/);
 - For the code coverage report, go [here](http://nlesc-sherlock.github.io/punchcardjs/coverage/remapped/src/index.html);
 - For TypeDoc documentation of the code, go [here](http://nlesc-sherlock.github.io/punchcardjs/tsdoc/);
 
-# Setting up, building and running
+## Examples
+
+Here are some examples of the type of visualizations you can make with this library:
+
+![example-date-circle.png](https://github.com/nlesc-sherlock/punchcardjs/raw/testing/doc/example-date-circle.png "example-date-circle.png")
+
+![example-date-rect.png](https://github.com/nlesc-sherlock/punchcardjs/raw/testing/doc/example-date-rect.png "example-date-rect.png")
+
+![example-weekday-circle.png](https://github.com/nlesc-sherlock/punchcardjs/raw/testing/doc/example-weekday-circle.png "example-weekday-circle.png")
+
+![example-weekday-rect.png](https://github.com/nlesc-sherlock/punchcardjs/raw/testing/doc/example-weekday-rect.png "example-weekday-rect.png")
+
+
+# For developers
+
+(this section describes the complete repository on GitHub, only part of which is included in the package on https://www.npmjs.com/package/punchcardjs).
+
+## Setting up, building and running
 
 Get a local copy of the punchcardjs repository using ``git``:
 
@@ -21,12 +45,12 @@ cd punchcardjs
 ```
 
 After getting the source, three things need to be done: `npm` needs to install
-local copies of the development tools, `bower` needs to fetch client-side dependencies of
+local copies of the development tools as well as of client-side dependencies of
 our code, and `typings` needs to get the typescript annotations for those. You can
 do all of these in one go using:
 
 ```bash
-# run npm install, bower install, typings install through one command
+# run npm install and typings install through one command
 npm install
 ```
 
@@ -35,9 +59,6 @@ Next, the software needs to be built. We use `npm` for that as well. We've defin
 ```bash
 # lint the typescript code
 npm run tslint
-
-# transpile the typescript code to javascript
-npm run tsc
 
 # make a distributable js file, punchcards.js
 npm run dist
@@ -92,7 +113,7 @@ npm run cover
 │   └── visual-description-of-setup.svg# SVG image that explains the build setup
 ├── karma.conf.js                      # configuration file for Karma, the test runner
 ├── LICENSE                            # describes the license for dissemination and use of this software
-├── package.json                       # the Node package manager file describes the server-side / development dependencies
+├── package.json                       # the Node package manager configuration file
 ├── README.md                          # this file
 ├── sites                              # there are a few websites associated with this repository:
 │   └── demo                           # the demo website serves as an illustration of the punchcards library
@@ -158,18 +179,6 @@ Here is a visual representation of our build process:
 
 ![visual-description-of-setup.png](https://github.com/nlesc-sherlock/punchcardjs/raw/testing/doc/visual-description-of-setup.png "visual-description-of-setup.png")
 
-
-# Examples
-
-Here are some examples of the type of visualizations you can make with this library:
-
-![example-date-circle.png](https://github.com/nlesc-sherlock/punchcardjs/raw/testing/doc/example-date-circle.png "example-date-circle.png")
-
-![example-date-rect.png](https://github.com/nlesc-sherlock/punchcardjs/raw/testing/doc/example-date-rect.png "example-date-rect.png")
-
-![example-weekday-circle.png](https://github.com/nlesc-sherlock/punchcardjs/raw/testing/doc/example-weekday-circle.png "example-weekday-circle.png")
-
-![example-weekday-rect.png](https://github.com/nlesc-sherlock/punchcardjs/raw/testing/doc/example-weekday-rect.png "example-weekday-rect.png")
 
 
 
