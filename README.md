@@ -1,16 +1,18 @@
 [![devDependency Status](https://david-dm.org/nlesc-sherlock/punchcardjs/dev-status.svg)](https://david-dm.org/nlesc-sherlock/punchcardjs#info=devDependencies)
 [![Build Status](https://travis-ci.org/nlesc-sherlock/punchcardjs.svg?branch=master)](https://travis-ci.org/nlesc-sherlock/punchcardjs)
 
-# For users
+_this library is still very much a work in progress_
+
+# Documentation for users
 
 Installation of the library through ``npm`` in the normal way:
 ```
 npm install punchcardjs
 ```
 
-- For the demo website, go [here](http://nlesc-sherlock.github.io/punchcardjs/demo/);
-- For the code coverage report, go [here](http://nlesc-sherlock.github.io/punchcardjs/coverage/remapped/src/index.html);
-- For TypeDoc documentation of the code, go [here](http://nlesc-sherlock.github.io/punchcardjs/tsdoc/);
+- For the demo website, go [here](http://nlesc-sherlock.github.io/punchcardjs/demo/), but see also [#51](https://github.com/nlesc-sherlock/punchcardjs/issues/51) and [#47](https://github.com/nlesc-sherlock/punchcardjs/issues/47);
+- For the code coverage report, go [here](http://nlesc-sherlock.github.io/punchcardjs/coverage/remapped/src/index.html), but see also [#55](https://github.com/nlesc-sherlock/punchcardjs/issues/55);
+- For TypeDoc documentation of the code, go [here](http://nlesc-sherlock.github.io/punchcardjs/tsdoc/), but see also [#5](https://github.com/nlesc-sherlock/punchcardjs/issues/5) and [#7](https://github.com/nlesc-sherlock/punchcardjs/issues/7);
 
 ## Examples
 
@@ -25,7 +27,7 @@ Here are some examples of the type of visualizations you can make with this libr
 ![example-weekday-rect.png](https://github.com/nlesc-sherlock/punchcardjs/raw/testing/doc/example-weekday-rect.png "example-weekday-rect.png")
 
 
-# For developers
+# Documentation for developers
 
 (this section describes the complete repository on GitHub, only part of which is included in the package on https://www.npmjs.com/package/punchcardjs).
 
