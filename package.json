@@ -2,7 +2,7 @@
   "name": "punchcardjs",
   "version": "1.0.0-alpha",
   "description": "Punchcard visualization using TypeScript and D3.js",
-  "main": "./dist/punchcards.js",
+  "main": "./dist/punchcards.min.js",
   "scripts": {
     "clean-build": "trash build/",
     "clean-cover": "trash sites/coverage/",
