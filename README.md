@@ -18,13 +18,13 @@ npm install punchcardjs
 
 Here are some examples of the type of visualizations you can make with this library:
 
-![example-date-circle.png](https://github.com/nlesc-sherlock/punchcardjs/raw/testing/doc/example-date-circle.png "example-date-circle.png")
+![example-date-circle.png](https://github.com/nlesc-sherlock/punchcardjs/raw/master/doc/example-date-circle.png "example-date-circle.png")
 
-![example-date-rect.png](https://github.com/nlesc-sherlock/punchcardjs/raw/testing/doc/example-date-rect.png "example-date-rect.png")
+![example-date-rect.png](https://github.com/nlesc-sherlock/punchcardjs/raw/master/doc/example-date-rect.png "example-date-rect.png")
 
-![example-weekday-circle.png](https://github.com/nlesc-sherlock/punchcardjs/raw/testing/doc/example-weekday-circle.png "example-weekday-circle.png")
+![example-weekday-circle.png](https://github.com/nlesc-sherlock/punchcardjs/raw/master/doc/example-weekday-circle.png "example-weekday-circle.png")
 
-![example-weekday-rect.png](https://github.com/nlesc-sherlock/punchcardjs/raw/testing/doc/example-weekday-rect.png "example-weekday-rect.png")
+![example-weekday-rect.png](https://github.com/nlesc-sherlock/punchcardjs/raw/master/doc/example-weekday-rect.png "example-weekday-rect.png")
 
 
 # Documentation for developers
@@ -179,7 +179,7 @@ So you wrote some **source code**. A **distributable** can be created from the s
 
 Here is a visual representation of our build process:
 
-![visual-description-of-setup.png](https://github.com/nlesc-sherlock/punchcardjs/raw/testing/doc/visual-description-of-setup.png "visual-description-of-setup.png")
+![visual-description-of-setup.png](https://github.com/nlesc-sherlock/punchcardjs/raw/master/doc/visual-description-of-setup.png "visual-description-of-setup.png")
 
 
 
