@@ -19,6 +19,9 @@ git branch gh-pages
 # ...and switch to it
 git checkout gh-pages
 
+# remove any downloaded content and clean generated content
+npm run purge
+
 # install npm dependencies (if you don't have them already)
 npm install
 
