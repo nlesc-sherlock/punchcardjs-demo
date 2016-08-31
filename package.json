@@ -4,7 +4,7 @@
   "scripts": {
     "clean": "trash sites/demo/*.js !sites/demo/main-script.js sites/demo/*.css sites/demo/bootstrap-css sites/demo/fonts",
     "clean-downloaded": "trash node_modules/",
-    "copy-sites-demo-css": "cp node_modules/bootstrap/dist/css/bootstrap.min.css node_modules/bootstrap/dist/css/bootstrap-theme.min.css sites/demo/bootstrap-css/",
+    "copy-sites-demo-css": "cp node_modules/punchcardjs/dist/*.css sites/demo/ && cp node_modules/bootstrap/dist/css/bootstrap.min.css node_modules/bootstrap/dist/css/bootstrap-theme.min.css sites/demo/bootstrap-css/",
     "copy-sites-demo-deps": "npm run copy-sites-demo-js && npm run copy-sites-demo-css && npm run copy-sites-demo-fonts",
     "copy-sites-demo-fonts": "cp node_modules/bootstrap/dist/fonts/* sites/demo/fonts/",
     "copy-sites-demo-js": "cp node_modules/d3/d3.min.js node_modules/crossfilter/crossfilter.min.js node_modules/moment/min/moment.min.js node_modules/punchcardjs/dist/punchcards.min.js sites/demo/",
