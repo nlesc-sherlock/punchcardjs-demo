@@ -1,10 +1,15 @@
+/base.css
 /bootstrap-css/
 /controls.js
 /crossfilter.min.js
 /d3.min.js
 /dataloader.js
+/date-circle.css
+/date-rect.css
 /fonts/
+/legend.css
 /moment.min.js
 /punchcards.min.js
-
+/weekday-circle.css
+/weekday-rect.css
 
