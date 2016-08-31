@@ -1,47 +1,17 @@
 {
-  "name": "punchcardjs",
-  "version": "1.0.0-alpha.3",
-  "description": "Punchcard visualization using TypeScript and D3.js",
-  "main": "./dist/punchcards.min.js",
+  "name": "punchcardjs-demo",
+  "description": "Demo website for punchcardjs",
   "scripts": {
-    "clean-build": "trash build/",
-    "clean-cover": "trash sites/coverage/",
-    "clean-demo": "trash sites/demo/*.js sites/demo/*.js.map !sites/demo/main-script.js sites/demo/*.css sites/demo/bootstrap-css sites/demo/fonts",
-    "clean-dist": "trash dist/",
-    "clean-downloaded": "trash typings/ node_modules/",
-    "clean": "npm run clean-build & npm run clean-dist & npm run clean-sites",
-    "clean-sites": "npm run clean-cover & npm run clean-demo & npm run clean-tsdoc",
-    "clean-tsdoc": "trash sites/tsdoc/",
-    "copy-sites-demo-css": "cp src/*.css sites/demo/ && cp node_modules/bootstrap/dist/css/bootstrap.min.css node_modules/bootstrap/dist/css/bootstrap-theme.min.css sites/demo/bootstrap-css/",
+    "clean": "trash sites/demo/*.js !sites/demo/main-script.js sites/demo/*.css sites/demo/bootstrap-css sites/demo/fonts",
+    "clean-downloaded": "trash node_modules/",
+    "copy-sites-demo-css": "cp node_modules/bootstrap/dist/css/bootstrap.min.css node_modules/bootstrap/dist/css/bootstrap-theme.min.css sites/demo/bootstrap-css/",
     "copy-sites-demo-deps": "npm run copy-sites-demo-js && npm run copy-sites-demo-css && npm run copy-sites-demo-fonts",
     "copy-sites-demo-fonts": "cp node_modules/bootstrap/dist/fonts/* sites/demo/fonts/",
-    "copy-sites-demo-js": "cp node_modules/crossfilter/crossfilter.min.js node_modules/moment/min/moment.min.js node_modules/d3/d3.min.js sites/demo/",
-    "cover": "npm run test && npm run remap-istanbul-json && npm run remap-istanbul-html",
-    "csslint": "csslint src/",
-    "demo": "npm run copy-sites-demo-deps && npm run dist",
-    "dist": "browserify src/punchcards.ts --debug --standalone punchcards -p [ tsify --project . ] > build/punchcards-with-source-maps.js",
-    "everything": "npm run demo && npm run tsdoc && npm run cover",
-    "exorcist": "<build/punchcards-with-source-maps.js exorcist dist/punchcards.js.map > dist/punchcards.js",
-    "jshint": "jshint test/*.js",
-    "jslint": "jslint test/*.js",
-    "lint": "npm run tslint && npm run jshint && npm run jslint && npm run csslint",
-    "postdemo": "cp dist/punchcards.js dist/punchcards.js.map dist/punchcards.min.js dist/punchcards.min.js.map sites/demo/ && tsc --target es5 sites/demo/*.ts --outDir sites/demo",
-    "postdist": "npm run exorcist && npm run uglify",
-    "postinstall": "typings install",
-    "postversion": "git log --pretty=oneline --max-count 10",
-    "precover": "trash sites/coverage/ && npm run lint && npm run dist",
-    "predemo": "npm run clean-demo && mkdirp sites/demo/fonts && mkdirp sites/demo/bootstrap-css",
-    "predist": "trash build/ && mkdirp build && trash dist/ && mkdirp dist",
-    "pretest": "npm run jshint && npm run jslint",
-    "pretsdoc": "npm run clean-tsdoc && mkdirp sites/tsdoc",
-    "preversion": "npm run purge && npm install && npm run dist && npm run test",
-    "purge": "npm run clean & npm run clean-downloaded",
-    "remap-istanbul-html": "remap-istanbul --input sites/coverage/coverage-remapped.json --output sites/coverage/remapped --type html --exclude node_modules",
-    "remap-istanbul-json": "remap-istanbul --input sites/coverage/coverage.json --output sites/coverage/coverage-remapped.json",
-    "test": "karma start karma.conf.js",
-    "tsdoc": "typedoc --out sites/tsdoc/ .",
-    "tslint": "tslint --config tslint.json ./src/**/*.ts",
-    "uglify": "uglifyjs dist/punchcards.js --output dist/punchcards.min.js --source-map dist/punchcards.min.js.map --screw-ie8 --in-source-map dist/punchcards.js.map --source-map-url punchcards.min.js.map"
+    "copy-sites-demo-js": "cp node_modules/d3/d3.min.js node_modules/crossfilter/crossfilter.min.js node_modules/moment/min/moment.min.js node_modules/punchcardjs/dist/punchcards.min.js sites/demo/",
+    "demo": "npm run copy-sites-demo-deps",
+    "postdemo": "tsc --target es5 src/*.ts --outDir sites/demo",
+    "predemo": "npm run clean && mkdirp sites/demo && mkdirp sites/demo/fonts && mkdirp sites/demo/bootstrap-css",
+    "purge": "npm run clean & npm run clean-downloaded"
   },
   "keywords": [
     "typescript",
@@ -52,65 +22,18 @@
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nlesc-sherlock/punchcardjs.git"
+    "url": "https://github.com/jspaaks/punchcardjs-demo.git"
   },
   "devDependencies": {
-    "bootstrap": "^3.3.7",
-    "browserify": "^13.1.0",
-    "browserify-shim": "^3.8.12",
-    "csslint": "^1.0.2",
-    "exorcist": "^0.4.0",
-    "istanbul": "^0.4.4",
-    "jasmine-core": "^2.4.1",
-    "jshint": "^2.9.3",
-    "jslint": "^0.10.3",
-    "karma": "^1.2.0",
-    "karma-coverage": "^1.1.1",
-    "karma-fixture": "^0.2.6",
-    "karma-html2js-preprocessor": "^1.0.0",
-    "karma-jasmine": "^1.0.2",
-    "karma-json-fixtures-preprocessor": "0.0.6",
-    "karma-phantomjs-launcher": "^1.0.1",
-    "karma-spec-reporter": "0.0.26",
     "mkdirp": "^0.5.1",
-    "remap-istanbul": "^0.6.4",
-    "trash-cli": "^1.3.0",
-    "tsify": "^1.0.3",
-    "tslint": "^3.9.0",
-    "typedoc": "^0.4.1",
-    "typescript": "^1.8.10",
-    "uglify-js": "^2.7.3"
+    "trash-cli": "^1.3.0"
   },
   "dependencies": {
+    "bootstrap": "^3.3.7",
+    "punchcardjs": ">=1.0.0-alpha.3",
     "crossfilter": "^1.3.12",
     "d3": "^3.5.17",
     "moment": "^2.14.1",
-    "typings": "^1.0.4"
-  },
-  "browser": {
-    "crossfilter": "node_modules/crossfilter/crossfilter.js",
-    "d3": "node_modules/d3/d3.js",
-    "moment": "node_modules/moment/moment.js"
-  },
-  "browserify-shim": {
-    "crossfilter": "global:crossfilter",
-    "d3": "global:d3",
-    "moment": "global:moment"
-  },
-  "browserify": {
-    "transform": [
-      "browserify-shim"
-    ]
-  },
-  "files": [
-    "dist/punchcards.js",
-    "dist/punchcards.js.map",
-    "dist/punchcards.min.js",
-    "dist/punchcards.min.js.map",
-    "typings.json",
-    "package.json",
-    "LICENSE",
-    "README",
-    "CHANGELOG"
-  ]
+    "typescript": "^1.8.10"
+  }
 }
