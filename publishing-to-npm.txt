@@ -1,0 +1,27 @@
+
+# installing nvm
+sudo apt-get install build-essential
+sudo apt-get install libssl-dev
+sudo apt-get install curl
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.6/install.sh | bash
+# close and reopen terminal
+# check if installed
+nvm --version
+
+# current latest stable LTS is 4.5.0
+nvm install 4.5.0
+
+# cd to the /tmp directory
+cd /tmp
+# see if your package installs (locally)
+npm install <path to your package's top directory>
+# check that there are no errors
+# check that you have a /tmp/node_modules/ containing your package
+
+# add a .npmignore
+
+# make an account on npm: https://www.npmjs.com/signup
+
+# verify your e-mail address
+
+
