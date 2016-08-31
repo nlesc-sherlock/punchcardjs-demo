@@ -1,7 +1,0 @@
-# the entire tsdoc and coverage directories are generated, so no need
-# to put it under version control:
-tsdoc
-coverage
-
-
-
