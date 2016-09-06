@@ -2,7 +2,7 @@
   "name": "punchcardjs-demo",
   "description": "Demo website for punchcardjs",
   "scripts": {
-    "clean": "trash sites/demo/*.js !sites/demo/main-script.js sites/demo/*.css sites/demo/bootstrap-css sites/demo/fonts",
+    "clean": "trash sites/demo/*.js trash sites/demo/punchcards.min.js.map !sites/demo/main-script.js sites/demo/*.css sites/demo/bootstrap-css sites/demo/fonts",
     "clean-downloaded": "trash node_modules/",
     "copy-sites-demo-css": "cp node_modules/punchcardjs/dist/*.css sites/demo/ && cp node_modules/bootstrap/dist/css/bootstrap.min.css node_modules/bootstrap/dist/css/bootstrap-theme.min.css sites/demo/bootstrap-css/",
     "copy-sites-demo-deps": "npm run copy-sites-demo-js && npm run copy-sites-demo-css && npm run copy-sites-demo-fonts",
@@ -26,14 +26,14 @@
   },
   "devDependencies": {
     "mkdirp": "^0.5.1",
-    "trash-cli": "^1.3.0"
+    "trash-cli": "^1.3.0",
+    "typescript": "^1.8.10"
   },
   "dependencies": {
     "bootstrap": "^3.3.7",
     "punchcardjs": ">=1.0.0-alpha.5",
     "crossfilter": "^1.3.12",
     "d3": "^3.5.17",
-    "moment": "^2.14.1",
-    "typescript": "^1.8.10"
+    "moment": "^2.14.1"
   }
 }
