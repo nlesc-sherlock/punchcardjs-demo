@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "bootstrap": "^3.3.7",
-    "punchcardjs": ">=1.0.0-alpha.5",
+    "punchcardjs": ">=1.0.0-alpha.6",
     "crossfilter": "^1.3.12",
     "d3": "^3.5.17",
     "moment": "^2.14.1"
