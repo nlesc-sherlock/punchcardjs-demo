@@ -1,0 +1,333 @@
+.punchcard-common {
+    background-color: #fff;
+    border: thin;
+    border-color: #5f6a70;
+    border-radius: 0;
+    border-style: solid;
+    box-shadow: 5px 5px 5px #99b3bf;
+    box-sizing: border-box;
+    float: left;
+    margin: 10px;
+    padding: 0;
+    position: relative;
+    width: 90%;
+}
+
+.hidden {
+    display: none;
+}
+/* the top level div */
+div.punchcard-date-circle {
+    height: 600px;
+}
+
+/* the svg element */
+div.punchcard-date-circle svg {
+    font-family: sans-serif;
+    font-size: 0.7em;
+}
+
+/* the axes */
+div.punchcard-date-circle .domain {
+  fill: none;
+  shape-rendering: crispEdges;
+  stroke: black;
+}
+
+/* the axes/chart's background  */
+div.punchcard-date-circle .chartbody {
+    fill: #d8d8d8;
+    shape-rendering: crispEdges;
+}
+
+/* the box around the chart background is a separate rect, this is its style */
+div.punchcard-date-circle .chartbody-box {
+    fill: none;
+    shape-rendering: crispEdges;
+    stroke: black;
+}
+
+/* the symbols that are the main content of the plot */
+div.punchcard-date-circle .symbol {
+    stroke: #000000;
+    stroke-width: 1px;
+}
+
+/* the xlabel text */
+div.punchcard-date-circle .horizontal-axis-label {
+    text-align: center;
+    text-anchor: middle;
+}
+
+/* the ylabel text */
+div.punchcard-date-circle .vertical-axis-label {
+    text-align: center;
+    text-anchor: middle;
+}
+
+/* the title text */
+div.punchcard-date-circle .title {
+    text-align: center;
+    text-anchor: middle;
+}
+
+/* the tick marks */
+div.punchcard-date-circle .tick line {
+    fill: none;
+    shape-rendering: crispEdges;
+    stroke: black;
+}
+
+/* the ticks text */
+div.punchcard-date-circle .horizontal-axis text {
+    /* some more style features are defined in the JavaScript*/
+    transform: rotate(270deg);
+}
+
+/* the top level div */
+div.punchcard-date-rect {
+    height: 200px;
+}
+
+/* the svg element */
+div.punchcard-date-rect svg {
+    font-family: sans-serif;
+    font-size: 0.7em;
+}
+
+/* the axes */
+div.punchcard-date-rect .domain {
+  fill: none;
+  shape-rendering: crispEdges;
+  stroke: black;
+}
+
+/* the axes/chart's background  */
+div.punchcard-date-rect .chartbody {
+    fill: #d8d8d8;
+    shape-rendering: crispEdges;
+}
+
+/* the box around the chart background is a separate rect, this is its style */
+div.punchcard-date-rect .chartbody-box {
+    fill: none;
+    shape-rendering: crispEdges;
+    stroke: black;
+}
+
+/* the symbols that are the main content of the plot */
+div.punchcard-date-rect .symbol {
+    shape-rendering: crispEdges;
+    stroke: none;
+    stroke-width: 0;
+}
+
+/* the xlabel text */
+div.punchcard-date-rect .horizontal-axis-label {
+    text-align: center;
+    text-anchor: middle;
+}
+
+/* the ylabel text */
+div.punchcard-date-rect .vertical-axis-label {
+    text-align: center;
+    text-anchor: middle;
+}
+
+/* the title text */
+div.punchcard-date-rect .title {
+    text-align: center;
+    text-anchor: middle;
+}
+
+/* the tick marks */
+div.punchcard-date-rect .tick line {
+    fill: none;
+    shape-rendering: crispEdges;
+    stroke: black;
+}
+
+/* the ticks text */
+div.punchcard-date-rect .horizontal-axis text {
+    /* some more style features are defined in the JavaScript*/
+    transform: rotate(270deg);
+}
+
+/* the axes */
+div.punchcard-common svg g.legendbody {
+  fill: none;
+  shape-rendering: crispEdges;
+  stroke: black;
+}
+
+/* the axes/legend's background */
+div.punchcard-common svg g.punchcard-legend rect.legendbody {
+    fill: #d8d8d8;
+    shape-rendering: crispEdges;
+}
+
+/* the box around the legend background is a separate rect, this is its style */
+div.punchcard-common svg g.punchcard-legend .legendbody-box {
+    fill: none;
+    shape-rendering: crispEdges;
+    stroke: black;
+}
+
+/* the symbols that are the main content of the legend */
+div.punchcard-common svg g.punchcard-legend rect.symbol {
+    shape-rendering: crispEdges;
+    stroke: none;
+    stroke-width: 0;
+}
+
+/* the xlabel text */
+div.punchcard-common svg g.punchcard-legend text.horizontal-axis-label {
+    text-align: center;
+    text-anchor: middle;
+}
+
+/* the ylabel text */
+div.punchcard-common svg g.punchcard-legend text.vertical-axis-label {
+    text-align: center;
+    text-anchor: middle;
+}
+
+/* the title text */
+div.punchcard-common svg g.punchcard-legend text.title {
+    text-align: center;
+    text-anchor: middle;
+}
+
+/* the tick marks */
+div.punchcard-common svg g.punchcard-legend g.tick line {
+    fill: none;
+    shape-rendering: crispEdges;
+    stroke: black;
+}
+
+
+
+/* the top level div */
+div.punchcard-weekday-circle {
+    height: 600px;
+}
+
+/* the svg element */
+div.punchcard-weekday-circle svg {
+    font-family: sans-serif;
+    font-size: 0.7em;
+}
+
+/* the axes */
+div.punchcard-weekday-circle .domain {
+    fill: none;
+    shape-rendering: crispEdges;
+    stroke: black;
+}
+
+/* the axes/chart's background  */
+div.punchcard-weekday-circle .chartbody {
+    fill: #d8d8d8;
+    shape-rendering: crispEdges;
+}
+
+/* the box around the chart background is a separate rect, this is its style */
+div.punchcard-weekday-circle .chartbody-box {
+    fill: none;
+    shape-rendering: crispEdges;
+    stroke: black;
+}
+
+/* the symbols that are the main content of the plot */
+div.punchcard-weekday-circle .symbol {
+    stroke: black;
+    stroke-width: 1px;
+}
+
+/* the xlabel text */
+div.punchcard-weekday-circle .horizontal-axis-label {
+    text-align: center;
+    text-anchor: middle;
+}
+
+/* the ylabel text */
+div.punchcard-weekday-circle .vertical-axis-label {
+    text-align: center;
+    text-anchor: middle;
+}
+
+/* the title text */
+div.punchcard-weekday-circle .title {
+    text-align: center;
+    text-anchor: middle;
+}
+
+/* the tick marks */
+div.punchcard-weekday-circle .tick line {
+    fill: none;
+    shape-rendering: crispEdges;
+    stroke: black;
+}
+
+/* the top level div */
+div.punchcard-weekday-rect {
+    height: 200px;
+}
+
+/* the svg element */
+div.punchcard-weekday-rect svg {
+    font-family: sans-serif;
+    font-size: 0.7em;
+}
+
+/* the axes */
+div.punchcard-weekday-rect .domain {
+    fill: none;
+    shape-rendering: crispEdges;
+    stroke: black;
+}
+
+/* the axes/chart's background  */
+div.punchcard-weekday-rect .chartbody {
+    fill: #d8d8d8;
+    shape-rendering: crispEdges;
+}
+
+/* the box around the chart background is a separate rect, this is its style */
+div.punchcard-weekday-rect .chartbody-box {
+    fill: none;
+    shape-rendering: crispEdges;
+    stroke: black;
+}
+
+/* the symbols that are the main content of the plot */
+div.punchcard-weekday-rect .symbol {
+    shape-rendering: crispEdges;
+    stroke: none;
+    stroke-width: 0;
+}
+
+/* the xlabel text */
+div.punchcard-weekday-rect .horizontal-axis-label {
+    text-align: center;
+    text-anchor: middle;
+}
+
+/* the ylabel text */
+div.punchcard-weekday-rect .vertical-axis-label {
+    text-align: center;
+    text-anchor: middle;
+}
+
+/* the title text */
+div.punchcard-weekday-rect .title {
+    text-align: center;
+    text-anchor: middle;
+}
+
+/* the tick marks */
+div.punchcard-weekday-rect .tick line {
+    fill: none;
+    shape-rendering: crispEdges;
+    stroke: black;
+}
