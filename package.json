@@ -11,7 +11,8 @@
     "demo": "npm run copy-sites-demo-deps",
     "postdemo": "tsc --target es5 src/*.ts --outDir sites/demo",
     "predemo": "npm run clean && mkdirp sites/demo && mkdirp sites/demo/fonts && mkdirp sites/demo/bootstrap-css",
-    "purge": "npm run clean & npm run clean-downloaded"
+    "purge": "npm run clean & npm run clean-downloaded",
+    "start": "npm run demo"
   },
   "keywords": [
     "typescript",
