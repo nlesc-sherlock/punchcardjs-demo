@@ -1,4 +1,4 @@
-- For the demo website, go [here](http://nlesc-sherlock.github.io/punchcardjs-demo/docs/sites/demo/), but see also [#51](https://github.com/nlesc-sherlock/punchcardjs/issues/51) and [#47](https://github.com/nlesc-sherlock/punchcardjs/issues/47);
+- For the demo website, go [here](http://nlesc-sherlock.github.io/punchcardjs-demo/sites/demo/), but see also [#51](https://github.com/nlesc-sherlock/punchcardjs/issues/51) and [#47](https://github.com/nlesc-sherlock/punchcardjs/issues/47);
 
 ## Examples
 
