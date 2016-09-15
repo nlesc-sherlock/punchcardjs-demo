@@ -1,6 +1,8 @@
 {
   "name": "punchcardjs-demo",
+  "version": "1.0.0",
   "description": "Demo website for punchcardjs",
+  "main": "index.js",
   "scripts": {
     "clean": "trash docs/sites/demo/punchcards.* docs/sites/demo/bootstrap-css docs/sites/demo/fonts",
     "clean-downloaded": "trash node_modules/",
@@ -13,6 +15,10 @@
     "predemo": "npm run clean && mkdirp docs/sites/demo && mkdirp docs/sites/demo/fonts && mkdirp docs/sites/demo/bootstrap-css",
     "purge": "npm run clean & npm run clean-downloaded"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jspaaks/punchcardjs-demo.git"
+  },
   "keywords": [
     "typescript",
     "punchcard",
@@ -20,20 +26,20 @@
   ],
   "author": "Johan Hidding, Mateusz Kuzak, Jurriaan H. Spaaks, Lourens Veen, Faruk Diblen",
   "license": "Apache-2.0",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/jspaaks/punchcardjs-demo.git"
+  "bugs": {
+    "url": "https://github.com/nlesc-sherlock/metrochartjs-demo/issues"
   },
-  "devDependencies": {
-    "mkdirp": "^0.5.1",
-    "trash-cli": "^1.3.0",
-    "typescript": "^1.8.10"
-  },
+  "homepage": "https://github.com/nlesc-sherlock/metrochartjs-demo#readme",
   "dependencies": {
     "bootstrap": "^3.3.7",
     "punchcardjs": "1.0.0-alpha.9",
     "crossfilter": "^1.3.12",
     "d3": "^3.5.17",
     "moment": "^2.14.1"
+  },
+  "devDependencies": {
+    "mkdirp": "^0.5.1",
+    "trash-cli": "^1.3.0",
+    "typescript": "^1.8.10"
   }
 }
