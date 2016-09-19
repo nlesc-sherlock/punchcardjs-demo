@@ -1,6 +1,2 @@
-/build
-/dist
 /node_modules
-/typings
-/bower_components
-/test-coverage
+/docs/sites/demo
