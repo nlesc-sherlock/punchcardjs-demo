@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+    "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>punchcards example 1</title>
+
+    <!-- these styles are part of punchcardjs's distribution -->
+    <link rel="stylesheet" type="text/css" href="punchcards.min.css">
+
+    <script type="text/javascript" src="crossfilter.min.js"></script>
+    <script type="text/javascript" src="d3.min.js"></script>
+    <script type="text/javascript" src="moment.min.js"></script>
+    <script type="text/javascript" src="punchcards.min.js"></script>
+
+  </head>
+
+  <body style="background-color: #b5d3e2">
+
+        <div id="punchcard-weekday-circle"></div>
+
+        <script type="text/javascript">
+
+            var data, cf, weekdayCircle;
+
+            data = [{
+                    "datestr": "2014-06-12T09:54:00"
+            }];
+
+            cf = crossfilter(data);
+
+            <!-- draw a punchcard WeekdayCircle using svg circle elements -->
+            weekdayCircle = new punchcards.WeekdayCircle(cf, 'punchcard-weekday-circle');
+            weekdayCircle.draw();
+
+        </script>
+
+  </body>
+</html>
+
+
