@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <title>punchcards: weekday-circle-n1-custom</title>
+    <title>punchcards: example-data-circle-n1-custom</title>
 
     <!-- these styles are part of punchcardjs's distribution -->
     <link rel="stylesheet" type="text/css" href="punchcards.min.css">
@@ -17,27 +17,30 @@
 
   <body style="background-color: #b5d3e2">
 
-        <div id="punchcard-weekday-circle"></div>
+        <div id="punchcard-date-circle"></div>
 
         <script type="text/javascript">
 
-            var data, cf, weekdayCircle;
+            var data, cf, dateCircle;
 
             data = [{
                     "my-custom-key": "2014-06-12T09:54:00"
+                }, {
+                    "my-custom-key": "2014-06-15T11:10:00"
+                }, {
+                    "my-custom-key": "2014-06-15T11:23:00"
             }];
 
             cf = crossfilter(data);
 
-            <!-- draw a punchcard WeekdayCircle using svg circle elements -->
-            weekdayCircle = new punchcards.WeekdayCircle(cf, 'punchcard-weekday-circle', 'my-custom-key');
-            weekdayCircle.draw();
+            <!-- draw a punchcard dateCircle using svg circle elements -->
+            dateCircle = new punchcards.DateCircle(cf, 'punchcard-date-circle', 'my-custom-key');
+            dateCircle.draw();
 
         </script>
 
         <div style="clear:both"></div>
-        <p style="font-family: sans">View <a href="https://github.com/nlesc-sherlock/punchcardjs-demo/blob/master/src/example-weekday-circle-n1-custom.html">source</a>.</p>
-
+        <p style="font-family: sans">View <a href="https://github.com/nlesc-sherlock/punchcardjs-demo/blob/master/src/example-date-circle-n1-custom.html">source</a>.</p>
 
   </body>
 </html>
