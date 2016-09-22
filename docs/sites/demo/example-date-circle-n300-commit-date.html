@@ -17,7 +17,7 @@
 
   <body style="background-color: #b5d3e2">
 
-        <div id="punchcard-date-circle" class="punchcard-common punchcard-date-circle"></div>
+        <div id="punchcard-date-circle"></div>
 
         <script type="text/javascript">
 
@@ -627,9 +627,7 @@
 
             cf = crossfilter(data);
 
-            chart = new punchcards.DateCircle(cf, 'punchcard-date-circle');
-            chart.datekey = 'commit-date';
-            chart.defineDimensions();
+            chart = new punchcards.DateCircle(cf, 'punchcard-date-circle', 'commit-date');
             chart.draw();
 
 

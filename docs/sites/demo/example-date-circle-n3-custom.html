@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <title>punchcards: example-data-circle-n1-custom</title>
+    <title>punchcards: example-date-circle-n3-custom</title>
 
     <!-- these styles are part of punchcardjs's distribution -->
     <link rel="stylesheet" type="text/css" href="punchcards.min.css">
@@ -21,7 +21,7 @@
 
         <script type="text/javascript">
 
-            var data, cf, dateCircle;
+            var data, cf, chart;
 
             data = [{
                     "my-custom-key": "2014-06-12T09:54:00"
@@ -34,13 +34,13 @@
             cf = crossfilter(data);
 
             <!-- draw a punchcard dateCircle using svg circle elements -->
-            dateCircle = new punchcards.DateCircle(cf, 'punchcard-date-circle', 'my-custom-key');
-            dateCircle.draw();
+            chart = new punchcards.DateCircle(cf, 'punchcard-date-circle', 'my-custom-key');
+            chart.draw();
 
         </script>
 
         <div style="clear:both"></div>
-        <p style="font-family: sans">View <a href="https://github.com/nlesc-sherlock/punchcardjs-demo/blob/master/src/example-date-circle-n1-custom.html">source</a>.</p>
+        <p style="font-family: sans">View <a href="https://github.com/nlesc-sherlock/punchcardjs-demo/blob/master/src/example-date-circle-n3-custom.html">source</a>.</p>
 
   </body>
 </html>
