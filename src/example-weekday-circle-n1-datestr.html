@@ -21,7 +21,7 @@
 
         <script type="text/javascript">
 
-            var data, cf, weekdayCircle;
+            var data, cf, chart;
 
             data = [{
                     "datestr": "2014-06-12T09:54:00"
@@ -30,8 +30,8 @@
             cf = crossfilter(data);
 
             <!-- draw a punchcard WeekdayCircle using svg circle elements -->
-            weekdayCircle = new punchcards.WeekdayCircle(cf, 'punchcard-weekday-circle');
-            weekdayCircle.draw();
+            chart = new punchcards.WeekdayCircle(cf, 'punchcard-weekday-circle');
+            chart.draw();
 
         </script>
 
