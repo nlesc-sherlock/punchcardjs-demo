@@ -43,7 +43,7 @@ RUN git clone https://github.com/nlesc-sherlock/punchcardjs-demo.git
 WORKDIR /punchcardjs-demo
 
 # Be explicit about which commit we're using
-RUN git checkout c6316a64f9f27a93e8fd76abee66c72f34737cb4
+RUN git checkout 12dee71297710e8cf40b43ce54194b7909402387
 
 # install the dependencies listed in package.json
 RUN npm install
@@ -55,7 +55,7 @@ RUN npm run demo
 RUN apt-get install -y python3
 
 # change into the demo directory
-WORKDIR /punchcardjs-demo/sites/demo
+WORKDIR /punchcardjs-demo/docs/sites/demo
 
 # define the container's task: serving the app
 CMD python3 -m http.server 5000
