@@ -1,6 +1,6 @@
 ## First install docker on your machine
 ## Then you can build the docker image with this command (the build looks
-## in this file):
+## in the current file):
 # docker build -t image-punchcardjs-demo .
 ## Then run the docker container using this command:
 # docker run -p 5001:5000 --name prosperous-punchcards image-punchcardjs-demo
@@ -24,8 +24,8 @@
 ## Removing the image goes like this:
 # docker rmi punchcardjs-image
 
-# start from Node's offical docker image, version 4.5 (https://hub.docker.com/r/library/node/)
-FROM node:4.5
+# start from Node's offical docker image, version 7.0 (https://hub.docker.com/r/library/node/)
+FROM node:7.0
 
 # open network port (at outside of the container)
 EXPOSE 5000
@@ -37,13 +37,13 @@ RUN apt-get update
 RUN apt-get install -y git
 
 # get a copy of the repository
-RUN git clone https://github.com/nlesc-sherlock/punchcardjs-demo.git
+RUN git clone https://github.com/nlesc-sherlock/punchcardjs-demo.git 
 
 # change into the directory
 WORKDIR /punchcardjs-demo
 
-# Be explicit about which branch we're using
-RUN git checkout master
+# Be explicit about which commit we're using
+RUN git checkout 12dee71297710e8cf40b43ce54194b7909402387
 
 # install the dependencies listed in package.json
 RUN npm install
@@ -55,7 +55,7 @@ RUN npm run demo
 RUN apt-get install -y python3
 
 # change into the demo directory
-WORKDIR /punchcardjs-demo/sites/demo
+WORKDIR /punchcardjs-demo/docs/sites/demo
 
 # define the container's task: serving the app
 CMD python3 -m http.server 5000
