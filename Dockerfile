@@ -43,7 +43,7 @@ RUN git clone https://github.com/nlesc-sherlock/punchcardjs-demo.git
 WORKDIR /punchcardjs-demo
 
 # Be explicit about which commit we're using
-RUN git checkout 12dee71297710e8cf40b43ce54194b7909402387
+RUN git checkout 691ef2444907f512301ba47586492c0ffa0052f5
 
 # install the dependencies listed in package.json
 RUN npm install
