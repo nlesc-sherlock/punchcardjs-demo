@@ -1,12 +1,12 @@
 ## First install docker on your machine
 ## Then you can build the docker image with this command (the build looks
-## in the current file):
+## in this file):
 # docker build -t image-punchcardjs-demo .
 ## Then run the docker container using this command:
-# docker run -p 5001:5000 --name prosperous-punchcards image-punchcardjs-demo
+# docker run -p 5002:80 --name prosperous-punchcards image-punchcardjs-demo
 ##
 ## Now you should be able to open a browser (on the host) and navigate to
-## http://localhost:5001 and see the webapp being served.
+## http://localhost:5002 and see the webapp being served.
 ##
 ## When you're done, run
 # docker stop prosperous-punchcards
@@ -22,28 +22,29 @@
 # docker images
 ##
 ## Removing the image goes like this:
-# docker rmi punchcardjs-image
+# docker rmi image-punchcardjs-demo
 
 # start from Node's offical docker image, version 7.0 (https://hub.docker.com/r/library/node/)
 FROM node:7.0
 
 # open network port (at outside of the container)
-EXPOSE 5000
+EXPOSE 80
 
 # do the updates
 RUN apt-get update
 
-# install version management git
-RUN apt-get install -y git
+# install python3
+RUN apt-get install -y python3
 
-# get a copy of the repository
-RUN git clone https://github.com/nlesc-sherlock/punchcardjs-demo.git 
+# prepare a directory to copy the repository to
+RUN mkdir /punchcardjs-demo
 
-# change into the directory
+# add files from the docker context to the directory we just prepared
+ADD . /punchcardjs-demo/
+
+# set the work directory using absolute paths
 WORKDIR /punchcardjs-demo
 
-# Be explicit about which commit we're using
-RUN git checkout 691ef2444907f512301ba47586492c0ffa0052f5
 
 # install the dependencies listed in package.json
 RUN npm install
@@ -51,13 +52,8 @@ RUN npm install
 # fill the sites/demo/ directory with the demo website's content
 RUN npm run demo
 
-# install python3
-RUN apt-get install -y python3
-
 # change into the demo directory
 WORKDIR /punchcardjs-demo/docs/sites/demo
 
 # define the container's task: serving the app
-CMD python3 -m http.server 5000
-
-
+CMD python3 -m http.server 80
