@@ -45,6 +45,7 @@ ADD . /punchcardjs-demo/
 # set the work directory using absolute paths
 WORKDIR /punchcardjs-demo
 
+
 # install the dependencies listed in package.json
 RUN npm install
 
